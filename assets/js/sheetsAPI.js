@@ -1,3 +1,12 @@
+/**
+ * @returns {{
+ * image: string,
+ * price: string,
+ * name: string,
+ * count: number,
+ * description: string
+ * }[]}
+ */
 function getSheetsData() {
     const breadData = [{
         "image": "images/pic01.jpg",
@@ -14,4 +23,18 @@ function getSheetsData() {
     }];
 
     return breadData
+}
+
+/**
+ * @param {string[]}itemNames
+ * @return {{name: string, count: string, price: string}[]}
+ */
+function itemNamesToDOMIds(itemNames) {
+    return itemNames.map(function (itemName) {
+        return {
+            name: `${itemName}-name`,
+            count: `${itemName}-count`,
+            price: `${itemName}-price`,
+        }
+    });
 }

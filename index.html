@@ -40,52 +40,48 @@
                     <tr>
                         <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
                         <td>
-                            <strong>Focaccia</strong>
+                            <strong id="Focaccia-name">Focaccia</strong>
                             <br>
                             Garlic-rosemary focaccia with garlic-infused olive oil.
                         </td>
                         <td>
-                            <select name="Focaccia-count" id="Focaccia-count" class="select-count">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <select name="Focaccia-count" id="Focaccia-count" class="select-count"
+                                    onchange="updateCart()">
+                                <option value=0>0</option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
                             </select>
                         </td>
-                        <td>$19.99</td>
+                        <td id="Focaccia-price">$19.99</td>
                     </tr>
                     <tr>
                         <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
                         <td>
-                            <strong>Baguette</strong>
+                            <strong id="Baguette-name">Baguette</strong>
                             <br>
                             Garlic-rosemary focaccia with garlic-infused olive oil.
                         </td>
                         <td>
-                            <select name="Baguette-count" id="Baguette-count" class="select-count">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
+                            <select name="Baguette-count" id="Baguette-count" class="select-count"
+                                    onchange="updateCart()">
+                                <option value=0>0</option>
+                                <option value=1>1</option>
                             </select>
                         </td>
-                        <td>$19.99</td>
+                        <td id="Baguette-price">$19.99</td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td><h2>Cart</h2></td>
                         <td id="selected-items-name">
-                            Focaccia
-                            <br>
-                            Baguette
+
                         </td>
                         <td id="selected-items-count">
-                            x1
-                            <br>
-                            x1
+
                         </td>
                         <td id="selected-items-price">
-                            $59.97
-                            <br>
-                            $6.99
+                       
                         </td>
 
                     </tr>
@@ -93,7 +89,7 @@
                         <td colspan="2"></td>
                         <td>Total</td>
                         <td id="selected-items-total-price">
-                            $80.00
+                            $0.00
                         </td>
                     </tr>
                     </tfoot>
@@ -136,6 +132,39 @@
 <script>
     // Returns a JSON of bread-data.
     const sheetsData = getSheetsData();
+    const itemNames = sheetsData.map(data => data.name);
+    const domIds = itemNamesToDOMIds(itemNames);
+
+    function updateCart() {
+        let itemNames = "";
+        let itemCounts = "";
+        let itemPrices = "";
+        let totalItemPrices = 0;
+
+        for (const domId of domIds) {
+            const {name: nameId, count: countId, price: priceId} = domId;
+            const itemCount = parseInt(document.getElementById(countId).value);
+
+            if (!itemCount) {
+                continue;
+            }
+
+            const itemName = document.getElementById(nameId).innerText
+            const itemPrice = document.getElementById(priceId).innerText.split('$')[1];
+
+            itemNames += `${itemName}<br>`;
+            itemCounts += `x${itemCount}<br>`;
+            itemPrices += `$${itemPrice * itemCount}<br>`
+
+            totalItemPrices += (itemPrice * itemCount);
+        }
+
+        document.getElementById("selected-items-name").innerHTML = itemNames;
+        document.getElementById("selected-items-count").innerHTML = itemCounts;
+        document.getElementById("selected-items-price").innerHTML = itemPrices;
+        document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices}`;
+    }
+
 
 </script>
 </body>
