@@ -3775,7 +3775,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 480px) {
 
     #wrapper {
-        max-width: calc(100% - 2em);
+        max-width: calc(100% - 1em);
     }
 
 }
