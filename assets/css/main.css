@@ -2014,6 +2014,10 @@ textarea {
     width: 100%;
 }
 
+.select-count {
+    width: unset;
+}
+
 input[type="text"]:invalid,
 input[type="password"]:invalid,
 input[type="email"]:invalid,
