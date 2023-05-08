@@ -36,7 +36,7 @@
                         <th>Price</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="items-table">
                     <tr>
                         <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
                         <td>
@@ -48,18 +48,53 @@
                             <select name="Focaccia-count" id="Focaccia-count">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </td>
-                        <td>19.99</td>
+                        <td>$19.99</td>
+                    </tr>
+                    <tr>
+                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
+                        <td>
+                            <strong>Baguette</strong>
+                            <br>
+                            Garlic-rosemary focaccia with garlic-infused olive oil.
+                        </td>
+                        <td>
+                            <select name="Baguette-count" id="Baguette-count">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                        </td>
+                        <td>$19.99</td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td><h2>Total</h2></td>
+                        <td><h2>Cart</h2></td>
+                        <td id="selected-items-name">
+                            Focaccia
+                            <br>
+                            Baguette
+                        </td>
+                        <td id="selected-items-count">
+                            x1
+                            <br>
+                            x1
+                        </td>
+                        <td id="selected-items-price">
+                            $59.97
+                            <br>
+                            $6.99
+                        </td>
+
                     </tr>
-                    <tr>
+                    <tr style="font-weight: bold">
                         <td colspan="2"></td>
-                        <td>Item one</td>
+                        <td>Total</td>
+                        <td id="selected-items-total-price">
+                            $80.00
+                        </td>
                     </tr>
                     </tfoot>
                 </table>
@@ -97,7 +132,10 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/sheetsAPI.js"></script>
 <script>
+    // Returns a JSON of bread-data.
+    const sheetsData = getSheetsData();
 
 </script>
 </body>
