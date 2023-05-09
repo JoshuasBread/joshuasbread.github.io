@@ -131,12 +131,20 @@ body, input, select, textarea {
 @media screen and (max-width: 1680px) {
 
     body, input, select, textarea {
-        font-size: 14pt;
+        font-size: 16pt;
     }
 
 }
 
 @media screen and (max-width: 1280px) {
+
+    body, input, select, textarea {
+        font-size: 14pt;
+    }
+
+}
+
+@media screen and (max-width: 780px) {
 
     body, input, select, textarea {
         font-size: 12pt;
@@ -167,7 +175,7 @@ a:hover {
 }
 
 strong, b {
-    font-weight: 400;
+    font-weight: 600;
 }
 
 em, i {
@@ -193,7 +201,7 @@ p.content {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     line-height: 1.5;
-    margin: 0 0 0.7em 0;
+    margin: 0 0 0 0;
     letter-spacing: -0.025em;
 }
 
@@ -2734,7 +2742,7 @@ table tbody tr {
 }
 
 table td {
-    padding: 0.75em 0.75em;
+    padding: 0.5em 0.5em;
 }
 
 table th {
@@ -3244,7 +3252,9 @@ body.is-preload #header.alt .logo {
 #main {
     background-color: #4D6E7F;
     color: #efdecb;
-    border-radius: 1em;
+    border-radius: 1.5em;
+    margin-right:auto;
+    margin-left:auto;
 }
 
 #main input, #main select, #main textarea {

@@ -19,7 +19,7 @@
         <p>The dough is rising...<br/>Very nice</p>
     </header>
     <!-- Main -->
-    <div id="main">
+    <div id="main" style="max-width:1200px;">
         <section id="first" class='main'>
             <div class="table-wrapper">
                 <header class="major">
@@ -28,7 +28,7 @@
                 </header>
                 <table>
                     <thead>
-                    <tr>
+                    <tr> <!--Remove this table row when no longer needed for reference-->
                         <th>Image</th>
                         <th>Name</th>
                         <th>Count</th>
@@ -36,13 +36,14 @@
                     </thead>
                     <tbody id="items-table">
                     <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
+                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:200px;width:100%"/></span></td>
                         <td>
                             <strong id="Focaccia-name">Focaccia</strong>
                             <br>
                             <em>Garlic-rosemary focaccia with garlic-infused olive oil.</em>
                         </td>
                         <td>
+                            <p id="Focaccia-price" style="text-align:center">$19.99</p>
                             <select name="Focaccia-count" id="Focaccia-count" class="select-count"
                                     onchange="updateCart()">
                                 <option value=0>0</option>
@@ -50,33 +51,35 @@
                                 <option value=2>2</option>
                             </select>
                         </td>
-                        <td id="Focaccia-price">$19.99</td>
                     </tr>
                     <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt=""/></span></td>
+                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:200px;width:100%"/></span></td>
                         <td>
                             <strong id="Baguette-name">Baguette</strong>
                             <br>
                             <em>Garlic-rosemary focaccia with garlic-infused olive oil.</em>
                         </td>
                         <td>
+                            <p id="Baguette-price" style="text-align:center">$12.99</p>
                             <select name="Baguette-count" id="Baguette-count" class="select-count"
                                     onchange="updateCart()">
                                 <option value=0>0</option>
                                 <option value=1>1</option>
                             </select>
                         </td>
-                        <td id="Baguette-price">$19.99</td>
                     </tr>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td><h2>Cart</h2></td>
-                        <td id="selected-items-name">
-
+                    </tr>
+                    <tr>
+                        <td>
+                            <span id="selected-items-name"></span>
                         </td>
-                        <td id="selected-items-count">
 
+                        <td>
+                            <span id="selected-items-count"></span>
                         </td>
                         <td id="selected-items-price">
 
@@ -84,8 +87,8 @@
 
                     </tr>
                     <tr style="font-weight: bold">
-                        <td colspan="2"></td>
-                        <td>Total</td>
+                        <td colspan="1"></td>
+                        <td style="text-align: right;">Total</td>
                         <td id="selected-items-total-price">
                             $0.00
                         </td>
