@@ -2750,11 +2750,11 @@ table tfoot {
 
 table tbody tr {
     border-color: #7E8D9C;
-    background-color: rgb(213, 201, 187,0.15);
+    background-color: rgb(213, 201, 187, 0.15);
 }
 
 table tbody tr:nth-child(2n + 1) {
-    background-color: rgb(213, 201, 187,0.5);
+    background-color: rgb(213, 201, 187, 0.5);
 }
 
 table th {
@@ -3530,7 +3530,7 @@ body.is-preload #header.alt .logo {
 }
 
 #main table tbody tr:nth-child(2n + 1) {
-    background-color: rgb(197, 116, 44,0.3);
+    background-color: rgb(197, 116, 44, 0.3);
 }
 
 #main table th {
@@ -3616,7 +3616,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 480px) {
 
     #main > .main {
-        padding: 3em 1.5em 1em 1.5em;
+        padding: 3em 0.5em 1em 0.5em;
     }
 
     #main > .main > .image.main:first-child {
