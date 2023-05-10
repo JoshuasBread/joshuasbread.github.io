@@ -152,14 +152,6 @@ body, input, select, textarea {
 
 }
 
-@media screen and (max-width: 360px) {
-
-    body, input, select, textarea {
-        font-size: 11pt;
-    }
-
-}
-
 a {
     -moz-transition: color 0.2s ease, border-bottom 0.2s ease;
     -webkit-transition: color 0.2s ease, border-bottom 0.2s ease;
@@ -183,7 +175,7 @@ em, i {
 }
 
 p {
-    margin: 0 0 2em 0;
+    margin: 0 0 0.5em 0;
 }
 
 p.content {
@@ -2654,7 +2646,7 @@ section.special, article.special {
 }
 
 header.major {
-    margin-bottom: 3em;
+    margin-bottom: 1.5em;
 }
 
 header.major h2 {
@@ -3061,7 +3053,7 @@ table tfoot {
 /* Header */
 
 #header {
-    padding: 2em 2em 1em 2em;
+    padding: 2em 1em 1em 1em;
     text-align: center;
 }
 
@@ -3075,7 +3067,7 @@ table tfoot {
 }
 
 #header.alt {
-    padding: 1.5em 2em 1em 2em;
+    padding: 1.5em 1em 1em 1em;
 }
 
 #header.alt h1 {

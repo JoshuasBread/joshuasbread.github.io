@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Joshua's Bread</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
@@ -27,16 +28,9 @@
                     <p>Straight from the Lord's mouth into your own</p>
                 </header>
                 <table>
-                    <thead>
-                    <tr> <!--Remove this table row when no longer needed for reference-->
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Count</th>
-                    </tr>
-                    </thead>
                     <tbody id="items-table">
                     <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:200px;width:100%"/></span></td>
+                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:150px;width:100%"/></span></td>
                         <td>
                             <strong id="Focaccia-name">Focaccia</strong>
                             <br>
@@ -53,7 +47,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:200px;width:100%"/></span></td>
+                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:150px;width:100%"/></span></td>
                         <td>
                             <strong id="Baguette-name">Baguette</strong>
                             <br>
@@ -71,16 +65,18 @@
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td><h2>Cart</h2></td>
+                        <td style="text-align: right;"><h2>Cart</h2></td>
                     </tr>
                     <tr>
+                        
+                        <td style="text-align: right;">
+                            <span id="selected-items-count"></span>
+                        </td>
+
                         <td>
                             <span id="selected-items-name"></span>
                         </td>
 
-                        <td>
-                            <span id="selected-items-count"></span>
-                        </td>
                         <td id="selected-items-price">
 
                         </td>
