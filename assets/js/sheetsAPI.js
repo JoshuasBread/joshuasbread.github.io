@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 /**
  * @returns {{
  * image: string,
@@ -8,6 +10,9 @@
  * }[]}
  */
 function getSheetsData() {
+    var object = {'a': {'b': 2}};
+    print(_.has(object, 'a'));
+
     const breadData = [{
         "image": "images/pic01.jpg",
         "name": "Focaccia",
