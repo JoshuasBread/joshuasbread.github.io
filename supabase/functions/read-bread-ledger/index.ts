@@ -13,7 +13,7 @@ serve(async () => {
         key: privateKey,
     });
 
-    const read = await api.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A1:E4`)
+    const read = await api.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:E`)
 
     return new Response(
         JSON.stringify(read),

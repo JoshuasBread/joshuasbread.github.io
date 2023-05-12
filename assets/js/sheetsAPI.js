@@ -1,11 +1,11 @@
 /**
- * @returns {{
+ * @returns {Promise<{
  * image: string,
  * price: string,
  * name: string,
  * count: number,
  * description: string
- * }[]}
+ * }[]>}
  */
 function getSheetsData() {
     const breadData = [{
@@ -15,14 +15,14 @@ function getSheetsData() {
         "price": "29.99",
         "count": 6
     }, {
-        "image": "images/pic01.jpg",
+        "image": "images/pic02.jpg",
         "name": "Baguette",
         "description": "Vis ac commodo adipiscing arcu aliquet.",
         "price": "19.99",
         "count": 2
     }];
 
-    return breadData
+    return Promise.resolve(breadData);
 }
 
 /**

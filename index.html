@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>Joshua's Bread</title>
     <link rel="icon" type="image/x-icon" href="favicon.png">
@@ -10,6 +11,7 @@
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
 </head>
+
 <body class="is-preload">
 <!-- Wrapper -->
 <div id="wrapper">
@@ -28,47 +30,16 @@
                     <p>Straight from the Lord's mouth into your own</p>
                 </header>
                 <table>
-                    <tbody id="items-table">
-                    <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:150px;width:100%"/></span></td>
-                        <td>
-                            <strong id="Focaccia-name">Focaccia</strong>
-                            <br>
-                            <em>Garlic-rosemary focaccia with garlic-infused olive oil.</em>
-                        </td>
-                        <td>
-                            <p id="Focaccia-price" style="text-align:center">$19.99</p>
-                            <select name="Focaccia-count" id="Focaccia-count" class="select-count"
-                                    onchange="updateCart()">
-                                <option value=0>0</option>
-                                <option value=1>1</option>
-                                <option value=2>2</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><span class="image"><img class="thumbnail" src="images/pic01.jpg" alt="" style="max-width:150px;width:100%"/></span></td>
-                        <td>
-                            <strong id="Baguette-name">Baguette</strong>
-                            <br>
-                            <em>Garlic-rosemary focaccia with garlic-infused olive oil.</em>
-                        </td>
-                        <td>
-                            <p id="Baguette-price" style="text-align:center">$12.99</p>
-                            <select name="Baguette-count" id="Baguette-count" class="select-count"
-                                    onchange="updateCart()">
-                                <option value=0>0</option>
-                                <option value=1>1</option>
-                            </select>
-                        </td>
-                    </tr>
+                    <tbody id="items-table-body">
                     </tbody>
-                    <tfoot>
+                    <tfoot id="items-table-foot">
                     <tr>
-                        <td style="text-align: right;"><h2>Cart</h2></td>
+                        <td style="text-align: right;">
+                            <h2>Cart</h2>
+                        </td>
                     </tr>
                     <tr>
-                        
+
                         <td style="text-align: right;">
                             <span id="selected-items-count"></span>
                         </td>
@@ -78,7 +49,6 @@
                         </td>
 
                         <td id="selected-items-price">
-
                         </td>
 
                     </tr>
@@ -127,42 +97,85 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/sheetsAPI.js"></script>
 <script>
-    // Returns a JSON of bread-data.
-    const sheetsData = getSheetsData();
-    const itemNames = sheetsData.map(data => data.name);
-    const domIds = itemNamesToDOMIds(itemNames);
+    let domIds = [];
+
+    async function init() {
+        const sheetsData = await getSheetsData();
+
+        // Map item names to DOM ids
+        const itemNames = sheetsData.map(data => data.name);
+        domIds = itemNamesToDOMIds(itemNames);
+
+        // Insert rows into table
+        for (const breadData of sheetsData) {
+            const countOptionsHtml = [...Array(breadData.count + 1).keys()]
+                .map(i => `<option value="${i}">${i}</option>`)
+                .join('');
+
+            const rowHtml = `
+                <tr>
+                    <td>
+                        <span class="image">
+                            <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:150px;width:100%"/>
+                        </span>
+                    </td>
+                    <td>
+                        <strong id="${breadData.name}-name">${breadData.name}</strong>
+                        <br>
+                        <em>${breadData.description}</em>
+                    </td>
+                    <td>
+                        <p id="${breadData.name}-price" style="text-align:center">$${parseFloat(breadData.price).toFixed(2)}</p>
+                        <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()">
+                            ${countOptionsHtml}
+                        </select>
+                    </td>
+                </tr>
+            `;
+
+            document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
+        }
+    }
 
     function updateCart() {
+        // Initialize variables
         let itemNames = "";
         let itemCounts = "";
         let itemPrices = "";
         let totalItemPrices = 0;
 
+        // Loop through all selected items
         for (const domId of domIds) {
             const {name: nameId, count: countId, price: priceId} = domId;
             const itemCount = parseInt(document.getElementById(countId).value);
 
+            // Skip items with count 0
             if (!itemCount) {
                 continue;
             }
 
-            const itemName = document.getElementById(nameId).innerText
-            const itemPrice = document.getElementById(priceId).innerText.split('$')[1];
+            // Get item name and price
+            const itemName = document.getElementById(nameId).innerText;
+            const itemPrice = parseFloat(document.getElementById(priceId).innerText.split('$')[1]);
 
+            // Update strings and total item prices
             itemNames += `${itemName}<br>`;
             itemCounts += `x${itemCount}<br>`;
-            itemPrices += `$${itemPrice * itemCount}<br>`
-
-            totalItemPrices += (itemPrice * itemCount);
+            itemPrices += `$${itemPrice * itemCount}<br>`;
+            totalItemPrices += itemPrice * itemCount;
         }
 
+        // Update HTML elements with selected item information and total price
         document.getElementById("selected-items-name").innerHTML = itemNames;
         document.getElementById("selected-items-count").innerHTML = itemCounts;
         document.getElementById("selected-items-price").innerHTML = itemPrices;
-        document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices}`;
+        document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
     }
 
-
+    // Initialize the page
+    init();
 </script>
+
 </body>
+
 </html>
