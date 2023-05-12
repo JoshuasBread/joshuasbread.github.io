@@ -100,14 +100,14 @@
     let domIds = [];
 
     async function init() {
-        const sheetsData = await getBreadLedgerData();
+        const breadLedgerData = await getBreadLedgerData();
 
         // Map item names to DOM ids
-        const itemNames = sheetsData.map(data => data.name);
+        const itemNames = breadLedgerData.map(data => data.name);
         domIds = itemNamesToDOMIds(itemNames);
 
         // Insert rows into table
-        for (const breadData of sheetsData) {
+        for (const breadData of breadLedgerData) {
             const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
                 .map(i => `<option value="${i}">${i}</option>`)
                 .join('');

@@ -3,6 +3,7 @@ const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
 /**
  * @return {Promise<{
  *  name: string,
+ *  size: string,
  *  quantity: number,
  *  description: string,
  *  cost: string,
@@ -10,18 +11,37 @@ const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
  * }[]>}
  */
 async function getBreadLedgerData() {
-    const data = await _fetchRawBreadLedgerData();
+    const rawData = await _fetchRawBreadLedgerData();
+    const breadValues = rawData.values;
 
-    return data.values.map(function (breadValues) {
-        const [name, quantity, description, cost, image] = breadValues;
-        return {
+    // We skip 0 because 0 is Headers.
+    const data = [];
+    for (let i = 1; i < breadValues.length; i++) {
+        const value = breadValues[i];
+
+        const [
             name,
+            size,
+            placeholder1,
             quantity,
             description,
             cost,
-            image
-        }
-    });
+            placeholder2,
+            image,
+        ] = value;
+
+        console.log(cost);
+        data.push({
+            name,
+            size,
+            quantity: parseInt(quantity),
+            description,
+            cost: cost.split("$")[1],
+            image,
+        });
+    }
+
+    return data;
 }
 
 /**
@@ -40,13 +60,13 @@ function itemNamesToDOMIds(itemNames) {
 
 /**
  * Expects `values` to return an array with values in the order of
- * Product, Quantity, Description, Cost, Image
+ * Product, Size, Placeholder1, Quantity, Description, Cost, Placeholder2, Image
  *
  * @returns {Promise<{
  * range: string,
  * majorDimension: string,
- * values: [string, string, string, string][],
- * }[]>}
+ * values: [string, string, string, string, string, string, string, string][],
+ * }>}
  */
 async function _fetchRawBreadLedgerData() {
     const res = await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/read-bread-ledger", {
