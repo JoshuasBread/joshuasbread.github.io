@@ -1,28 +1,27 @@
+const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhZHJmZmJib3J3d3JjdnZhY2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODM4MzgyNjIsImV4cCI6MTk5OTQxNDI2Mn0.idwkFmYv-8XcHwkUsW_sHRmJOzDh3-vjiZKOleNdZOU";
+
 /**
- * @returns {Promise<{
- * image: string,
- * price: string,
- * name: string,
- * count: number,
- * description: string
+ * @return {Promise<{
+ *  name: string,
+ *  quantity: number,
+ *  description: string,
+ *  cost: string,
+ *  image: string
  * }[]>}
  */
-function getSheetsData() {
-    const breadData = [{
-        "image": "images/pic01.jpg",
-        "name": "Focaccia",
-        "description": "Garlic-rosemary focaccia with garlic-infused olive oil.",
-        "price": "29.99",
-        "count": 6
-    }, {
-        "image": "images/pic02.jpg",
-        "name": "Baguette",
-        "description": "Vis ac commodo adipiscing arcu aliquet.",
-        "price": "19.99",
-        "count": 2
-    }];
+async function getBreadLedgerData() {
+    const data = await _fetchRawBreadLedgerData();
 
-    return Promise.resolve(breadData);
+    return data.values.map(function (breadValues) {
+        const [name, quantity, description, cost, image] = breadValues;
+        return {
+            name,
+            quantity,
+            description,
+            cost,
+            image
+        }
+    });
 }
 
 /**
@@ -37,4 +36,27 @@ function itemNamesToDOMIds(itemNames) {
             price: `${itemName}-price`,
         }
     });
+}
+
+/**
+ * Expects `values` to return an array with values in the order of
+ * Product, Quantity, Description, Cost, Image
+ *
+ * @returns {Promise<{
+ * range: string,
+ * majorDimension: string,
+ * values: [string, string, string, string][],
+ * }[]>}
+ */
+async function _fetchRawBreadLedgerData() {
+    const res = await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/read-bread-ledger", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${anonKey}`
+        },
+        // body: JSON.stringify(data), /
+    });
+
+    return res.json();
 }
