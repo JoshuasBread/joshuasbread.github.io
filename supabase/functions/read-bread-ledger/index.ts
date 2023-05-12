@@ -1,10 +1,8 @@
 import {serve} from "https://deno.land/std@0.168.0/http/server.ts"
 
 import {GoogleAPI} from "https://deno.land/x/google_deno_integration/mod.ts";
-
-const clientEmail = Deno.env.get('CLIENT_EMAIL');
-const privateKey = Deno.env.get('PRIVATE_KEY').replace(/\\n/g, '\n');
-const sheetId = Deno.env.get('BREAD_LEDGER_SHEET_ID');
+import {breadLedgerSheetId, clientEmail, privateKey} from "../_shared/constants.ts";
+import {corsHeaders} from "../_shared/cost.ts";
 
 serve(async () => {
     const api = new GoogleAPI({
@@ -13,10 +11,10 @@ serve(async () => {
         key: privateKey,
     });
 
-    const read = await api.get(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:E`)
+    const read = await api.get(`https://sheets.googleapis.com/v4/spreadsheets/${breadLedgerSheetId}/values/A:E`)
 
     return new Response(
         JSON.stringify(read),
-        {headers: {"Content-Type": "application/json"}},
+        {headers: {"Content-Type": "application/json", ...corsHeaders}},
     )
 })
