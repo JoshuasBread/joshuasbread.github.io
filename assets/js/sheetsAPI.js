@@ -37,7 +37,7 @@ async function getBreadLedgerData() {
             quantity: parseInt(quantity),
             description,
             cost: cost.split("$")[1],
-            image,
+            image: `images/${image}`,
         });
     }
 
