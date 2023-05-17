@@ -61,6 +61,84 @@
                     </tr>
                     </tfoot>
                 </table>
+
+                <!--                -->
+                <!--                <section>-->
+                <!--                    <h2>Checkout</h2>-->
+                <!--                    <form method="post" action="#">-->
+                <!--                        <div class="row gtr-uniform">-->
+                <!--                            <div class="col-6 col-12-xsmall">-->
+                <!--                                <label for="customer-name">First name:</label>-->
+                <!--                                <input type="text" name="customer-name"-->
+                <!--                                       id="customer-name"-->
+                <!--                                       value="" placeholder="Your Name" required/>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-6 col-12-xsmall">-->
+                <!--                                <label for="payment-method">Payment method:</label>-->
+                <!--                                <select name="payment-method"-->
+                <!--                                        id="payment-method" required>-->
+                <!--                                    <option disabled selected value>Payment method</option>-->
+                <!--                                    <option value="Cash">Cash</option>-->
+                <!--                                    <option value="Venmo">Venmo</option>-->
+                <!--                                    <option value="Zelle">Zelle</option>-->
+                <!--                                    <option value="Paypal">Paypal</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-6 col-12-xsmall">-->
+                <!--                                <label for="pickup-time">Pickup time:</label>-->
+                <!--                                <select name="pickup-time" id="pickup-time">-->
+                <!--                                    <option value="">- Category -</option>-->
+                <!--                                    <option value="1">Manufacturing</option>-->
+                <!--                                    <option value="1">Shipping</option>-->
+                <!--                                    <option value="1">Administration</option>-->
+                <!--                                    <option value="1">Human Resources</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-12">-->
+                <!--                                <select name="demo-category" id="demo-category">-->
+                <!--                                    <option value="">- Category -</option>-->
+                <!--                                    <option value="1">Manufacturing</option>-->
+                <!--                                    <option value="1">Shipping</option>-->
+                <!--                                    <option value="1">Administration</option>-->
+                <!--                                    <option value="1">Human Resources</option>-->
+                <!--                                </select>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-4 col-12-small">-->
+                <!--                                <input type="radio" id="demo-priority-low" name="demo-priority" checked>-->
+                <!--                                <label for="demo-priority-low">Low</label>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-4 col-12-small">-->
+                <!--                                <input type="radio" id="demo-priority-normal" name="demo-priority">-->
+                <!--                                <label for="demo-priority-normal">Normal</label>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-4 col-12-small">-->
+                <!--                                <input type="radio" id="demo-priority-high" name="demo-priority">-->
+                <!--                                <label for="demo-priority-high">High</label>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-6 col-12-small">-->
+                <!--                                <input type="checkbox" id="demo-copy" name="demo-copy">-->
+                <!--                                <label for="demo-copy">Email me a copy</label>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-6 col-12-small">-->
+                <!--                                <input type="checkbox" id="demo-human" name="demo-human" checked>-->
+                <!--                                <label for="demo-human">Not a robot</label>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-12">-->
+                <!--                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message"-->
+                <!--                                          rows="6"></textarea>-->
+                <!--                            </div>-->
+                <!--                            <div class="col-12">-->
+                <!--                                <ul class="actions">-->
+                <!--                                    <li><input type="submit" value="Send Message" class="primary"/></li>-->
+                <!--                                    <li><input type="reset" value="Reset"/></li>-->
+                <!--                                </ul>-->
+                <!--                            </div>-->
+                <!--                        </div>-->
+                <!--                    </form>-->
+                <!--                </section>-->
+                <!--                -->
+
+                <button onclick="testWrite()">Test</button>
             </div>
         </section>
 
@@ -170,6 +248,15 @@
         document.getElementById("selected-items-count").innerHTML = itemCounts;
         document.getElementById("selected-items-price").innerHTML = itemPrices;
         document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
+    }
+
+    function testWrite() {
+        writeBreadLedgerData({
+            customerName: "Daniel",
+            pickupTime: "5:00pm",
+            paymentMethod: "Zelle",
+            email: "test@gmail.com"
+        }, {Baguette: "3", Focaccia: "4"}, `$5.00`);
     }
 
     // Initialize the page
