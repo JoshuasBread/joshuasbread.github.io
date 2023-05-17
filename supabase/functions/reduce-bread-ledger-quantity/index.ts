@@ -4,11 +4,6 @@ import {GoogleAPI} from "https://deno.land/x/google_deno_integration/mod.ts";
 import {breadLedgerSheetId, clientEmail, privateKey} from "../_shared/constants.ts";
 
 serve(async (req) => {
-    // const {name} = await req.json()
-    // const data = {
-    //     message: `Hello ${name}!`,
-    // }
-
     const api = new GoogleAPI({
         email: clientEmail,
         scope: ["https://www.googleapis.com/auth/spreadsheets"],
@@ -22,7 +17,7 @@ serve(async (req) => {
 
 
     return new Response(
-        JSON.stringify({}),
+        JSON.stringify({message: "ok"}),
         {headers: {"Content-Type": "application/json"}},
     )
 })

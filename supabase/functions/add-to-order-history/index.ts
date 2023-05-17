@@ -2,9 +2,13 @@ import {GoogleAPI} from "https://deno.land/x/google_deno_integration/mod.ts";
 
 import {serve} from "https://deno.land/std@0.168.0/http/server.ts"
 import {breadLedgerSheetId, clientEmail, privateKey} from "../_shared/constants.ts";
-import {corsHeaders} from "../_shared/cost.ts";
+import {corsHeaders} from "../_shared/cors.ts";
 
 serve(async (req) => {
+    if (req.method === 'OPTIONS') {
+        return new Response('ok', {headers: corsHeaders})
+    }
+
     const {time, name, email, payment, order, total, pickup} = await req.json()
 
     const api = new GoogleAPI({
@@ -22,7 +26,12 @@ serve(async (req) => {
     });
 
     return new Response(
-        JSON.stringify(),
-        {headers: {"Content-Type": "application/json", ...corsHeaders}},
+        JSON.stringify({message: "ok"}),
+        {
+            headers: {
+                "Content-Type": "application/json",
+                ...corsHeaders,
+            }
+        },
     )
 })
