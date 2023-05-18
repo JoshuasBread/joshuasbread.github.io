@@ -62,81 +62,57 @@
                     </tfoot>
                 </table>
 
-                <!--                -->
-                <!--                <section>-->
-                <!--                    <h2>Checkout</h2>-->
-                <!--                    <form method="post" action="#">-->
-                <!--                        <div class="row gtr-uniform">-->
-                <!--                            <div class="col-6 col-12-xsmall">-->
-                <!--                                <label for="customer-name">First name:</label>-->
-                <!--                                <input type="text" name="customer-name"-->
-                <!--                                       id="customer-name"-->
-                <!--                                       value="" placeholder="Your Name" required/>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-6 col-12-xsmall">-->
-                <!--                                <label for="payment-method">Payment method:</label>-->
-                <!--                                <select name="payment-method"-->
-                <!--                                        id="payment-method" required>-->
-                <!--                                    <option disabled selected value>Payment method</option>-->
-                <!--                                    <option value="Cash">Cash</option>-->
-                <!--                                    <option value="Venmo">Venmo</option>-->
-                <!--                                    <option value="Zelle">Zelle</option>-->
-                <!--                                    <option value="Paypal">Paypal</option>-->
-                <!--                                </select>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-6 col-12-xsmall">-->
-                <!--                                <label for="pickup-time">Pickup time:</label>-->
-                <!--                                <select name="pickup-time" id="pickup-time">-->
-                <!--                                    <option value="">- Category -</option>-->
-                <!--                                    <option value="1">Manufacturing</option>-->
-                <!--                                    <option value="1">Shipping</option>-->
-                <!--                                    <option value="1">Administration</option>-->
-                <!--                                    <option value="1">Human Resources</option>-->
-                <!--                                </select>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-12">-->
-                <!--                                <select name="demo-category" id="demo-category">-->
-                <!--                                    <option value="">- Category -</option>-->
-                <!--                                    <option value="1">Manufacturing</option>-->
-                <!--                                    <option value="1">Shipping</option>-->
-                <!--                                    <option value="1">Administration</option>-->
-                <!--                                    <option value="1">Human Resources</option>-->
-                <!--                                </select>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-4 col-12-small">-->
-                <!--                                <input type="radio" id="demo-priority-low" name="demo-priority" checked>-->
-                <!--                                <label for="demo-priority-low">Low</label>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-4 col-12-small">-->
-                <!--                                <input type="radio" id="demo-priority-normal" name="demo-priority">-->
-                <!--                                <label for="demo-priority-normal">Normal</label>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-4 col-12-small">-->
-                <!--                                <input type="radio" id="demo-priority-high" name="demo-priority">-->
-                <!--                                <label for="demo-priority-high">High</label>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-6 col-12-small">-->
-                <!--                                <input type="checkbox" id="demo-copy" name="demo-copy">-->
-                <!--                                <label for="demo-copy">Email me a copy</label>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-6 col-12-small">-->
-                <!--                                <input type="checkbox" id="demo-human" name="demo-human" checked>-->
-                <!--                                <label for="demo-human">Not a robot</label>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-12">-->
-                <!--                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message"-->
-                <!--                                          rows="6"></textarea>-->
-                <!--                            </div>-->
-                <!--                            <div class="col-12">-->
-                <!--                                <ul class="actions">-->
-                <!--                                    <li><input type="submit" value="Send Message" class="primary"/></li>-->
-                <!--                                    <li><input type="reset" value="Reset"/></li>-->
-                <!--                                </ul>-->
-                <!--                            </div>-->
-                <!--                        </div>-->
-                <!--                    </form>-->
-                <!--                </section>-->
-                <!--                -->
+
+                <section>
+                    <h2>Checkout</h2>
+                    <form method="post" onsubmit="updateBreadLedger(); return false;">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <label for="customer-name">Full name:</label>
+                                <input type="text" name="customer-name"
+                                       id="customer-name"
+                                       value="" placeholder="Your Name" required/>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="customer-email">Email:</label>
+                                <input type="email" name="customer-email"
+                                       id="customer-email"
+                                       value="" required/>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="payment-method">Payment method:</label>
+                                <select name="payment-method"
+                                        id="payment-method" required>
+                                    <option disabled selected value></option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Venmo">Venmo</option>
+                                    <option value="Zelle">Zelle</option>
+                                    <option value="Paypal">Paypal</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <label for="pickup-time">Pickup time:</label>
+                                <select name="pickup-time" id="pickup-time" required>
+                                    <option disabled selected value></option>
+                                    <option value="1">Manufacturing</option>
+                                    <option value="1">Shipping</option>
+                                    <option value="1">Administration</option>
+                                    <option value="1">Human Resources</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align: center">
+                                <input type="checkbox" id="read-instructions" name="read-instructions" required>
+                                <label for="read-instructions">I've read the instructions</label>
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions" style="justify-content: center">
+                                    <li><input type="submit" value="Submit"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
             </div>
         </section>
 
@@ -164,14 +140,15 @@
     </footer>
 </div>
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/default/js/jquery.min.js"></script>
+<script src="assets/js/default/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/default/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/default/js/browser.min.js"></script>
+<script src="assets/js/default/js/breakpoints.min.js"></script>
+<script src="assets/js/default/js/util.js"></script>
+<script src="assets/js/default/js/main.js"></script>
 <script src="assets/js/sheetsAPI.js"></script>
+<script src="assets/js/utils.js"></script>
 <script>
     let domIds = [];
 
@@ -248,13 +225,21 @@
         document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
     }
 
-    function testWrite() {
-        writeBreadLedgerData({
-            customerName: "Daniel",
+    function updateBreadLedger() {
+        const customerName = document.getElementById('customer-name').value;
+        const email = document.getElementById('customer-email').value;
+        const paymentMethod = document.getElementById('payment-method').value
+        const pickupTime = document.getElementById('pickup-time').value;
+
+
+        const customerData = {
+            customerName,
             pickupTime: "5:00pm",
-            paymentMethod: "Zelle",
-            email: "test@gmail.com"
-        }, {Baguette: "3", Focaccia: "4"}, `$5.00`);
+            paymentMethod,
+            email,
+        };
+
+        writeBreadLedgerData(customerData, {Baguette: "3", Focaccia: "4"}, `$5.00`);
     }
 
     // Initialize the page
