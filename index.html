@@ -35,7 +35,7 @@
                     <tfoot id="items-table-foot">
                     <tr>
                         <td style="text-align: right;">
-                            <h2>Cart</h2>
+                            <h2 style="text-align: left;">Cart</h2>
                         </td>
                     </tr>
                     <tr>
@@ -64,6 +64,7 @@
 
 
                 <section>
+                    <hr>
                     <h2>Checkout</h2>
                     <form method="post" onsubmit="updateBreadLedger(); return false;">
                         <div class="row gtr-uniform">
@@ -77,27 +78,27 @@
                                 <label for="customer-email">Email:</label>
                                 <input type="email" name="customer-email"
                                        id="customer-email"
-                                       value="" required/>
+                                       value="" placeholder = "Email" required/>
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <label for="payment-method">Payment method:</label>
+                                <label for="payment-method">Payment Method:</label>
                                 <select name="payment-method"
                                         id="payment-method" required>
                                     <option disabled selected value></option>
                                     <option value="Cash">Cash</option>
-                                    <option value="Venmo">Venmo</option>
+                                    <option value="Venmo">Venmo @JoshuaHeller</option>
                                     <option value="Zelle">Zelle</option>
                                     <option value="Paypal">Paypal</option>
                                 </select>
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <label for="pickup-time">Pickup time:</label>
+                                <label for="pickup-time">Pickup Time:</label>
                                 <select name="pickup-time" id="pickup-time" required>
                                     <option disabled selected value></option>
-                                    <option value="1">Manufacturing</option>
-                                    <option value="1">Shipping</option>
-                                    <option value="1">Administration</option>
-                                    <option value="1">Human Resources</option>
+                                    <option value="1">12 pm</option>
+                                    <option value="1">1 pm</option>
+                                    <option value="1">2 pm</option>
+                                    <option value="1">3 pm</option>
                                 </select>
                             </div>
                             <div class="col-12" style="text-align: center">
@@ -120,21 +121,19 @@
     <!-- Footer -->
     <footer id="footer">
         <section>
-            <h2>Aliquam sed mauris</h2>
-            <p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore
-                veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit,
-                vitae tincidunt odio.
+            <h2>Footer title</h2>
+            <p>Footer text
             </p>
         </section>
         <section>
             <h2>Etiam feugiat</h2>
             <dl class="alt">
                 <dt>Address</dt>
-                <dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-                <dt>Phone</dt>
-                <dd>(000) 000-0000 x 0000</dd>
-                <dt>Email</dt>
-                <dd><a href="#">information@untitled.tld</a></dd>
+                <dd>609 Spokane Ave &bull; Albany, CA 94706</dd>
+                <dt>WhatsApp</dt>
+                <dd><u><a href="https://chat.whatsapp.com/FaGAKx2gNnv5wweVgSKrff" target="_blank">Join the group</a></u></dd>
+                <dt>Contact</dt>
+                <dd><a href="mailto:joshua@spokesonawheel.com" target="_blank">joshua@spokesonawheel.com</a></dd>
             </dl>
         </section>
     </footer>

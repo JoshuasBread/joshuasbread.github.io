@@ -283,11 +283,11 @@ pre code {
 hr {
     border: 0;
     border-bottom: 2px solid #889eb4;
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 hr.major {
-    margin: 3em 0;
+    margin: 1em 0;
 }
 
 .align-left {
@@ -2654,7 +2654,7 @@ header.major h2:after {
     content: '';
     width: 8em;
     height: 2px;
-    margin: 0.7em 0 1em 0;
+    margin: 0.5em 0 0.5em 0;
     border-radius: 2px;
 }
 
@@ -3349,7 +3349,7 @@ body.is-preload #header.alt .logo {
 }
 
 #main label {
-    color: #5b3e49;
+    color: #efdecb;
 }
 
 #main input[type="text"],
@@ -3583,7 +3583,7 @@ body.is-preload #header.alt .logo {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding: 5em 5em 3em 5em;
+    padding: 2em 3em 2em 3em;
     width: calc(100% + 2em);
     margin: 0 0 3em -2em;
 }
@@ -3595,7 +3595,7 @@ body.is-preload #header.alt .logo {
 
 #footer .copyright {
     width: 100%;
-    margin: 2.5em 0 2em 0;
+    margin: 2em 0 2em 0;
     font-size: 0.8em;
     text-align: center;
 }
@@ -3603,7 +3603,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 1280px) {
 
     #footer {
-        padding: 4em 4em 2em 4em;
+        padding: 2em 3em 1em 3em;
     }
 
 }
@@ -3611,7 +3611,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 980px) {
 
     #footer {
-        padding: 4em 3em 2em 3em;
+        padding: 3em 2em 2em 2em;
         display: block;
         margin: 0 0 3em 0;
         width: 100%;
@@ -3620,7 +3620,7 @@ body.is-preload #header.alt .logo {
     #footer > * {
         width: 100%;
         margin-left: 0;
-        margin-bottom: 3em;
+        margin-bottom: 1em;
     }
 
     #footer .copyright {
@@ -3632,7 +3632,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 736px) {
 
     #footer {
-        padding: 3em 2em 1em 2em;
+        padding: 1em 2em 1em 2em;
     }
 
 }
@@ -3640,15 +3640,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 480px) {
 
     #footer {
-        padding: 3em 1.5em 1em 1.5em;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-
-    #footer {
-        padding: 2.5em 1em 0.5em 1em;
+        padding: 2em 1.5em 1em 1.5em;
     }
 
 }
