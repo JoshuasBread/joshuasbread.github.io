@@ -8,7 +8,7 @@ const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
  * @return {Promise<void>}
  */
 async function writeBreadLedgerData(customerData, itemData, total) {
-    const nowPST = new Date().getUTCDate().toLocaleString("en-US", {
+    const nowPST = new Date().toLocaleString("en-US", {
         timeZone: "America/Los_Angeles"
     });
 

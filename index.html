@@ -78,7 +78,7 @@
                                 <label for="customer-email">Email:</label>
                                 <input type="email" name="customer-email"
                                        id="customer-email"
-                                       value="" placeholder = "Email" required/>
+                                       value="" placeholder="Email" required/>
                             </div>
                             <div class="col-6 col-12-xsmall">
                                 <label for="payment-method">Payment Method:</label>
@@ -95,10 +95,10 @@
                                 <label for="pickup-time">Pickup Time:</label>
                                 <select name="pickup-time" id="pickup-time" required>
                                     <option disabled selected value></option>
-                                    <option value="1">12 pm</option>
-                                    <option value="1">1 pm</option>
-                                    <option value="1">2 pm</option>
-                                    <option value="1">3 pm</option>
+                                    <option value="12:00pm">12 pm</option>
+                                    <option value="1:00pm">1 pm</option>
+                                    <option value="2:00pm">2 pm</option>
+                                    <option value="3:00pm">3 pm</option>
                                 </select>
                             </div>
                             <div class="col-12" style="text-align: center">
@@ -131,7 +131,8 @@
                 <dt>Address</dt>
                 <dd>609 Spokane Ave &bull; Albany, CA 94706</dd>
                 <dt>WhatsApp</dt>
-                <dd><u><a href="https://chat.whatsapp.com/FaGAKx2gNnv5wweVgSKrff" target="_blank">Join the group</a></u></dd>
+                <dd><u><a href="https://chat.whatsapp.com/FaGAKx2gNnv5wweVgSKrff" target="_blank">Join the group</a></u>
+                </dd>
                 <dt>Contact</dt>
                 <dd><a href="mailto:joshua@spokesonawheel.com" target="_blank">joshua@spokesonawheel.com</a></dd>
             </dl>
@@ -230,15 +231,32 @@
         const paymentMethod = document.getElementById('payment-method').value
         const pickupTime = document.getElementById('pickup-time').value;
 
-
         const customerData = {
             customerName,
-            pickupTime: "5:00pm",
+            pickupTime,
             paymentMethod,
             email,
         };
 
-        writeBreadLedgerData(customerData, {Baguette: "3", Focaccia: "4"}, `$5.00`);
+        const itemNames = document.getElementById("selected-items-name").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0);
+        const itemCounts = document.getElementById("selected-items-count").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0)
+            .map(value => value.substring(1));
+
+        const itemData = {};
+        for (let i = 0; i < itemCounts.length; i++) {
+            const itemName = itemNames[i];
+            const itemCount = itemCounts[i];
+
+            itemData[itemName] = itemCount;
+        }
+
+        const totalPrice = document.getElementById("selected-items-total-price").innerText;
+
+        writeBreadLedgerData(customerData, itemData, totalPrice);
     }
 
     // Initialize the page
