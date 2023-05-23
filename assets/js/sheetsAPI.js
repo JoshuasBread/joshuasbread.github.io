@@ -1,24 +1,32 @@
 const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhZHJmZmJib3J3d3JjdnZhY2V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODM4MzgyNjIsImV4cCI6MTk5OTQxNDI2Mn0.idwkFmYv-8XcHwkUsW_sHRmJOzDh3-vjiZKOleNdZOU";
 
 /**
- *
+ * @param {[string, string, string, string, string, string, string, string][]} rawBreadLedgerDataValues
  * @param {{customerName: string, email: string, paymentMethod: string, pickupTime: string}} customerData
  * @param {Record<string, string>} itemData
  * @param {string} total
  * @return {Promise<void>}
  */
-async function writeBreadLedgerData(customerData, itemData, total) {
+async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, itemData, total) {
     const nowPST = new Date().toLocaleString("en-US", {
         timeZone: "America/Los_Angeles"
     });
 
+    /** @type {Record<string, string>}*/
+    let coordinateToQuantity = {};
     let productOrder = [];
 
     // Reduce quantity
-    let reduceQuantityPromises = [];
     for (const [productName, quantityPurchased] of Object.entries(itemData)) {
         productOrder.push(`${quantityPurchased}x ${productName}`);
+        const coordinate = findQuantityCoordinateAndValueByName(rawBreadLedgerDataValues, productName);
+
+        const newValue = coordinate.currentValue - parseInt(quantityPurchased)
+
+        coordinateToQuantity[coordinate.coordinate] = newValue.toString();
     }
+    const reduceQuantityPromise = _reduceBreadLedgerQuantity(coordinateToQuantity);
+
 
     const productOrderString = productOrder.join(',');
 
@@ -36,22 +44,27 @@ async function writeBreadLedgerData(customerData, itemData, total) {
 
 
     // Execute
-    await Promise.all([addToOrderHistoryPromise, ...reduceQuantityPromises])
+    await Promise.all([reduceQuantityPromise, addToOrderHistoryPromise])
 }
 
 /**
- * @return {Promise<{
+ * @param {{
+ * range: string,
+ * majorDimension: string,
+ * values: [string, string, string, string, string, string, string, string][],
+ * }} rawBreadLedgerData
+ *
+ * @return {{
  *  name: string,
  *  size: string,
  *  quantity: number,
  *  description: string,
  *  cost: string,
  *  image: string
- * }[]>}
+ * }[]}
  */
-async function getBreadLedgerData() {
-    const rawData = await _fetchRawBreadLedgerData();
-    const breadValues = rawData.values;
+function rawDataToTableData(rawBreadLedgerData) {
+    const breadValues = rawBreadLedgerData.values;
 
     // We skip 0 because 0 is Headers.
     const data = [];
@@ -69,6 +82,10 @@ async function getBreadLedgerData() {
             image,
         ] = value;
 
+        if (quantity === "" || quantity === "0") {
+            continue;
+        }
+
         data.push({
             name,
             size,
@@ -80,6 +97,28 @@ async function getBreadLedgerData() {
     }
 
     return data;
+}
+
+/**
+ * Expects `values` to return an array with values in the order of
+ * Product, Size, Placeholder1, Quantity, Description, Cost, Placeholder2, Image
+ *
+ * @returns {Promise<{
+ * range: string,
+ * majorDimension: string,
+ * values: [string, string, string, string, string, string, string, string][],
+ * }>}
+ */
+async function fetchRawBreadLedgerData() {
+    const res = await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/read-bread-ledger", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${anonKey}`
+        },
+    });
+
+    return res.json();
 }
 
 /**
@@ -105,23 +144,19 @@ async function _addToOrderHistory(data) {
 }
 
 /**
- * Expects `values` to return an array with values in the order of
- * Product, Size, Placeholder1, Quantity, Description, Cost, Placeholder2, Image
  *
- * @returns {Promise<{
- * range: string,
- * majorDimension: string,
- * values: [string, string, string, string, string, string, string, string][],
- * }>}
+ * @param {Record<string, string>} data
+ * @return {Promise<void>}
+ * @private
  */
-async function _fetchRawBreadLedgerData() {
-    const res = await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/read-bread-ledger", {
+async function _reduceBreadLedgerQuantity(data) {
+    await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/reduce-bread-ledger-quantity", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${anonKey}`
         },
+        body: JSON.stringify(data),
     });
-
-    return res.json();
 }
+

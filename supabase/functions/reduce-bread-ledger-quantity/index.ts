@@ -15,14 +15,20 @@ serve(async (req) => {
         key: privateKey,
     });
 
-    await api.put(`https://sheets.googleapis.com/v4/spreadsheets/${breadLedgerSheetId}/values/B2?valueInputOption=USER_ENTERED`, {
-        "range": "B2",
-        "values": [[6]],
-    });
+    const coordinateToQuantity: Record<string, string> = await req.json()
+    for (const [coordinate, quantity] of Object.entries(coordinateToQuantity)) {
+        if (parseInt(quantity) < 0) {
+            continue;
+        }
 
+        await api.put(`https://sheets.googleapis.com/v4/spreadsheets/${breadLedgerSheetId}/values/${coordinate}?valueInputOption=USER_ENTERED`, {
+            "range": coordinate,
+            "values": [[quantity]],
+        });
+    }
 
     return new Response(
         JSON.stringify({message: "ok"}),
-        {headers: {"Content-Type": "application/json"}},
+        {headers: {"Content-Type": "application/json", ...corsHeaders}},
     )
 })

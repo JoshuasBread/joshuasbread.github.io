@@ -150,10 +150,19 @@
 <script src="assets/js/sheetsAPI.js"></script>
 <script src="assets/js/utils.js"></script>
 <script>
+    /**
+     * @type {{
+     * range: string,
+     * majorDimension: string,
+     * values: [string, string, string, string, string, string, string, string][],
+     * }}
+     */
+    let rawBreadLedgerData = {};
     let domIds = [];
 
     async function init() {
-        const breadLedgerData = await getBreadLedgerData();
+        rawBreadLedgerData = await fetchRawBreadLedgerData();
+        const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
 
         // Map item names to DOM ids
         const itemNames = breadLedgerData.map(data => data.name);
@@ -256,7 +265,7 @@
 
         const totalPrice = document.getElementById("selected-items-total-price").innerText;
 
-        writeBreadLedgerData(customerData, itemData, totalPrice);
+        writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
     }
 
     // Initialize the page
