@@ -314,7 +314,7 @@ strong, b {
     color: #ffffff;
 }
 
-h1{
+h1 {
     color: #3e4e5b;
 }
 
@@ -2750,11 +2750,11 @@ table tfoot {
 
 table tbody tr {
     border-color: #889eb4;
-    background-color: rgb(136, 158, 180,0.25);
+    background-color: rgb(136, 158, 180, 0.25);
 }
 
 table tbody tr:nth-child(2n + 1) {
-    background-color: rgb(136, 158, 180,0.5);
+    background-color: rgb(136, 158, 180, 0.5);
 }
 
 table th {
@@ -3241,8 +3241,8 @@ body.is-preload #header.alt .logo {
     background-color: #4D6E7F;
     color: #efdecb;
     border-radius: 1.5em;
-    margin-right:auto;
-    margin-left:auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #main input, #main select, #main textarea {
@@ -3292,8 +3292,8 @@ body.is-preload #header.alt .logo {
 #main input[type="button"]:hover,
 #main button:hover,
 #main .button:hover {
-    background-color: rgba(209, 127, 53,0.7);
-    border-color:#813D18;
+    background-color: rgba(209, 127, 53, 0.7);
+    border-color: #813D18;
 }
 
 #main input[type="submit"]:active,
@@ -3327,8 +3327,8 @@ body.is-preload #header.alt .logo {
 #main input[type="button"].primary:hover,
 #main button.primary:hover,
 #main .button.primary:hover {
-    background-color: rgba(209, 127, 53,0.7);
-    border-color:#813D18;
+    background-color: rgba(209, 127, 53, 0.7);
+    border-color: #813D18;
 }
 
 #main input[type="submit"].primary:active,
@@ -3336,8 +3336,8 @@ body.is-preload #header.alt .logo {
 #main input[type="button"].primary:active,
 #main button.primary:active,
 #main .button.primary:active {
-    background-color: rgba(209, 127, 53,0.7);
-    border-color:#813D18;
+    background-color: rgba(209, 127, 53, 0.7);
+    border-color: #813D18;
 }
 
 #main input[type="submit"].primary.icon:before,
@@ -3357,7 +3357,7 @@ body.is-preload #header.alt .logo {
 #main input[type="email"],
 #main select,
 #main textarea {
-    background-color: rgb(77, 110, 127,0.35);
+    background-color: rgb(77, 110, 127, 0.35);
     border-width: 2px;
     border-color: #efdecb;
 }
@@ -3367,7 +3367,7 @@ body.is-preload #header.alt .logo {
 #main input[type="email"]:focus,
 #main select:focus,
 #main textarea:focus {
-    background-color: rgb(209, 127, 53,0.75);
+    background-color: rgb(209, 127, 53, 0.75);
     border-color: #813D18;
     border-width: 2px;
 }
@@ -3393,30 +3393,30 @@ body.is-preload #header.alt .logo {
 
 #main input[type="checkbox"]:checked + label:before,
 #main input[type="radio"]:checked + label:before {
-    background-color: rgba(209, 127, 53,0.7);
-    border-color: rgba(129, 61, 24,0.7);
+    background-color: rgba(209, 127, 53, 0.7);
+    border-color: rgba(129, 61, 24, 0.7);
     color: #ffffff;
 }
 
 
 #main ::-webkit-input-placeholder {
-    color: rgba(239, 222, 203,0.7) !important;
+    color: rgba(239, 222, 203, 0.7) !important;
 }
 
 #main :-moz-placeholder {
-    color: rgba(239, 222, 203,0.7) !important;
+    color: rgba(239, 222, 203, 0.7) !important;
 }
 
 #main ::-moz-placeholder {
-    color: rgba(239, 222, 203,0.7) !important;
+    color: rgba(239, 222, 203, 0.7) !important;
 }
 
 #main :-ms-input-placeholder {
-    color: rgba(239, 222, 203,0.7) !important;
+    color: rgba(239, 222, 203, 0.7) !important;
 }
 
 #main .formerize-placeholder {
-    color: rgba(239, 222, 203,0.7) !important;
+    color: rgba(239, 222, 203, 0.7) !important;
 }
 
 #main .icon.major {
@@ -3458,7 +3458,7 @@ body.is-preload #header.alt .logo {
 }
 
 #main table tbody tr:nth-child(2n + 1) {
-    background-color: rgb(136, 158, 180,0.4);
+    background-color: rgb(136, 158, 180, 0.4);
 }
 
 #main table th {
@@ -3667,4 +3667,34 @@ body.is-preload #header.alt .logo {
         max-width: 100%;
     }
 
+}
+
+/* Custom */
+
+/* Loading CSS */
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -31,6 +31,14 @@
                 </header>
                 <table>
                     <tbody id="items-table-body">
+                    <tr id="loading-row">
+                        <td colspan="1"></td>
+                        <td class="align-center">
+                            <div class="lds-dual-ring"></div>
+                            <p>Loading available breads...</p>
+                        </td>
+                        <td colspan="1"></td>
+                    </tr>
                     </tbody>
                     <tfoot id="items-table-foot">
                     <tr>
@@ -162,11 +170,13 @@
 
     async function init() {
         rawBreadLedgerData = await fetchRawBreadLedgerData();
+
         const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
 
         // Map item names to DOM ids
         const itemNames = breadLedgerData.map(data => data.name);
         domIds = itemNamesToDOMIds(itemNames);
+
 
         // Insert rows into table
         for (const breadData of breadLedgerData) {
@@ -198,6 +208,8 @@
 
             document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
         }
+
+        document.getElementById('loading-row').remove();
     }
 
     function updateCart() {
