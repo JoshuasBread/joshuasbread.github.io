@@ -227,7 +227,6 @@
     }
 
     function updateCart() {
-
         // Initialize variables
         let itemNames = "";
         let itemCounts = "";
@@ -351,64 +350,8 @@
         }
     }
 
-    //Clicking checkbox clears "Please confirm the instructions." message
-    document.getElementById("read-instructions").addEventListener("change", resetCheckbox);
-    
-    //Reset "Please confirm the instructions." message
-    function resetCheckbox(){
-        document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
-        document.getElementById("read-instructions-label").style = "color: #efdecb;"; 
-        }
-
-    //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
-    function validateCheckbox(){
-        if (! document.getElementById("read-instructions").checked){
-            document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
-            document.getElementById("read-instructions-label").style = "color: #ffffff;";
-        }
-    }
-    
-    //Display appropriate message when form is submitted
-    function parseFormSubmit(){
-        //Confirmation if cart items are available
-        //Clear the cart and the form and reload ledger items
-        //Log order to ledger
-        if(true){
-            //Log order to History and write subtract cart from Ledger 
-            updateBreadLedger();
-            //Set message
-            document.getElementById("formSubmitMessage").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
-            //Clear cart
-            document.getElementById("selected-items-count").innerHTML = "";
-            document.getElementById("selected-items-name").innerHTML = "";
-            document.getElementById("selected-items-price").innerHTML = "";
-            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            //Clear form
-            document.getElementById("customer-name").value = "";
-            document.getElementById("customer-email").value = "";
-            document.getElementById("payment-method").value = "";
-            document.getElementById("pickup-time").value = "";
-            //Reload available items
-            init();
- 
-        }
-        //Reject order if cart items are no longer available
-        //Clear the cart and reload ledger items but leave form intact
-        //Do not log order to ledger!
-        else if(false){
-            document.getElementById("formSubmitMessage").innerHTML="<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
-            document.getElementById("selected-items-count").innerHTML = "";
-            document.getElementById("selected-items-name").innerHTML = "";
-            document.getElementById("selected-items-price").innerHTML = "";
-            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            //Reload available items
-            init();
-        }
-    }
-
     // Initialize the page
     init();
-
 </script>
 
 </body>
