@@ -2023,6 +2023,7 @@ textarea {
 input[type="text"]:invalid,
 input[type="password"]:invalid,
 input[type="email"]:invalid,
+input[type="checkbox"]:invalid,
 select:invalid,
 textarea:invalid {
     box-shadow: none;
@@ -2457,7 +2458,7 @@ ul.alt li:first-child {
 }
 
 dl {
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
 }
 
 dl dt {
@@ -3373,7 +3374,7 @@ body.is-preload #header.alt .logo {
 }
 
 #main select {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23ffffff' /%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23efdecb' /%3E%3C/svg%3E");
 }
 
 #main select option {
@@ -3505,7 +3506,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 1280px) {
 
     #main > .main {
-        padding: 2em 4em 2em 4em;
+        padding: 2em 4em 1em 4em;
     }
 
     #main > .main > .image.main:first-child {
@@ -3518,7 +3519,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 980px) {
 
     #main > .main {
-        padding: 1.5em 3em 2em 3em;
+        padding: 1.5em 3em 1em 3em;
     }
 
     #main > .main > .image.main:first-child {
@@ -3531,7 +3532,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 736px) {
 
     #main > .main {
-        padding: 1em 1.5em 1em 1.5em;
+        padding: 1em 1.5em 0.5em 1.5em;
     }
 
     #main > .main > .image.main:first-child {
@@ -3544,7 +3545,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 480px) {
 
     #main > .main {
-        padding: 1em 1em 1em 1em;
+        padding: 1em 1em 0.5em 1em;
     }
 
     #main > .main > .image.main:first-child {
@@ -3583,9 +3584,9 @@ body.is-preload #header.alt .logo {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding: 2em 3em 2em 3em;
+    padding: 1em 3em 1em 3em;
     width: calc(100% + 2em);
-    margin: 0 0 3em -2em;
+    margin: 0 0 2em 0;
 }
 
 #footer > * {
@@ -3603,7 +3604,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 1280px) {
 
     #footer {
-        padding: 2em 3em 1em 3em;
+        padding: 1em 3em 1em 3em;
     }
 
 }
@@ -3611,20 +3612,8 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 980px) {
 
     #footer {
-        padding: 3em 2em 2em 2em;
-        display: block;
-        margin: 0 0 3em 0;
+        padding: 1em 2em 1em 2em;
         width: 100%;
-    }
-
-    #footer > * {
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 1em;
-    }
-
-    #footer .copyright {
-        text-align: left;
     }
 
 }
@@ -3633,6 +3622,13 @@ body.is-preload #header.alt .logo {
 
     #footer {
         padding: 1em 2em 1em 2em;
+        display: block;
+    }
+
+    #footer > * {
+        width: 100%;
+        margin-left: 1em;
+        margin-bottom: 1em;
     }
 
 }
