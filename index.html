@@ -19,7 +19,7 @@
     <header id="header" class="alt">
         <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%"/></span>
         <h1>Joshua's Bread</h1>
-        <p>The dough is rising...<br/>Very nice</p>
+        <p>This site is not live! Orders made at this time will not be processed.</p>
     </header>
     <!-- Main -->
     <div id="main" style="max-width:1200px;">
@@ -27,7 +27,7 @@
             <div class="table-wrapper">
                 <header class="major">
                     <h2>Available breads</h2>
-                    <p>Straight from the Lord's mouth into your own</p>
+                    <p>Straight from the Lord's oven</p>
                 </header>
                 <table>
                     <tbody id="items-table-body">
@@ -35,7 +35,7 @@
                         <td colspan="1"></td>
                         <td class="align-center">
                             <div class="lds-dual-ring"></div>
-                            <p>Loading available breads...</p>
+                            <p>Dough is rising...</p>
                         </td>
                         <td colspan="1"></td>
                     </tr>
@@ -70,14 +70,13 @@
                     </tfoot>
                 </table>
 
-
                 <section>
                     <hr>
                     <h2>Checkout</h2>
-                    <form method="post" onsubmit="updateBreadLedger(); return false;">
+                    <form method="post" onsubmit="parseFormSubmit();return false;">
                         <div class="row gtr-uniform">
                             <div class="col-6 col-12-xsmall">
-                                <label for="customer-name">Full name:</label>
+                                <label for="customer-name">Full Name:</label>
                                 <input type="text" name="customer-name"
                                        id="customer-name"
                                        value="" placeholder="Your Name" required/>
@@ -92,7 +91,7 @@
                                 <label for="payment-method">Payment Method:</label>
                                 <select name="payment-method"
                                         id="payment-method" required>
-                                    <option disabled selected value></option>
+                                    <option disable selected value></option>
                                     <option value="Cash">Cash</option>
                                     <option value="Venmo">Venmo @JoshuaHeller</option>
                                     <option value="Zelle">Zelle</option>
@@ -102,7 +101,7 @@
                             <div class="col-6 col-12-xsmall">
                                 <label for="pickup-time">Pickup Time:</label>
                                 <select name="pickup-time" id="pickup-time" required>
-                                    <option disabled selected value></option>
+                                    <option disable selected value></option>
                                     <option value="12:00pm">12 pm</option>
                                     <option value="1:00pm">1 pm</option>
                                     <option value="2:00pm">2 pm</option>
@@ -110,15 +109,18 @@
                                 </select>
                             </div>
                             <div class="col-12" style="text-align: center">
-                                <input type="checkbox" id="read-instructions" name="read-instructions" required>
-                                <label for="read-instructions">I've read the instructions</label>
+                                <input type="checkbox" id="read-instructions" name="read-instructions" required/>
+                                <label for="read-instructions" id="read-instructions-label">I've read the
+                                    instructions</label>
                             </div>
                             <div class="col-12">
                                 <ul class="actions" style="justify-content: center">
-                                    <li><input type="submit" value="Submit"/></li>
+                                    <li><input type="submit" value="Submit" onclick="validateCheckbox()"/></li>
                                 </ul>
                             </div>
                         </div>
+                        <br>
+                        <p id="formSubmitMessage" style="text-align: center;"></p>
                     </form>
                 </section>
 
@@ -129,20 +131,26 @@
     <!-- Footer -->
     <footer id="footer">
         <section>
-            <h2>Footer title</h2>
-            <p>Footer text
-            </p>
-        </section>
-        <section>
-            <h2>Etiam feugiat</h2>
+            <h2>About</h2>
             <dl class="alt">
                 <dt>Address</dt>
-                <dd>609 Spokane Ave &bull; Albany, CA 94706</dd>
+                <dd>Fake &bull; Fake, CA</dd>
                 <dt>WhatsApp</dt>
-                <dd><u><a href="https://chat.whatsapp.com/FaGAKx2gNnv5wweVgSKrff" target="_blank">Join the group</a></u>
+                <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
                 </dd>
                 <dt>Contact</dt>
-                <dd><a href="mailto:joshua@spokesonawheel.com" target="_blank">joshua@spokesonawheel.com</a></dd>
+                <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+            </dl>
+        </section>
+        <section>
+            <h2>Contributors</h2>
+            <dl class="alt">
+                <dt>Website</dt>
+                <dd>Daniel</dd>
+                <dt>Logo</dt>
+                <dd>Zoe</dd>
+                <dt>Bread</dt>
+                <dd>Joshua</dd>
             </dl>
         </section>
     </footer>
@@ -213,6 +221,7 @@
     }
 
     function updateCart() {
+
         // Initialize variables
         let itemNames = "";
         let itemCounts = "";
@@ -267,6 +276,11 @@
             .split('<br>')
             .filter(value => value.length > 0)
             .map(value => value.substring(1));
+        //Joshua attempting to include prices in itemData array
+        //const itemPrices = document.getElementById("selected-items-price").innerHTML
+        //    .split('<br>')
+        //    .filter(value => value.length >0);
+
 
         const itemData = {};
         for (let i = 0; i < itemCounts.length; i++) {
@@ -281,8 +295,64 @@
         writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
     }
 
+    //Clicking checkbox clears "Please confirm the instructions." message
+    document.getElementById("read-instructions").addEventListener("change", resetCheckbox);
+
+    //Reset "Please confirm the instructions." message
+    function resetCheckbox() {
+        document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
+        document.getElementById("read-instructions-label").style = "color: #efdecb;";
+    }
+
+    //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
+    function validateCheckbox() {
+        if (!document.getElementById("read-instructions").checked) {
+            document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
+            document.getElementById("read-instructions-label").style = "color: #ffffff;";
+        }
+    }
+
+    //Display appropriate message when form is submitted
+    function parseFormSubmit() {
+        //Confirmation if cart items are available
+        //Clear the cart and the form and reload ledger items
+        //Log order to ledger
+        if (true) {
+            //Log order to History and write subtract cart from Ledger 
+            updateBreadLedger();
+            //Set message
+            document.getElementById("formSubmitMessage").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+            //Clear cart
+            document.getElementById("selected-items-count").innerHTML = "";
+            document.getElementById("selected-items-name").innerHTML = "";
+            document.getElementById("selected-items-price").innerHTML = "";
+            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+            //Clear form
+            document.getElementById("customer-name").value = "";
+            document.getElementById("customer-email").value = "";
+            document.getElementById("payment-method").value = "";
+            document.getElementById("pickup-time").value = "";
+            //Reload available items
+            init();
+
+        }
+            //Reject order if cart items are no longer available
+            //Clear the cart and reload ledger items but leave form intact
+        //Do not log order to ledger!
+        else if (false) {
+            document.getElementById("formSubmitMessage").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
+            document.getElementById("selected-items-count").innerHTML = "";
+            document.getElementById("selected-items-name").innerHTML = "";
+            document.getElementById("selected-items-price").innerHTML = "";
+            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+            //Reload available items
+            init();
+        }
+    }
+
     // Initialize the page
     init();
+
 </script>
 
 </body>
