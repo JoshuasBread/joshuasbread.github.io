@@ -318,7 +318,9 @@
         //Confirmation if cart items are available
         //Clear the cart and the form and reload ledger items
         //Log order to ledger
-        if (true) {
+        const itemsExist = true;
+
+        if (itemsExist) {
             //Log order to History and write subtract cart from Ledger
             //Set message
             document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
@@ -339,7 +341,7 @@
             //Reject order if cart items are no longer available
             //Clear the cart and reload ledger items but leave form intact
         //Do not log order to ledger!
-        else if (false) {
+        else {
             document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
             document.getElementById("selected-items-count").innerHTML = "";
             document.getElementById("selected-items-name").innerHTML = "";
