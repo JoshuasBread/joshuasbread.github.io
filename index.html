@@ -30,6 +30,7 @@
                     <p>Straight from the Lord's oven</p>
                 </header>
                 <table>
+                    <tbody id="items-table-body">
                     <tr id="loading-row">
                         <td colspan="1"></td>
                         <td class="align-center">
@@ -38,10 +39,7 @@
                         </td>
                         <td colspan="1"></td>
                     </tr>
-
-                    <tbody id="items-table-body">
                     </tbody>
-
                     <tfoot id="items-table-foot">
                     <tr>
                         <td style="text-align: right;">
@@ -111,10 +109,8 @@
                                 </select>
                             </div>
                             <div class="col-12" style="text-align: center">
-                                <input type="checkbox" id="read-instructions" name="read-instructions"
-                                       onclick="updateCheckboxMessage();" required/>
-                                <label for="read-instructions" id="read-instructions-label">I've read the
-                                    instructions</label>
+                                <input type="checkbox" id="read-instructions" name="read-instructions" required/>
+                                <label for="read-instructions" id="read-instructions-label">I've read the instructions</label>
                             </div>
                             <div class="col-12">
                                 <ul class="actions" style="justify-content: center">
@@ -123,7 +119,7 @@
                             </div>
                         </div>
                         <br>
-                        <p id="form-submit-message" style="text-align: center;"></p>
+                        <p id="formSubmitMessage" style="text-align: center;"></p>
                     </form>
                 </section>
 
@@ -137,23 +133,23 @@
             <h2>About</h2>
             <dl class="alt">
                 <dt>Address</dt>
-                <dd>Fake &bull; Fake, CA</dd>
+                <dd>609 Spokane Ave &bull; Albany, CA 94706</dd>
                 <dt>WhatsApp</dt>
-                <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
+                <dd><u><a href="https://chat.whatsapp.com/FaGAKx2gNnv5wweVgSKrff" target="_blank">Join the group</a></u>
                 </dd>
                 <dt>Contact</dt>
-                <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+                <dd><u><a href="mailto:joshua@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
             </dl>
         </section>
         <section>
             <h2>Contributors</h2>
             <dl class="alt">
                 <dt>Website</dt>
-                <dd>Daniel</dd>
+                <dd><a href = "https://mossaband.com/" target ="_blank">Daniel Mossaband</a></dd>
                 <dt>Logo</dt>
-                <dd>Zoe</dd>
+                <dd>Zoe Eden Hertz</dd>
                 <dt>Bread</dt>
-                <dd>Joshua</dd>
+                <dd>Joshua Heller</dd>
             </dl>
         </section>
     </footer>
@@ -180,9 +176,6 @@
     let domIds = [];
 
     async function init() {
-        document.getElementById('loading-row').style.display = 'revert';
-        document.getElementById('items-table-body').innerHTML = '';
-
         rawBreadLedgerData = await fetchRawBreadLedgerData();
 
         const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
@@ -223,7 +216,7 @@
             document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
         }
 
-        document.getElementById('loading-row').style.display = 'none';
+        document.getElementById('loading-row').remove();
     }
 
     function updateCart() {
@@ -262,7 +255,7 @@
         document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
     }
 
-    async function updateBreadLedger() {
+    function updateBreadLedger() {
         const customerName = document.getElementById('customer-name').value;
         const email = document.getElementById('customer-email').value;
         const paymentMethod = document.getElementById('payment-method').value
@@ -286,6 +279,7 @@
         //const itemPrices = document.getElementById("selected-items-price").innerHTML
         //    .split('<br>')
         //    .filter(value => value.length >0);
+        
 
         const itemData = {};
         for (let i = 0; i < itemCounts.length; i++) {
@@ -297,58 +291,7 @@
 
         const totalPrice = document.getElementById("selected-items-total-price").innerText;
 
-        await writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
-    }
-
-    //Reset "Please confirm the instructions." message
-    function updateCheckboxMessage() {
-        document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
-        document.getElementById("read-instructions-label").style = "color: #efdecb;";
-    }
-
-    //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
-    function validateCheckbox() {
-        if (!document.getElementById("read-instructions").checked) {
-            document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
-            document.getElementById("read-instructions-label").style = "color: #ffffff;";
-        }
-    }
-
-    //Display appropriate message when form is submitted
-    function parseFormSubmit() {
-        //Confirmation if cart items are available
-        //Clear the cart and the form and reload ledger items
-        //Log order to ledger
-        if (true) {
-            //Log order to History and write subtract cart from Ledger
-            //Set message
-            document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
-            //Clear cart
-            document.getElementById("selected-items-count").innerHTML = "";
-            document.getElementById("selected-items-name").innerHTML = "";
-            document.getElementById("selected-items-price").innerHTML = "";
-            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            //Clear form
-            document.getElementById("customer-name").value = "";
-            document.getElementById("customer-email").value = "";
-            document.getElementById("payment-method").value = "";
-            document.getElementById("pickup-time").value = "";
-
-            //Reload available items
-            updateBreadLedger().then(async () => await init());
-        }
-            //Reject order if cart items are no longer available
-            //Clear the cart and reload ledger items but leave form intact
-        //Do not log order to ledger!
-        else if (false) {
-            document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
-            document.getElementById("selected-items-count").innerHTML = "";
-            document.getElementById("selected-items-name").innerHTML = "";
-            document.getElementById("selected-items-price").innerHTML = "";
-            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            //Reload available items
-            init();
-        }
+        writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
     }
 
     //Clicking checkbox clears "Please confirm the instructions." message
