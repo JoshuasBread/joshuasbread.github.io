@@ -93,7 +93,7 @@
                                 <label for="payment-method">Payment Method:</label>
                                 <select name="payment-method"
                                         id="payment-method" required>
-                                    <option disable selected value></option>
+                                    <option selected value></option>
                                     <option value="Cash">Cash</option>
                                     <option value="Venmo">Venmo @JoshuaHeller</option>
                                     <option value="Zelle">Zelle</option>
@@ -103,7 +103,7 @@
                             <div class="col-6 col-12-xsmall">
                                 <label for="pickup-time">Pickup Time:</label>
                                 <select name="pickup-time" id="pickup-time" required>
-                                    <option disable selected value></option>
+                                    <option selected value></option>
                                     <option value="12:00pm">12 pm</option>
                                     <option value="1:00pm">1 pm</option>
                                     <option value="2:00pm">2 pm</option>
@@ -302,14 +302,14 @@
     //Reset "Please confirm the instructions." message
     function updateCheckboxMessage() {
         document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
-        document.getElementById("read-instructions-label").style = "color: #efdecb;";
+        document.getElementById("read-instructions-label").style.color = "#efdecb";
     }
 
     //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
     function validateCheckbox() {
         if (!document.getElementById("read-instructions").checked) {
             document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
-            document.getElementById("read-instructions-label").style = "color: #ffffff;";
+            document.getElementById("read-instructions-label").style.color = "#ffffff";
         }
     }
 
