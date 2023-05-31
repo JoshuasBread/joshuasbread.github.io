@@ -202,7 +202,7 @@
                 <tr>
                     <td>
                         <span class="image">
-                            <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:150px;width:100%"/>
+                            <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:170px;"/>
                         </span>
                     </td>
                     <td>
@@ -334,13 +334,14 @@
             document.getElementById("customer-email").value = "";
             document.getElementById("payment-method").value = "";
             document.getElementById("pickup-time").value = "";
+            //document.getElementById("read-instructions").prop('checked', false);
 
             //Reload available items
             updateBreadLedger().then(async () => await init());
         }
             //Reject order if cart items are no longer available
             //Clear the cart and reload ledger items but leave form intact
-        //Do not log order to ledger!
+            //Do not log order to ledger!
         else {
             document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
             document.getElementById("selected-items-count").innerHTML = "";
