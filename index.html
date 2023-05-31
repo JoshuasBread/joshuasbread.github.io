@@ -334,7 +334,7 @@
             document.getElementById("customer-email").value = "";
             document.getElementById("payment-method").value = "";
             document.getElementById("pickup-time").value = "";
-            //document.getElementById("read-instructions").prop('checked', false);
+            document.getElementById("read-instructions").checked=false;
 
             //Reload available items
             updateBreadLedger().then(async () => await init());
