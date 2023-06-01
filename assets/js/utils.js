@@ -31,5 +31,5 @@ function findQuantityCoordinateAndValueByName(rawBreadLedgerDataValues, itemName
         };
     }
 
-    return null; // Return null if the name or age column is not found
+    return null; // Return null if the `Quantity` column is not found
 }
