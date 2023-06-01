@@ -347,13 +347,16 @@
             //Clear the cart and reload ledger items but leave form intact
         //Do not log order to ledger!
         else {
-            document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
-            document.getElementById("selected-items-count").innerHTML = "";
-            document.getElementById("selected-items-name").innerHTML = "";
-            document.getElementById("selected-items-price").innerHTML = "";
-            document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            //Reload available items
-            init();
+            updateBreadLedger().then(async () => {
+                //Reload available items
+                await init();
+
+                document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
+                document.getElementById("selected-items-count").innerHTML = "";
+                document.getElementById("selected-items-name").innerHTML = "";
+                document.getElementById("selected-items-price").innerHTML = "";
+                document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+            });
         }
     }
 
