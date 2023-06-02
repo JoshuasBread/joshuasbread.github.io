@@ -197,6 +197,7 @@ h1 {
 
 h2 {
     font-size: 1.5em;
+    padding-bottom:0.3em;
 }
 
 h3 {
@@ -2021,6 +2022,11 @@ select {
     height: 2.75em;
     padding-right: 2.75em;
     text-overflow: ellipsis;
+    color:#ffffff;
+}
+
+select:invalid{
+    color:rgb(239, 222, 203, 0.7) !important;
 }
 
 select:focus::-ms-value {
@@ -3234,7 +3240,7 @@ body.is-preload #header.alt .logo {
     margin-left: auto;
 }
 
-#main input, #main select, #main textarea {
+#main input, #main textarea {
     color: #ffffff;
 }
 
