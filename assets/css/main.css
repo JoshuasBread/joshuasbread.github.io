@@ -2095,13 +2095,15 @@ input[type="radio"] + label:before {
     content: '';
     display: inline-block;
     font-size: 0.8em;
-    height: 2.0625em;
+    height: 2em;
     left: 0;
-    line-height: 2.0625em;
-    position: absolute;
+    line-height: 2em;
+    position: relative;
+    vertical-align:middle;
     text-align: center;
-    top: 0;
-    width: 2.0625em;
+    margin-right: 10px;
+    bottom:1px;
+    width: 2em;
 }
 
 input[type="checkbox"]:checked + label:before,
