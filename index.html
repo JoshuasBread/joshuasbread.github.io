@@ -33,8 +33,8 @@
                     <tr id="loading-row">
                         <td colspan="1"></td>
                         <td class="align-center">
-                            <div class="lds-dual-ring"></div>
-                            <p>Dough is rising...</p>
+                            <div class="lds-loaf-rise"></div>
+                            <p>Loaves are baking...</p>
                         </td>
                         <td colspan="1"></td>
                     </tr>
@@ -44,8 +44,8 @@
 
                     <tfoot id="items-table-foot">
                     <tr>
-                        <td style="text-align: right; padding-left:0;">
-                            <h2 style="text-align: left;">Cart</h2>
+                        <td style="text-align: right; padding-left:0; padding-bottom:0;">
+                            <h2 style="text-align: left; padding-bottom:0;">Cart</h2>
                         </td>
                     </tr>
                     <tr>
@@ -276,10 +276,6 @@
             .split('<br>')
             .filter(value => value.length > 0)
             .map(value => value.substring(1));
-        //Joshua attempting to include prices in itemData array
-        //const itemPrices = document.getElementById("selected-items-price").innerHTML
-        //    .split('<br>')
-        //    .filter(value => value.length >0);
 
         const itemData = {};
         for (let i = 0; i < itemCounts.length; i++) {
