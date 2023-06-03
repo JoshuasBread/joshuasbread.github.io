@@ -245,7 +245,7 @@
             // Update strings and total item prices
             itemNames += `${itemName}<br>`;
             itemCounts += `x${itemCount}<br>`;
-            itemPrices += `$${itemPrice * itemCount}<br>`;
+            itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
             totalItemPrices += itemPrice * itemCount;
         }
 

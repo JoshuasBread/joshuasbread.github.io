@@ -91,7 +91,7 @@ function rawDataToTableData(rawBreadLedgerData) {
             size,
             quantity: parseInt(quantity),
             description,
-            cost: cost.split("$")[1],
+            cost: parseFloat(cost),
             image: `images/${image}`,
         });
     }
