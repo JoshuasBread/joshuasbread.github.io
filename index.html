@@ -245,7 +245,7 @@
             // Update strings and total item prices
             itemNames += `${itemName}<br>`;
             itemCounts += `x${itemCount}<br>`;
-            itemPrices += `$${itemPrice * itemCount}<br>`;
+            itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
             totalItemPrices += itemPrice * itemCount;
         }
 
@@ -254,6 +254,9 @@
         document.getElementById("selected-items-count").innerHTML = itemCounts;
         document.getElementById("selected-items-price").innerHTML = itemPrices;
         document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
+
+        //Clear form submit message
+        document.getElementById("form-submit-message").innerHTML = "";
     }
 
     async function updateBreadLedger() {
@@ -311,7 +314,10 @@
         //Log order to ledger
         const itemsExist = true;
 
-        if (itemsExist) {
+        //Reject empty cart
+    if(document.getElementById("selected-items-name").innerHTML == ""){
+        document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
+    } else if (itemsExist) {
             //Log order to History and write subtract cart from Ledger
             //Set message
             document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";

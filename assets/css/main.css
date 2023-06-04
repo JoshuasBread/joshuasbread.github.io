@@ -3719,6 +3719,7 @@ body.is-preload #header.alt .logo {
     }
     40% {
         transform: matrix(1.4, 0, 0, 1.2, 0, 4);
+        background:#DFBB7E;
     }
     70% {
         transform: matrix(1.6, 0, 0, 1.7, 0, -5);
