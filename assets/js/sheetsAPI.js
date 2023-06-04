@@ -78,7 +78,7 @@ function rawDataToTableData(rawBreadLedgerData) {
             quantity,
             description,
             cost,
-            placeholder2,
+            sellDate,
             image,
         ] = value;
 
@@ -92,6 +92,7 @@ function rawDataToTableData(rawBreadLedgerData) {
             quantity: parseInt(quantity),
             description,
             cost: parseFloat(cost),
+            sellDate, //As a string, not a date object
             image: `images/${image}`,
         });
     }
