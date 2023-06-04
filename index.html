@@ -188,34 +188,54 @@
         domIds = itemNamesToDOMIds(itemNames);
 
         // Insert rows into table
-        for (const breadData of breadLedgerData) {
-            const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
-                .map(i => `<option value="${i}">${i}</option>`)
-                .join('');
+        //Row announcing no bread if none available
+        if(breadLedgerData.length<1){
+            const noBreadRowHtml = `
+                    <tr>
+                        <td class="align-center" style="width:120px; padding-top:12px;">
+                            <div class="lds-loaf-rise"></div>
+                        </td>
+                        <td class="align-center">
+                            <p style="margin-bottom:0;">No breads are available!</p>
+                        </td>
+                        <td colspan="1">
+                            <input class="small" type="submit" value="Refresh" onclick="init()"/>
+                        </td>
+                    </tr>
+                `;
 
-            const rowHtml = `
-                <tr>
-                    <td>
-                        <span class="image">
-                            <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:170px;"/>
-                        </span>
-                    </td>
-                    <td>
-                        <strong id="${breadData.name}-name">${breadData.name}</strong>
-                        <br> <span style="color: #ffffff">${breadData.size}: <em>Pickup ${breadData.sellDate}</em></span>
-                        <br>
-                        <em>${breadData.description}</em>
-                    </td>
-                    <td>
-                        <p id="${breadData.name}-price" style="text-align:center">$${parseFloat(breadData.cost).toFixed(2)}</p>
-                        <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()">
-                            ${countOptionsHtml}
-                        </select>
-                    </td>
-                </tr>
-            `;
+                document.getElementById('items-table-body').insertAdjacentHTML('beforeend', noBreadRowHtml);
+        }else{ 
+            //Populate spreadsheet rows
+            for (const breadData of breadLedgerData) {
+                const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
+                    .map(i => `<option value="${i}">${i}</option>`)
+                    .join('');
 
-            document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
+                const rowHtml = `
+                    <tr>
+                        <td>
+                            <span class="image">
+                                <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:170px;"/>
+                            </span>
+                        </td>
+                        <td>
+                            <strong id="${breadData.name}-name">${breadData.name}</strong>
+                            <br> <span style="color: #ffffff">${breadData.size}: <em>Pickup ${breadData.sellDate}</em></span>
+                            <br>
+                            <em>${breadData.description}</em>
+                        </td>
+                        <td>
+                            <p id="${breadData.name}-price" style="text-align:center">$${parseFloat(breadData.cost).toFixed(2)}</p>
+                            <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()">
+                                ${countOptionsHtml}
+                            </select>
+                        </td>
+                    </tr>
+                `;
+
+                document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
+            }
         }
 
         document.getElementById('loading-row').style.display = 'none';
