@@ -192,14 +192,14 @@
         if(breadLedgerData.length<1){
             const noBreadRowHtml = `
                     <tr>
-                        <td class="align-center">
+                        <td class="align-center" style="width:120px; padding-top:12px;">
                             <div class="lds-loaf-rise"></div>
                         </td>
                         <td class="align-center">
-                            <p style="margin-bottom:0;">No breads are available right now!</p>
+                            <p style="margin-bottom:0;">No breads are available!</p>
                         </td>
                         <td colspan="1">
-                            <input class="small" type="submit" value="Refresh Items" onclick="init()"/>
+                            <input class="small" type="submit" value="Refresh" onclick="init()"/>
                         </td>
                     </tr>
                 `;
