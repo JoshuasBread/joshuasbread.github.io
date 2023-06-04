@@ -1831,9 +1831,9 @@ button,
     cursor: pointer;
     display: inline-block;
     font-weight: 300;
-    height: 2.75em;
-    line-height: 2.75em;
-    min-width: 9.25em;
+    height: 2.25em;
+    line-height: 2.1em;
+    min-width: 6.5em;
     padding: 0 1em;
     text-align: center;
     text-decoration: none;
@@ -1864,13 +1864,6 @@ button.fit,
     width: 100%;
 }
 
-input[type="submit"].small,
-input[type="reset"].small,
-input[type="button"].small,
-button.small,
-.button.small {
-    font-size: 0.8em;
-}
 
 input[type="submit"].large,
 input[type="reset"].large,
