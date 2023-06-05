@@ -9,8 +9,8 @@ serve(async (req) => {
         return new Response('ok', {headers: corsHeaders})
     }
 
-    const {time, name, email, payment, order, total, pickup} = await req.json()
-
+    const {time, name, email, payment, order, total, tempdd} = await req.json()
+    
     const api = new GoogleAPI({
         email: clientEmail,
         scope: ["https://www.googleapis.com/auth/spreadsheets"],
@@ -19,10 +19,10 @@ serve(async (req) => {
 
 
     // Google sheet has the layout
-    // [Time, Name, Email, Payment, Order, Total, Pickup]
+    // [Time, Name, Email, Payment, Order, Total, tempdd]
     await api.post(`https://sheets.googleapis.com/v4/spreadsheets/${breadLedgerSheetId}/values/History:append?valueInputOption=USER_ENTERED`, {
         "range": "History",
-        "values": [[time, name, email, payment, order, total, pickup]],
+        "values": [[time, name, email, payment, order, total, tempdd]],
     });
 
     return new Response(

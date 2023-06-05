@@ -2,7 +2,7 @@ const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn
 
 /**
  * @param {[string, string, string, string, string, string, string, string][]} rawBreadLedgerDataValues
- * @param {{customerName: string, email: string, paymentMethod: string, pickupTime: string}} customerData
+ * @param {{customerName: string, email: string, paymentMethod: string, tempddPost: string}} customerData
  * @param {Record<string, string>} itemData
  * @param {string} total
  * @return {Promise<void>}
@@ -31,7 +31,7 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
     const productOrderString = productOrder.join(',');
 
     // Add order to history
-    const {customerName, email, paymentMethod, pickupTime} = customerData;
+    const {customerName, email, paymentMethod, tempddPost} = customerData;
     const addToOrderHistoryPromise = _addToOrderHistory({
         time: nowPST,
         name: customerName,
@@ -39,9 +39,8 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
         payment: paymentMethod,
         order: productOrderString,
         total: total,
-        pickup: pickupTime
+        tempdd: tempddPost
     });
-
 
     // Execute
     await Promise.all([reduceQuantityPromise, addToOrderHistoryPromise])
@@ -60,6 +59,7 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
  *  quantity: number,
  *  description: string,
  *  cost: string,
+ *  pickup: string,
  *  image: string
  * }[]}
  */
@@ -78,8 +78,8 @@ function rawDataToTableData(rawBreadLedgerData) {
             quantity,
             description,
             cost,
-            sellDate,
-            image,
+            pickup,
+            image
         ] = value;
 
         if (quantity === "" || quantity === "0") {
@@ -92,8 +92,8 @@ function rawDataToTableData(rawBreadLedgerData) {
             quantity: parseInt(quantity),
             description,
             cost: parseFloat(cost),
-            sellDate, //As a string, not a date object
-            image: `images/${image}`,
+            pickup, //As a string, not a date object
+            image: `images/${image}`
         });
     }
 
@@ -102,7 +102,7 @@ function rawDataToTableData(rawBreadLedgerData) {
 
 /**
  * Expects `values` to return an array with values in the order of
- * Product, Size, Placeholder1, Quantity, Description, Cost, Placeholder2, Image
+ * Product, Size, Placeholder1, Quantity, Description, Cost, Pickup, Image
  *
  * @returns {Promise<{
  * range: string,
@@ -129,7 +129,7 @@ async function fetchRawBreadLedgerData() {
  * payment: string,
  * order: string,
  * total: string,
- * pickup: string}} data
+ * tempdd: string}} data
  * @return {Promise<void>}
  * @private
  */
@@ -142,6 +142,7 @@ async function _addToOrderHistory(data) {
         },
         body: JSON.stringify(data),
     });
+    console.log(data);
 }
 
 /**

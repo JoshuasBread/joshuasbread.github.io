@@ -1,11 +1,12 @@
 /**
  * @param {string[]}itemNames
- * @return {{name: string, count: string, price: string}[]}
+ * @return {{name: string, pickup: string, count: string, price: string}[]}
  */
 function itemNamesToDOMIds(itemNames) {
     return itemNames.map(function (itemName) {
         return {
             name: `${itemName}-name`,
+            pickup: `${itemName}-pickup`,
             count: `${itemName}-count`,
             price: `${itemName}-price`,
         }
