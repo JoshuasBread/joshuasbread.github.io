@@ -49,22 +49,23 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="text-align: right; font-weight: bold;">
+                                <td style="text-align: center; font-weight: bold; padding: 0.4em 0.1em;">
                                     <span id="selected-items-pickup"></span>
                                 </td>
-                                <td style="text-align: right;">
+                                <td style="text-align: center; padding: 0.4em 0.1em;">
                                     <span id="selected-items-count"></span>
                                 </td>
-                                <td>
+                                <td style="padding: 0.4em 0.1em;">
                                     <span id="selected-items-name"></span>
                                 </td>
-                                <td id="selected-items-price">
+                                <td style="padding: 0.4em 0.1em;">
+                                    <span id="selected-items-price"></span>
                                 </td>
                             </tr>
                             <tr style="font-weight: bold;">
                                 <td colspan="2"></td>
                                 <td style="text-align: right;">Total</td>
-                                <td id="selected-items-total-price">
+                                <td id="selected-items-total-price" style="padding-left: 0.1em;">
                                     $0.00
                                 </td>
                             </tr>
@@ -212,7 +213,7 @@
                     <tr>
                         <td colspan="2">
                             <span class="image" style="vertical-align:middle;">
-                                <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:170px;"/>
+                                <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:160px;"/>
                             </span>
                         </td>
                         <td>
@@ -223,7 +224,7 @@
                         </td>
                         <td>
                             <p id="${breadData.name}-price" style="text-align:left; padding-left:14px;">$${parseFloat(breadData.cost).toFixed(2)}</p>
-                            <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()">
+                            <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()" style="margin: 0;">
                                 ${countOptionsHtml}
                             </select>
                         </td>
@@ -299,13 +300,22 @@
                 .split('<br>')
                 .filter(value => value.length > 0)
                 .map(value => value.substring(1));
+            const itemPickups = document.getElementById("selected-items-pickup").innerHTML
+                .split('<br>')
+                .filter(value => value.length > 0);
+            const itemPrices = document.getElementById("selected-items-price").innerHTML
+                .split('<br>')
+                .filter(value => value.length > 0)
+                .map(value => value.substring(1));
 
             const itemData = {};
             for (let i = 0; i < itemCounts.length; i++) {
                 const itemName = itemNames[i];
                 const itemCount = itemCounts[i];
+                const itemPickup =itemPickups[i];
+                const itemPrice =itemPrices[i];
 
-                itemData[itemName] = itemCount;
+                itemData[itemName] = itemCount+","+itemPickup+","+itemPrice;
             }
 
             const totalPrice = document.getElementById("selected-items-total-price").innerText;

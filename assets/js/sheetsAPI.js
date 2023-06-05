@@ -18,7 +18,7 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
 
     // Reduce quantity
     for (const [productName, quantityPurchased] of Object.entries(itemData)) {
-        productOrder.push(`${quantityPurchased}x ${productName}`);
+        productOrder.push(`${quantityPurchased},${productName}`);
         const coordinate = findQuantityCoordinateAndValueByName(rawBreadLedgerDataValues, productName);
 
         const newValue = coordinate.currentValue - parseInt(quantityPurchased)
@@ -142,7 +142,6 @@ async function _addToOrderHistory(data) {
         },
         body: JSON.stringify(data),
     });
-    console.log(data);
 }
 
 /**
