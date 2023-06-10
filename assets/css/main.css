@@ -68,6 +68,10 @@ input, select, textarea {
     appearance: none;
 }
 
+.shrinkspan{
+    border:0;
+}
+
 /* Basic */
 
 @-ms-viewport {
@@ -81,7 +85,7 @@ body {
 @media screen and (max-width: 480px) {
 
     html, body {
-        min-width: 320px;
+        min-width: 360px;
     }
 
 }
@@ -142,11 +146,28 @@ body, input, select, textarea {
     }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 736px) {
+
+    h1 {
+        font-size: 2em;
+    }
 
     body, input, textare, select {
         font-size: 12pt;
     }
+
+    .shrinkspan {
+        font-size: 2.5vw;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .shrinkspan {
+        font-size: 3vw;
+    }
+
 }
 
 a {
@@ -214,14 +235,6 @@ h5 {
 
 h6 {
     font-size: 0.7em;
-}
-
-@media screen and (max-width: 736px) {
-
-    h1 {
-        font-size: 2em;
-    }
-
 }
 
 sub {
@@ -3527,6 +3540,10 @@ body.is-preload #header.alt .logo {
         margin: -3em 0 2em -2em;
         width: calc(100% + 4em);
     }
+
+    #main > .main > .shrinkspan {
+        font-size: 2.5vw;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -3539,6 +3556,11 @@ body.is-preload #header.alt .logo {
         margin: -3em 0 1.5em -1.5em;
         width: calc(100% + 2em);
     }
+
+    #main > .main > .shrinkspan {
+        font-size: 2.5vw;
+    }
+    
 }
 
 @media screen and (max-width: 360px) {
@@ -3555,6 +3577,10 @@ body.is-preload #header.alt .logo {
 
     #main > .main > .image.main:first-child img {
         border-radius: 0;
+    }
+
+    #main > .main > .shrinkspan {
+        font-size: 2.5vw;
     }
 
 }
