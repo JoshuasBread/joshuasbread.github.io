@@ -223,8 +223,8 @@
                             <br>
                             <em><span id="${breadData.name}-size">${breadData.size}. </span>${breadData.description}</em>
                         </td>
-                        <td>
-                            <p id="${breadData.name}-price" style="text-align:left; padding-left:14px;">$${parseFloat(breadData.cost).toFixed(2)}</p>
+                        <td align="center">
+                            <p id="${breadData.name}-price" style="text-align:center;">$${parseFloat(breadData.cost).toFixed(2)}</p>
                             <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()" style="margin: 0;">
                                 ${countOptionsHtml}
                             </select>
