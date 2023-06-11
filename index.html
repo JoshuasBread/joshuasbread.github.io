@@ -49,10 +49,10 @@
                                 </td>
                             </tr>
                             <tr style="line-height:150%;">
-                                <td style="font-weight: bold; padding: 0.4em 0.1em;">
+                                <td style="text-align: left; font-weight: bold; padding: 0.4em 0.1em;">
                                     <span class="shrinkspan" id="selected-items-pickup"></span>
                                 </td>
-                                <td style="text-align: center; padding: 0.4em 0.1em;">
+                                <td style="text-align: right; padding: 0.4em 0.1em;">
                                     <span class="shrinkspan" id="selected-items-count"></span>
                                 </td>
                                 <td style="padding: 0.4em 0.1em;">
@@ -210,7 +210,7 @@
                         .join('');
 
                     const rowHtml = `
-                    <tr style="line-height:125%;">
+                    <tr>
                         <td colspan="2">
                             <span class="image" style="vertical-align:middle;">
                                 <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:160px;"/>
@@ -218,12 +218,11 @@
                         </td>
                         <td>
                             <strong id="${breadData.name}-name">${breadData.name}</strong>
-                            <br> <span id="${breadData.name}-size" style="color: #ffffff">${breadData.size}</span>
+                            <br> <span id="${breadData.name}-size" style="color: #ffffff">${breadData.size}: <em>Pickup <span id="${breadData.name}-pickup">${breadData.pickup}</em></span>
                             <br>
                             <em>${breadData.description}</em>
                         </td>
                         <td>
-                            <span id="${breadData.name}-pickup" style="color: #ffffff"><em>${breadData.pickup}</em></span><br>
                             <p id="${breadData.name}-price" style="text-align:left; padding-left:14px;">$${parseFloat(breadData.cost).toFixed(2)}</p>
                             <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()" style="margin: 0;">
                                 ${countOptionsHtml}
