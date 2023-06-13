@@ -343,18 +343,53 @@
         //Confirmation if cart items are available
         //Clear the cart and the form and reload ledger items
         //Log order to ledger
-        const itemsExist = true;
 
-        //Reject empty cart
-        if (document.getElementById("selected-items-name").innerHTML === "") {
-            document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
-        } else if (itemsExist) {
-            //Log order to History and write subtract cart from Ledger
-            //Set message
-            document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
 
-            //Reload available items
-            updateBreadLedger().then(async () => {
+        fetchRawBreadLedgerData().then(async function (rawBreadLedgerData) {
+            const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
+
+            const itemNames = document.getElementById("selected-items-name").innerHTML
+                .split('<br>')
+                .filter(value => value.length > 0);
+            const itemCounts = document.getElementById("selected-items-count").innerHTML
+                .split('<br>')
+                .filter(value => value.length > 0)
+                .map(value => value.substring(1))
+
+
+            const cartAsMap = {};
+            for (let i = 0; i < itemNames.length; i++) {
+                const name = itemNames[i];
+                const count = itemCounts[i];
+
+                cartAsMap[name] = parseInt(count);
+            }
+
+            const availableItems = {};
+            for (const data of breadLedgerData) {
+                availableItems[data.name] = data.quantity;
+            }
+
+            let itemsExist = true;
+            for (const [name, quantity] of Object.entries(cartAsMap)) {
+                const availableQuantity = availableItems[name];
+
+                if (availableQuantity === undefined || availableQuantity < quantity) {
+                    itemsExist = false;
+                    break;
+                }
+            }
+
+            //Reject empty cart
+            if (document.getElementById("selected-items-name").innerHTML === "") {
+                document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
+            } else if (itemsExist) {
+                //Log order to History and write subtract cart from Ledger
+                //Set message
+                document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+
+                //Reload available items
+                await updateBreadLedger();
                 await init();
 
                 //Clear cart
@@ -370,17 +405,17 @@
                 document.getElementById("payment-method").value = "";
                 document.getElementById("temp-dd").value = "";
                 document.getElementById("read-instructions").checked = false;
-            });
 
-        }
-            //Reject order if cart items are no longer available
-            //Clear the cart and reload ledger items 
-            //Leave form intact
-        //Do not log order to ledger!
-        else {
-            updateBreadLedger().then(async () => {
+
+            }
+                //Reject order if cart items are no longer available
+                //Clear the cart and reload ledger items
+                //Leave form intact
+            //Do not log order to ledger!
+            else {
                 //Reload available items
                 await init();
+
                 //Unavailable message
                 document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
                 //Clear cart
@@ -389,8 +424,8 @@
                 document.getElementById("selected-items-name").innerHTML = "";
                 document.getElementById("selected-items-price").innerHTML = "";
                 document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            });
-        }
+            }
+        })
     }
 
     // Initialize the page
