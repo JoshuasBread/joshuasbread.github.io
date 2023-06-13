@@ -4,190 +4,190 @@
 <head>
     <title>Joshua's Bread</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
     <noscript>
-        <link rel="stylesheet" href="assets/css/noscript.css" />
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
 </head>
 
 <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Header -->
-        <header id="header" class="alt">
-            <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
-            <h1>Joshua's Bread</h1>
-            <p>This site is not live! Orders made at this time will not be processed.</p>
-        </header>
-        <!-- Main -->
-        <div id="main" style="max-width:1200px;">
-            <section id="first" class='main'>
-                <div class="table-wrapper">
-                    <header class="major">
-                        <h2>Available breads</h2>
-                        <p>Straight from the Lord's oven</p>
-                    </header>
-                    <table>
-                        <tr id="loading-row">
-                            <td colspan="1"></td>
-                            <td colspan="2" class="align-center">
-                                <div class="lds-loaf-rise"></div>
-                                <p>Loaves are baking...</p>
-                            </td>
-                            <td colspan="1"></td>
-                        </tr>
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%"/></span>
+        <h1>Joshua's Bread</h1>
+        <p>This site is not live! Orders made at this time will not be processed.</p>
+    </header>
+    <!-- Main -->
+    <div id="main" style="max-width:1200px;">
+        <section id="first" class='main'>
+            <div class="table-wrapper">
+                <header class="major">
+                    <h2>Available breads</h2>
+                    <p>Straight from the Lord's oven</p>
+                </header>
+                <table>
+                    <tr id="loading-row">
+                        <td colspan="1"></td>
+                        <td colspan="2" class="align-center">
+                            <div class="lds-loaf-rise"></div>
+                            <p>Loaves are baking...</p>
+                        </td>
+                        <td colspan="1"></td>
+                    </tr>
 
-                        <tbody id="items-table-body">
-                        </tbody>
+                    <tbody id="items-table-body">
+                    </tbody>
 
-                        <tfoot id="items-table-foot">
-                            <tr>
-                                <td style="text-align: right; padding-left:0; padding-bottom:0;">
-                                    <h2 style="text-align: left; padding-bottom:0;">Cart</h2>
-                                </td>
-                            </tr>
-                            <tr style="line-height:150%;">
-                                <td style="text-align: left; font-weight: bold; padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-pickup"></span>
-                                </td>
-                                <td style="text-align: right; padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-count"></span>
-                                </td>
-                                <td style="padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-name"></span>
-                                </td>
-                                <td style="padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-price"></span>
-                                </td>
-                            </tr>
-                            <tr style="font-weight: bold;">
-                                <td colspan="2"></td>
-                                <td style="text-align: right;">Total</td>
-                                <td id="selected-items-total-price" style="padding-left: 0.1em;">
-                                    $0.00
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <tfoot id="items-table-foot">
+                    <tr>
+                        <td style="text-align: right; padding-left:0; padding-bottom:0;">
+                            <h2 style="text-align: left; padding-bottom:0;">Cart</h2>
+                        </td>
+                    </tr>
+                    <tr style="line-height:150%;">
+                        <td style="text-align: left; font-weight: bold; padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-pickup"></span>
+                        </td>
+                        <td style="text-align: right; padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-count"></span>
+                        </td>
+                        <td style="padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-name"></span>
+                        </td>
+                        <td style="padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-price"></span>
+                        </td>
+                    </tr>
+                    <tr style="font-weight: bold;">
+                        <td colspan="2"></td>
+                        <td style="text-align: right;">Total</td>
+                        <td id="selected-items-total-price" style="padding-left: 0.1em;">
+                            $0.00
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
 
-                    <section>
-                        <hr>
-                        <h2>Checkout</h2>
-                        <form method="post" onsubmit="parseFormSubmit();return false;">
-                            <div class="row gtr-uniform">
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="customer-name" id="customer-name" value=""
-                                        placeholder="Full Name" required />
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="email" name="customer-email" id="customer-email" value=""
-                                        placeholder="Email" required />
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <select name="payment-method" id="payment-method" required>
-                                        <option value="" disabled selected hidden>Payment Method</option>
-                                        <option value="Cash">Cash</option>
-                                        <option value="Venmo">Venmo @JoshuaHeller</option>
-                                        <option value="Zelle">Zelle</option>
-                                        <option value="Paypal">Paypal</option>
-                                    </select>
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <select name="temp-dd" id="temp-dd" required>
-                                        <option value="" disabled selected hidden>Temp Dropdown</option>
-                                        <option value="a">a</option>
-                                        <option value="b">b</option>
-                                        <option value="c">c</option>
-                                        <option value="d">d</option>
-                                    </select>
-                                </div>
-                                <div class="col-12" style="text-align: center;">
-                                    <input type="checkbox" id="read-instructions" name="read-instructions"
-                                        style="position:relative;" onclick="updateCheckboxMessage();" required />
-                                    <label for="read-instructions" id="read-instructions-label">I've read the
-                                        instructions</label>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="actions" style="justify-content: center">
-                                        <li><input type="submit" value="Submit" onclick="validateCheckbox()" /></li>
-                                    </ul>
-                                </div>
+                <section>
+                    <hr>
+                    <h2>Checkout</h2>
+                    <form method="post" onsubmit="parseFormSubmit();return false;">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="customer-name" id="customer-name" value=""
+                                       placeholder="Full Name" required/>
                             </div>
-                            <br>
-                            <p id="form-submit-message" style="text-align: center;"></p>
-                        </form>
-                    </section>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="email" name="customer-email" id="customer-email" value=""
+                                       placeholder="Email" required/>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select name="payment-method" id="payment-method" required>
+                                    <option value="" disabled selected hidden>Payment Method</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Venmo">Venmo @JoshuaHeller</option>
+                                    <option value="Zelle">Zelle</option>
+                                    <option value="Paypal">Paypal</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select name="temp-dd" id="temp-dd" required>
+                                    <option value="" disabled selected hidden>Temp Dropdown</option>
+                                    <option value="a">a</option>
+                                    <option value="b">b</option>
+                                    <option value="c">c</option>
+                                    <option value="d">d</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align: center;">
+                                <input type="checkbox" id="read-instructions" name="read-instructions"
+                                       style="position:relative;" onclick="updateCheckboxMessage();" required/>
+                                <label for="read-instructions" id="read-instructions-label">I've read the
+                                    instructions</label>
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions" style="justify-content: center">
+                                    <li><input type="submit" value="Submit" onclick="validateCheckbox()"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                        <p id="form-submit-message" style="text-align: center;"></p>
+                    </form>
+                </section>
 
-                </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
-        <!-- Footer -->
-        <footer id="footer">
-            <section>
-                <h2>About</h2>
-                <dl class="alt">
-                    <dt>Address</dt>
-                    <dd>Fake &bull; Fake, CA</dd>
-                    <dt>WhatsApp</dt>
-                    <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
-                    </dd>
-                    <dt>Contact</dt>
-                    <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
-                </dl>
-            </section>
-            <section>
-                <h2>Contributors</h2>
-                <dl class="alt">
-                    <dt>Website</dt>
-                    <dd>Daniel</dd>
-                    <dt>Logo</dt>
-                    <dd>Zoe</dd>
-                    <dt>Bread</dt>
-                    <dd>Joshua</dd>
-                </dl>
-            </section>
-        </footer>
     </div>
-    <!-- Scripts -->
-    <script src="assets/js/default/js/jquery.min.js"></script>
-    <script src="assets/js/default/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/default/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/default/js/browser.min.js"></script>
-    <script src="assets/js/default/js/breakpoints.min.js"></script>
-    <script src="assets/js/default/js/util.js"></script>
-    <script src="assets/js/default/js/main.js"></script>
-    <script src="assets/js/sheetsAPI.js"></script>
-    <script src="assets/js/utils.js"></script>
-    <script>
-        /**
-         * @type {{
-         * range: string,
-         * majorDimension: string,
-         * values: [string, string, string, string, string, string, string, string][],
-         * }}
-         */
-        let rawBreadLedgerData = {};
-        let domIds = [];
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <h2>About</h2>
+            <dl class="alt">
+                <dt>Address</dt>
+                <dd>Fake &bull; Fake, CA</dd>
+                <dt>WhatsApp</dt>
+                <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
+                </dd>
+                <dt>Contact</dt>
+                <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+            </dl>
+        </section>
+        <section>
+            <h2>Contributors</h2>
+            <dl class="alt">
+                <dt>Website</dt>
+                <dd>Daniel</dd>
+                <dt>Logo</dt>
+                <dd>Zoe</dd>
+                <dt>Bread</dt>
+                <dd>Joshua</dd>
+            </dl>
+        </section>
+    </footer>
+</div>
+<!-- Scripts -->
+<script src="assets/js/default/js/jquery.min.js"></script>
+<script src="assets/js/default/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/default/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/default/js/browser.min.js"></script>
+<script src="assets/js/default/js/breakpoints.min.js"></script>
+<script src="assets/js/default/js/util.js"></script>
+<script src="assets/js/default/js/main.js"></script>
+<script src="assets/js/sheetsAPI.js"></script>
+<script src="assets/js/utils.js"></script>
+<script>
+    /**
+     * @type {{
+     * range: string,
+     * majorDimension: string,
+     * values: [string, string, string, string, string, string, string, string][],
+     * }}
+     */
+    let rawBreadLedgerData = {};
+    let domIds = [];
 
-        async function init() {
-            document.getElementById('loading-row').style.display = 'revert';
-            document.getElementById('items-table-body').innerHTML = '';
+    async function init() {
+        document.getElementById('loading-row').style.display = 'revert';
+        document.getElementById('items-table-body').innerHTML = '';
 
-            rawBreadLedgerData = await fetchRawBreadLedgerData();
+        rawBreadLedgerData = await fetchRawBreadLedgerData();
 
-            const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
+        const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
 
-            // Map item names to DOM ids
-            const itemNames = breadLedgerData.map(data => data.name);
-            domIds = itemNamesToDOMIds(itemNames);
+        // Map item names to DOM ids
+        const itemNames = breadLedgerData.map(data => data.name);
+        domIds = itemNamesToDOMIds(itemNames);
 
-            // Insert rows into table
-            //Row announcing no bread if none available
-            if (breadLedgerData.length < 1) {
-                const noBreadRowHtml = `
+        // Insert rows into table
+        //Row announcing no bread if none available
+        if (breadLedgerData.length < 1) {
+            const noBreadRowHtml = `
                     <tr>
                         <td colspan="2" class="align-center" style="width:120px; padding-top:12px;">
                             <div class="lds-loaf-rise"></div>
@@ -201,15 +201,15 @@
                     </tr>
                 `;
 
-                document.getElementById('items-table-body').insertAdjacentHTML('beforeend', noBreadRowHtml);
-            } else {
-                //Populate table with spreadsheet rows
-                for (const breadData of breadLedgerData) {
-                    const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
-                        .map(i => `<option value="${i}">${i}</option>`)
-                        .join('');
+            document.getElementById('items-table-body').insertAdjacentHTML('beforeend', noBreadRowHtml);
+        } else {
+            //Populate table with spreadsheet rows
+            for (const breadData of breadLedgerData) {
+                const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
+                    .map(i => `<option value="${i}">${i}</option>`)
+                    .join('');
 
-                    const rowHtml = `
+                const rowHtml = `
                     <tr>
                         <td colspan="2">
                             <span class="image" style="vertical-align:middle;">
@@ -232,170 +232,170 @@
                     </tr>
                 `;
 
-                    document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
-                }
-            }
-
-            document.getElementById('loading-row').style.display = 'none';
-        }
-
-        function updateCart() {
-            // Initialize variables
-            let itemNames = "";
-            let itemPickups = "";
-            let itemCounts = "";
-            let itemPrices = "";
-            let totalItemPrices = 0;
-
-            // Loop through all selected items
-            for (const domId of domIds) {
-                const { name: nameId, pickup: pickupId, count: countId, price: priceId } = domId;
-                const itemCount = parseInt(document.getElementById(countId).value);
-
-                // Skip items with count 0
-                if (!itemCount) {
-                    continue;
-                }
-
-                // Get item name, pickup day and price 
-                const itemName = document.getElementById(nameId).innerText;
-                const itemPickup = document.getElementById(pickupId).innerText;
-                const itemPrice = parseFloat(document.getElementById(priceId).innerText.split('$')[1]);
-
-                // Update strings and total item prices
-                itemNames += `${itemName}<br>`;
-                itemPickups += `${itemPickup}<br>`;
-                itemCounts += `x${itemCount}<br>`;
-                itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
-                totalItemPrices += itemPrice * itemCount;
-            }
-
-            // Update HTML elements with selected item information and total price
-            document.getElementById("selected-items-name").innerHTML = itemNames;
-            document.getElementById("selected-items-pickup").innerHTML = itemPickups;
-            document.getElementById("selected-items-count").innerHTML = itemCounts;
-            document.getElementById("selected-items-price").innerHTML = itemPrices;
-            document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
-
-            //Clear form submit message
-            document.getElementById("form-submit-message").innerHTML = "";
-        }
-
-        async function updateBreadLedger() {
-            const customerName = document.getElementById('customer-name').value;
-            const email = document.getElementById('customer-email').value;
-            const paymentMethod = document.getElementById('payment-method').value;
-            const tempddPost = document.getElementById('temp-dd').value;
-
-            const customerData = {
-                customerName,
-                tempddPost,
-                paymentMethod,
-                email
-            };
-
-            const itemNames = document.getElementById("selected-items-name").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0);
-            const itemCounts = document.getElementById("selected-items-count").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0)
-                .map(value => value.substring(1));
-            const itemPickups = document.getElementById("selected-items-pickup").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0);
-            const itemPrices = document.getElementById("selected-items-price").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0)
-                .map(value => value.substring(1));
-
-            const itemData = {};
-            for (let i = 0; i < itemCounts.length; i++) {
-                const itemName = itemNames[i];
-                const itemCount = itemCounts[i];
-                const itemPickup =itemPickups[i];
-                const itemPrice =itemPrices[i];
-
-                itemData[itemName] = itemCount+","+itemPickup+","+itemPrice;
-            }
-
-            const totalPrice = document.getElementById("selected-items-total-price").innerText;
-
-            await writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
-        }
-
-        //Reset "Please confirm the instructions." message
-        function updateCheckboxMessage() {
-            document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
-            document.getElementById("read-instructions-label").style.color = "#efdecb";
-        }
-
-        //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
-        function validateCheckbox() {
-            if (!document.getElementById("read-instructions").checked) {
-                document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
-                document.getElementById("read-instructions-label").style.color = "#ffffff";
+                document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
             }
         }
 
-        //Display appropriate message when form is submitted
-        function parseFormSubmit() {
-            //Confirmation if cart items are available
-            //Clear the cart and the form and reload ledger items
-            //Log order to ledger
-            const itemsExist = true;
+        document.getElementById('loading-row').style.display = 'none';
+    }
 
-            //Reject empty cart
-            if (document.getElementById("selected-items-name").innerHTML == "") {
-                document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
-            } else if (itemsExist) {
-                //Log order to History and write subtract cart from Ledger
-                //Set message
-                document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+    function updateCart() {
+        // Initialize variables
+        let itemNames = "";
+        let itemPickups = "";
+        let itemCounts = "";
+        let itemPrices = "";
+        let totalItemPrices = 0;
 
-                //Reload available items
-                updateBreadLedger().then(async () => {
-                    await init();
+        // Loop through all selected items
+        for (const domId of domIds) {
+            const {name: nameId, pickup: pickupId, count: countId, price: priceId} = domId;
+            const itemCount = parseInt(document.getElementById(countId).value);
 
-                    //Clear cart
-                    document.getElementById("selected-items-count").innerHTML = "";
-                    document.getElementById("selected-items-pickup").innerHTML = "";
-                    document.getElementById("selected-items-name").innerHTML = "";
-                    document.getElementById("selected-items-price").innerHTML = "";
-                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-
-                    //Clear form
-                    document.getElementById("customer-name").value = "";
-                    document.getElementById("customer-email").value = "";
-                    document.getElementById("payment-method").value = "";
-                    document.getElementById("temp-dd").value = "";
-                    document.getElementById("read-instructions").checked = false;
-                });
-
+            // Skip items with count 0
+            if (!itemCount) {
+                continue;
             }
+
+            // Get item name, pickup day and price
+            const itemName = document.getElementById(nameId).innerText;
+            const itemPickup = document.getElementById(pickupId).innerText;
+            const itemPrice = parseFloat(document.getElementById(priceId).innerText.split('$')[1]);
+
+            // Update strings and total item prices
+            itemNames += `${itemName}<br>`;
+            itemPickups += `${itemPickup}<br>`;
+            itemCounts += `x${itemCount}<br>`;
+            itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
+            totalItemPrices += itemPrice * itemCount;
+        }
+
+        // Update HTML elements with selected item information and total price
+        document.getElementById("selected-items-name").innerHTML = itemNames;
+        document.getElementById("selected-items-pickup").innerHTML = itemPickups;
+        document.getElementById("selected-items-count").innerHTML = itemCounts;
+        document.getElementById("selected-items-price").innerHTML = itemPrices;
+        document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
+
+        //Clear form submit message
+        document.getElementById("form-submit-message").innerHTML = "";
+    }
+
+    async function updateBreadLedger() {
+        const customerName = document.getElementById('customer-name').value;
+        const email = document.getElementById('customer-email').value;
+        const paymentMethod = document.getElementById('payment-method').value;
+        const tempddPost = document.getElementById('temp-dd').value;
+
+        const customerData = {
+            customerName,
+            tempddPost,
+            paymentMethod,
+            email
+        };
+
+        const itemNames = document.getElementById("selected-items-name").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0);
+        const itemCounts = document.getElementById("selected-items-count").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0)
+            .map(value => value.substring(1));
+        const itemPickups = document.getElementById("selected-items-pickup").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0);
+        const itemPrices = document.getElementById("selected-items-price").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0)
+            .map(value => value.substring(1));
+
+        const itemData = {};
+        for (let i = 0; i < itemCounts.length; i++) {
+            const itemName = itemNames[i];
+            const itemCount = itemCounts[i];
+            const itemPickup = itemPickups[i];
+            const itemPrice = itemPrices[i];
+
+            itemData[itemName] = itemCount + "," + itemPickup + "," + itemPrice;
+        }
+
+        const totalPrice = document.getElementById("selected-items-total-price").innerText;
+
+        await writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
+    }
+
+    //Reset "Please confirm the instructions." message
+    function updateCheckboxMessage() {
+        document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
+        document.getElementById("read-instructions-label").style.color = "#efdecb";
+    }
+
+    //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
+    function validateCheckbox() {
+        if (!document.getElementById("read-instructions").checked) {
+            document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
+            document.getElementById("read-instructions-label").style.color = "#ffffff";
+        }
+    }
+
+    //Display appropriate message when form is submitted
+    function parseFormSubmit() {
+        //Confirmation if cart items are available
+        //Clear the cart and the form and reload ledger items
+        //Log order to ledger
+        const itemsExist = true;
+
+        //Reject empty cart
+        if (document.getElementById("selected-items-name").innerHTML === "") {
+            document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
+        } else if (itemsExist) {
+            //Log order to History and write subtract cart from Ledger
+            //Set message
+            document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+
+            //Reload available items
+            updateBreadLedger().then(async () => {
+                await init();
+
+                //Clear cart
+                document.getElementById("selected-items-count").innerHTML = "";
+                document.getElementById("selected-items-pickup").innerHTML = "";
+                document.getElementById("selected-items-name").innerHTML = "";
+                document.getElementById("selected-items-price").innerHTML = "";
+                document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+
+                //Clear form
+                document.getElementById("customer-name").value = "";
+                document.getElementById("customer-email").value = "";
+                document.getElementById("payment-method").value = "";
+                document.getElementById("temp-dd").value = "";
+                document.getElementById("read-instructions").checked = false;
+            });
+
+        }
             //Reject order if cart items are no longer available
             //Clear the cart and reload ledger items 
             //Leave form intact
-            //Do not log order to ledger!
-            else {
-                updateBreadLedger().then(async () => {
-                    //Reload available items
-                    await init();
-                    //Unavailable message
-                    document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
-                    //Clear cart
-                    document.getElementById("selected-items-count").innerHTML = "";
-                    document.getElementById("selected-items-pickup").innerHTML = "";
-                    document.getElementById("selected-items-name").innerHTML = "";
-                    document.getElementById("selected-items-price").innerHTML = "";
-                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-                });
-            }
+        //Do not log order to ledger!
+        else {
+            updateBreadLedger().then(async () => {
+                //Reload available items
+                await init();
+                //Unavailable message
+                document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
+                //Clear cart
+                document.getElementById("selected-items-count").innerHTML = "";
+                document.getElementById("selected-items-pickup").innerHTML = "";
+                document.getElementById("selected-items-name").innerHTML = "";
+                document.getElementById("selected-items-price").innerHTML = "";
+                document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+            });
         }
+    }
 
-        // Initialize the page
-        init();
-    </script>
+    // Initialize the page
+    init();
+</script>
 
 </body>
 
