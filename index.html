@@ -163,18 +163,23 @@
 <script src="assets/js/utils.js"></script>
 <script>
     /**
-     * @type {{
-     * range: string,
-     * majorDimension: string,
-     * values: [string, string, string, string, string, string, string, string][],
-     * }}
+     * @typedef {{
+     *   range: string,
+     *   majorDimension: string,
+     *   values: [string, string, string, string, string, string, string, string][],
+     * }} RawBreadLedgerData
      */
+
+    /** @type {RawBreadLedgerData} */
     let rawBreadLedgerData = {};
     let domIds = [];
 
     async function init() {
-        document.getElementById('loading-row').style.display = 'revert';
-        document.getElementById('items-table-body').innerHTML = '';
+        const loadingRow = document.getElementById('loading-row');
+        const itemsTableBody = document.getElementById('items-table-body');
+
+        loadingRow.style.display = 'revert';
+        itemsTableBody.innerHTML = '';
 
         rawBreadLedgerData = await fetchRawBreadLedgerData();
 
@@ -185,58 +190,57 @@
         domIds = itemNamesToDOMIds(itemNames);
 
         // Insert rows into table
-        //Row announcing no bread if none available
         if (breadLedgerData.length < 1) {
+            // Row announcing no bread if none available
             const noBreadRowHtml = `
-                    <tr>
-                        <td colspan="2" class="align-center" style="width:120px; padding-top:12px;">
-                            <div class="lds-loaf-rise"></div>
-                        </td>
-                        <td class="align-center">
-                            <p style="margin-bottom:0;">Out of bread!<br>More soon...</p>
-                        </td>
-                        <td class="align-center">
-                            <input class="small" type="submit" value="Refresh" onclick="init()"/>
-                        </td>
-                    </tr>
-                `;
+      <tr>
+        <td colspan="2" class="align-center" style="width:120px; padding-top:12px;">
+          <div class="lds-loaf-rise"></div>
+        </td>
+        <td class="align-center">
+          <p style="margin-bottom:0;">Out of bread!<br>More soon...</p>
+        </td>
+        <td class="align-center">
+          <input class="small" type="submit" value="Refresh" onclick="init()"/>
+        </td>
+      </tr>
+    `;
 
-            document.getElementById('items-table-body').insertAdjacentHTML('beforeend', noBreadRowHtml);
+            itemsTableBody.insertAdjacentHTML('beforeend', noBreadRowHtml);
         } else {
-            //Populate table with spreadsheet rows
+            // Populate table with spreadsheet rows
             for (const breadData of breadLedgerData) {
-                const countOptionsHtml = [...Array(breadData.quantity + 1).keys()]
-                    .map(i => `<option value="${i}">${i}</option>`)
-                    .join('');
+                const countOptionsHtml = Array.from({length: breadData.quantity + 1}, (_, i) =>
+                    `<option value="${i}">${i}</option>`).join('');
 
                 const rowHtml = `
-                    <tr>
-                        <td colspan="2">
+                        <tr>
+                          <td colspan="2">
                             <span class="image" style="vertical-align:middle;">
-                                <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:160px;"/>
+                              <img class="thumbnail" src="${breadData.image}" alt="" style="max-width:160px;"/>
                             </span>
-                        </td>
-                        <td>
+                          </td>
+                          <td>
                             <strong id="${breadData.name}-name">${breadData.name}</strong>
                             <br>
                             <span style="color: #ffffff;">Pickup </span><span id="${breadData.name}-pickup" style="color: #ffffff;">${breadData.pickup}</span>
                             <br>
                             <em><span id="${breadData.name}-size">${breadData.size}. </span>${breadData.description}</em>
-                        </td>
-                        <td align="center">
+                          </td>
+                          <td align="center">
                             <p id="${breadData.name}-price" style="text-align:center;">$${parseFloat(breadData.cost).toFixed(2)}</p>
                             <select name="${breadData.name}-count" id="${breadData.name}-count" class="select-count" onchange="updateCart()" style="margin: 0;">
-                                ${countOptionsHtml}
+                              ${countOptionsHtml}
                             </select>
-                        </td>
-                    </tr>
-                `;
+                          </td>
+                        </tr>
+                      `;
 
-                document.getElementById('items-table-body').insertAdjacentHTML('beforeend', rowHtml);
+                itemsTableBody.insertAdjacentHTML('beforeend', rowHtml);
             }
         }
 
-        document.getElementById('loading-row').style.display = 'none';
+        loadingRow.style.display = 'none';
     }
 
     function updateCart() {
@@ -316,7 +320,7 @@
             const itemPickup = itemPickups[i];
             const itemPrice = itemPrices[i];
 
-            itemData[itemName] = itemCount + "," + itemPickup + "," + itemPrice;
+            itemData[itemName] = `${itemCount},${itemPickup},${itemPrice}`;
         }
 
         const totalPrice = document.getElementById("selected-items-total-price").innerText;
@@ -340,92 +344,80 @@
 
     //Display appropriate message when form is submitted
     function parseFormSubmit() {
-        //Confirmation if cart items are available
-        //Clear the cart and the form and reload ledger items
-        //Log order to ledger
+        const selectedItemsName = document.getElementById("selected-items-name").innerHTML;
+        const selectedItemsCount = document.getElementById("selected-items-count").innerHTML;
 
+        if (selectedItemsName === "") {
+            document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
+            return;
+        }
 
-        fetchRawBreadLedgerData().then(async function (rawBreadLedgerData) {
-            const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
+        fetchRawBreadLedgerData()
+            .then(async function (rawBreadLedgerData) {
+                const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
 
-            const itemNames = document.getElementById("selected-items-name").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0);
-            const itemCounts = document.getElementById("selected-items-count").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0)
-                .map(value => value.substring(1))
+                const itemNames = selectedItemsName.split('<br>').filter(value => value.length > 0);
+                const itemCounts = selectedItemsCount.split('<br>').filter(value => value.length > 0).map(value => value.substring(1));
 
+                const cartAsMap = {};
+                for (let i = 0; i < itemNames.length; i++) {
+                    const name = itemNames[i];
+                    const count = itemCounts[i];
 
-            const cartAsMap = {};
-            for (let i = 0; i < itemNames.length; i++) {
-                const name = itemNames[i];
-                const count = itemCounts[i];
-
-                cartAsMap[name] = parseInt(count);
-            }
-
-            const availableItems = {};
-            for (const data of breadLedgerData) {
-                availableItems[data.name] = data.quantity;
-            }
-
-            let itemsExist = true;
-            for (const [name, quantity] of Object.entries(cartAsMap)) {
-                const availableQuantity = availableItems[name];
-
-                if (availableQuantity === undefined || availableQuantity < quantity) {
-                    itemsExist = false;
-                    break;
+                    cartAsMap[name] = parseInt(count);
                 }
-            }
 
-            //Reject empty cart
-            if (document.getElementById("selected-items-name").innerHTML === "") {
-                document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
-            } else if (itemsExist) {
-                //Log order to History and write subtract cart from Ledger
-                //Set message
-                document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+                const availableItems = {};
+                for (const data of breadLedgerData) {
+                    availableItems[data.name] = data.quantity;
+                }
 
-                //Reload available items
-                await updateBreadLedger();
-                await init();
+                let itemsExist = true;
+                for (const [name, quantity] of Object.entries(cartAsMap)) {
+                    const availableQuantity = availableItems[name];
 
-                //Clear cart
-                document.getElementById("selected-items-count").innerHTML = "";
-                document.getElementById("selected-items-pickup").innerHTML = "";
-                document.getElementById("selected-items-name").innerHTML = "";
-                document.getElementById("selected-items-price").innerHTML = "";
-                document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+                    if (availableQuantity === undefined || availableQuantity < quantity) {
+                        itemsExist = false;
+                        break;
+                    }
+                }
 
-                //Clear form
-                document.getElementById("customer-name").value = "";
-                document.getElementById("customer-email").value = "";
-                document.getElementById("payment-method").value = "";
-                document.getElementById("temp-dd").value = "";
-                document.getElementById("read-instructions").checked = false;
+                if (itemsExist) {
+                    // Log order to History and subtract cart from Ledger
+                    document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
 
+                    // Reload available items and initialize the page
+                    await updateBreadLedger();
+                    await init();
 
-            }
-                //Reject order if cart items are no longer available
-                //Clear the cart and reload ledger items
-                //Leave form intact
-            //Do not log order to ledger!
-            else {
-                //Reload available items
-                await init();
+                    // Clear cart
+                    document.getElementById("selected-items-count").innerHTML = "";
+                    document.getElementById("selected-items-pickup").innerHTML = "";
+                    document.getElementById("selected-items-name").innerHTML = "";
+                    document.getElementById("selected-items-price").innerHTML = "";
+                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
 
-                //Unavailable message
-                document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br> Please re-select items and place your order again.";
-                //Clear cart
-                document.getElementById("selected-items-count").innerHTML = "";
-                document.getElementById("selected-items-pickup").innerHTML = "";
-                document.getElementById("selected-items-name").innerHTML = "";
-                document.getElementById("selected-items-price").innerHTML = "";
-                document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-            }
-        })
+                    // Clear form
+                    document.getElementById("customer-name").value = "";
+                    document.getElementById("customer-email").value = "";
+                    document.getElementById("payment-method").value = "";
+                    document.getElementById("temp-dd").value = "";
+                    document.getElementById("read-instructions").checked = false;
+                } else {
+                    // Reload available items
+                    await init();
+
+                    // Unavailable message
+                    document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br>Please re-select items and place your order again.";
+
+                    // Clear cart
+                    document.getElementById("selected-items-count").innerHTML = "";
+                    document.getElementById("selected-items-pickup").innerHTML = "";
+                    document.getElementById("selected-items-name").innerHTML = "";
+                    document.getElementById("selected-items-price").innerHTML = "";
+                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+                }
+            });
     }
 
     // Initialize the page
