@@ -19,7 +19,7 @@
     <header id="header" class="alt">
         <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%"/></span>
         <h1>Joshua's Bread</h1>
-        <p>This site is not live! Orders made at this time will not be processed.</p>
+        <p style="color:green;">This site is not live! Orders made at this time will not be processed.</p>
     </header>
     <!-- Main -->
     <div id="main" style="max-width:1200px;">
@@ -27,7 +27,9 @@
             <div class="table-wrapper">
                 <header class="major">
                     <h2>Available breads</h2>
-                    <p>Straight from the Lord's oven</p>
+                    <p>Straight from the Lord's oven<br>
+                        <a href="faq.html" target="_blank" >Test FAQ link</a>
+                    </p>
                 </header>
                 <table>
                     <tr id="loading-row">
@@ -384,7 +386,7 @@
 
                 if (itemsExist) {
                     // Log order to History and subtract cart from Ledger
-                    document.getElementById("form-submit-message").innerHTML = "<strong>We are not yet taking orders, but thanks for trying out this form!</strong><br>You will NOT receive an email confirmation.";
+                    document.getElementById("form-submit-message").innerHTML = "<strong>Order confirmed and email sent.</strong><br>This site is not live.";
 
                     // Reload available items and initialize the page
                     await updateBreadLedger();
@@ -408,7 +410,7 @@
                     await init();
 
                     // Unavailable message
-                    document.getElementById("form-submit-message").innerHTML = "<strong>Some items in your cart are no longer available.</strong><br>Please re-select items and place your order again.";
+                    document.getElementById("form-submit-message").innerHTML = "<strong>Items in your cart are out of stock!</strong><br>Please re-select and place your order again.";
 
                     // Clear cart
                     document.getElementById("selected-items-count").innerHTML = "";
