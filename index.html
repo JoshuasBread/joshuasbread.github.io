@@ -19,25 +19,26 @@
         <header id="header" class="alt">
             <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
             <h1>Joshua's Bread</h1>
-            <p style="color:green;">This site is not live! Orders made at this time will not be processed.</p>
+            <p><b style="color:green">This site is not live! Orders made at this time will not be processed.</b>
+                <br>Welcome! I bake artisan breads and sell from my home in Albany.
+                <br><u><a href="faq.html" target="_blank">Read the FAQ to learn more</a></u>
+            </p>
         </header>
         <!-- Main -->
         <div id="main" style="max-width:1200px;">
             <section id="first" class='main'>
                 <div class="table-wrapper">
                     <header class="major">
-                        <p>
-                            <a href="faq.html" target="_blank">Test FAQ link</a>
-                        </p>
                         <h2 id="instructions">How it works</h2>
-                        <ol>
-                            <li><b>Order</b> items on this page</li>
+                        <ol style="line-height: 150%;">
+                            <li><b>Order</b> here and check confirmation email</li>
                             <li><b>Pay</b> in advance using your selected method</li>
-                            <li><b>Review</b> pickup dates in confirmation email</li>
-                            <li><b>Pick up</b> items on their listed days at <u><a href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">000 Street Ave, Albany CA</a></u></li>
+                            <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at <u><a
+                                        href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">000 Street Ave,
+                                        Albany CA</a></u></li>
                             <li><b>Enjoy</b> and share with your friends!</li>
                         </ol>
-                        Please note pickup dates carefully. You won't receive reminder emails.<br><br>
+                        Please review pickup dates carefully. You won't receive reminders.<br><br>
                     </header>
                     <h2>Place your order</h2>
                     <table>
@@ -99,10 +100,10 @@
                                 <div class="col-6 col-12-xsmall">
                                     <select name="payment-method" id="payment-method" required>
                                         <option value="" disabled selected hidden>Payment Method</option>
-                                        <option value="Cash">Cash</option>
                                         <option value="Venmo">Venmo @JoshuaHeller</option>
                                         <option value="Zelle">Zelle</option>
-                                        <option value="Paypal">Paypal</option>
+                                        <option value="Account Balance">Account Balance</option>
+                                        <option value="Cash">Cash</option>
                                     </select>
                                 </div>
                                 <div class="col-6 col-12-xsmall">
@@ -130,35 +131,45 @@
                             <p id="form-submit-message" style="text-align: center;"></p>
                         </form>
                     </section>
-
                 </div>
             </section>
-
         </div>
         <!-- Footer -->
         <footer id="footer">
             <section>
-                <h2>About</h2>
-                <dl class="alt">
-                    <dt>Address</dt>
-                    <dd>Fake &bull; Fake, CA</dd>
-                    <dt>WhatsApp</dt>
-                    <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
-                    </dd>
-                    <dt>Contact</dt>
-                    <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
-                </dl>
+                <div style="text-align:center;">
+                    <h2>About</h2>
+                    <dl class="alt" style="display:inline-block;">
+                        <dt>Address</dt>
+                        <dd>Fake &bull;<br> Fake, CA</dd>
+                        <dt>WhatsApp</dt>
+                        <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
+                        </dd>
+                        <dt>Contact</dt>
+                        <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+                    </dl>
+                </div>
             </section>
             <section>
-                <h2>Contributors</h2>
-                <dl class="alt">
-                    <dt>Website</dt>
-                    <dd>Daniel</dd>
-                    <dt>Logo</dt>
-                    <dd>Zoe</dd>
-                    <dt>Bread</dt>
-                    <dd>Joshua</dd>
-                </dl>
+                <div style="text-align: center;">
+                    <h2>Contributors</h2>
+                    <dl class="alt" style="display:inline-block;">
+                        <dt>Website</dt>
+                        <dd>Daniel</dd>
+                        <dt>Logo</dt>
+                        <dd>Zoe</dd>
+                        <dt>Bread</dt>
+                        <dd>Joshua</dd>
+                    </dl>
+                </div>
+            </section>
+            <section style="width:100%;">
+                <div style="display: inline-block; width:100%; text-align:center;">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.4777438216684!2d-122.2931283241299!3d37.89589457195507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857937a9b40395%3A0xffc41553151a4209!2sMemorial%20Park!5e0!3m2!1sen!2sus!4v1687385581782!5m2!1sen!2sus"
+                        width="70%" height="200" style="border:3px solid #efdecb; border-radius:10px;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </section>
         </footer>
     </div>

@@ -165,7 +165,7 @@ body, input, select, textarea {
 @media screen and (max-width: 480px) {
 
     .shrinkspan {
-        font-size: 3vw;
+        font-size: 2.9vw;
     }
 
 }
@@ -3595,8 +3595,7 @@ body.is-preload #header.alt .logo {
 }
 
 #footer > * {
-    width: calc(50% - 2em);
-    margin-left: 2em;
+    width: 50%;
 }
 
 #footer .copyright {
@@ -3626,15 +3625,11 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 736px) {
 
     #footer {
-        padding: 1em 2em 1em 2em;
-        display: block;
+        padding: 1em 0.5em;
+
     }
 
-    #footer > * {
-        width: 100%;
-        margin-left: 1em;
-        margin-bottom: 1em;
-    }
+
 
 }
 
@@ -3642,6 +3637,12 @@ body.is-preload #header.alt .logo {
 
     #footer {
         padding: 2em 1.5em 1em 1.5em;
+        display: block;
+    }
+
+        #footer > * {
+        width: 100%;
+        margin-bottom: 1em;
     }
 
 }
