@@ -2427,7 +2427,7 @@ input[type="radio"]:focus + label:before {
 ol {
     list-style: decimal;
     margin: 0 0 1em 0;
-    padding-left: 1.25em;
+    padding-left: 1.5em;
 }
 
 ol li {
@@ -3636,7 +3636,7 @@ body.is-preload #header.alt .logo {
 @media screen and (max-width: 480px) {
 
     #footer {
-        padding: 2em 1.5em 1em 1.5em;
+        padding: 2em 0.5em 1em 0.5em;
         display: block;
     }
 
