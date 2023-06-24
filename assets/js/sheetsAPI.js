@@ -31,7 +31,7 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
     const productOrderString = productOrder.join(',');
 
     // Add order to history
-    const {customerName, email, paymentMethod, tempddPost} = customerData;
+    const { customerName, email, paymentMethod, tempddPost } = customerData;
     const addToOrderHistoryPromise = _addToOrderHistory({
         time: nowPST,
         name: customerName,
@@ -86,13 +86,18 @@ function rawDataToTableData(rawBreadLedgerData) {
             continue;
         }
 
+        // No blank pickup dates
+        if (pickup === "") {
+            continue;
+        }
+
         data.push({
             name,
             size,
             quantity: parseInt(quantity),
             description,
             cost: parseFloat(cost),
-            pickup, //As a string, not a date object
+            pickup, // As a string, not a date object
             image: `images/${image}`
         });
     }
@@ -161,3 +166,14 @@ async function _reduceBreadLedgerQuantity(data) {
     });
 }
 
+async function fetchBusinessInfo() {
+    const res = await fetch("https://hadrffbborwwrcvvacex.functions.supabase.co/serve-business-info", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${anonKey}`
+        },
+    });
+
+    return res.json();
+}

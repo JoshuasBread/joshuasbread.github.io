@@ -146,7 +146,7 @@
                         <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
                         </dd>
                         <dt>Contact</dt>
-                        <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+                        <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
                     </dl>
                 </div>
             </section>
@@ -159,7 +159,7 @@
                         <dt>Logo</dt>
                         <dd>Zoe</dd>
                         <dt>Bread</dt>
-                        <dd>Joshua</dd>
+                        <dd id="joshua-full-name"></dd>
                     </dl>
                 </div>
             </section>
@@ -195,6 +195,14 @@
         /** @type {RawBreadLedgerData} */
         let rawBreadLedgerData = {};
         let domIds = [];
+
+        fetchBusinessInfo().then(function (businessInfo) {
+            console.log(businessInfo);
+            const contactEmail = document.getElementById('contact-email');
+            contactEmail.href = "mailto:"+businessInfo.bakeryEmailAddress;
+            const joshuaFullName = document.getElementById('joshua-full-name');
+            joshuaFullName.innerText = businessInfo.joshuaFullName;
+        });
 
         async function init() {
             const loadingRow = document.getElementById('loading-row');
