@@ -20,7 +20,7 @@
             <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
             <h1>Joshua's Bread</h1>
             <p><b style="color:green">This site is not live! Orders made at this time will not be processed.</b>
-                <br>Welcome! I bake artisan breads and sell from my home in Albany.
+                <br>Welcome! I bake artisan breads and sell from my home in <span id="header-city-state"></span>.
                 <br><u><a href="faq.html">Read the FAQ to learn more</a></u>
             </p>
         </header>
@@ -33,9 +33,11 @@
                         <ol style="line-height: 150%;">
                             <li><b>Order</b> here and check confirmation email</li>
                             <li><b>Pay</b> in advance using your selected method</li>
-                            <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at <u><a
-                                        href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">000 Street Ave,
-                                        Albany CA</a></u></li>
+                            <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at
+                                <u><a href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">
+                                        <span id="instructions-street-address"></span>, <span id="instructions-city-state"></span>
+                                    </a></u>
+                            </li>
                             <li><b>Enjoy</b> and share with your friends!</li>
                         </ol>
                         Please review pickup dates carefully. You won't receive reminders.<br><br>
@@ -100,7 +102,7 @@
                                 <div class="col-6 col-12-xsmall">
                                     <select name="payment-method" id="payment-method" required>
                                         <option value="" disabled selected hidden>Payment Method</option>
-                                        <option value="Venmo">Venmo @JoshuaHeller</option>
+                                        <option value="Venmo">Venmo @joshuasbread</option>
                                         <option value="Zelle">Zelle</option>
                                         <option value="Account Balance">Account Balance</option>
                                         <option value="Cash">Cash</option>
@@ -141,9 +143,9 @@
                     <h2>About</h2>
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Address</dt>
-                        <dd>Fake<br> Fake, CA</dd>
+                        <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
                         <dt>WhatsApp</dt>
-                        <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
+                        <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
                         </dd>
                         <dt>Contact</dt>
                         <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
@@ -155,9 +157,9 @@
                     <h2>Contributors</h2>
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Website</dt>
-                        <dd>Daniel</dd>
+                        <dd id="daniel-full-name"></dd>
                         <dt>Logo</dt>
-                        <dd>Zoe</dd>
+                        <dd id="zoe-full-name"></dd>
                         <dt>Bread</dt>
                         <dd id="joshua-full-name"></dd>
                     </dl>
@@ -198,10 +200,34 @@
 
         fetchBusinessInfo().then(function (businessInfo) {
             console.log(businessInfo);
+
+            //Get secret business info elements by id
+            const instructionsStreetAddress = document.getElementById('instructions-street-address');
+            const footerStreetAddress = document.getElementById('footer-street-address');
+            const headerCityState = document.getElementById('header-city-state');
+            const instructionsCityState = document.getElementById('instructions-city-state');
+            const footerCityState = document.getElementById('footer-city-state');
+            const whatsappLink = document.getElementById('whatsapp-link');
             const contactEmail = document.getElementById('contact-email');
-            contactEmail.href = "mailto:"+businessInfo.bakeryEmailAddress;
             const joshuaFullName = document.getElementById('joshua-full-name');
+            const zoeFullName = document.getElementById('zoe-full-name');
+            const danielFullName = document.getElementById('daniel-full-name');
+
+            //Set secret business info elements by id
+            headerCityState.innerText = businessInfo.bakeryCityState;
+            instructionsCityState.innerText = businessInfo.bakeryCityState;
+            footerCityState.innerText = businessInfo.bakeryCityState;
+
+            instructionsStreetAddress.innerText = businessInfo.bakeryStreetAddress;
+            footerStreetAddress.innerText = businessInfo.bakeryStreetAddress;
+
+            whatsappLink.href = businessInfo.bakeryWhatsappLink;
+            contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+
             joshuaFullName.innerText = businessInfo.joshuaFullName;
+            zoeFullName.innerText = businessInfo.zoeFullName;
+            danielFullName.innerText = businessInfo.danielFullName;
+
         });
 
         async function init() {
