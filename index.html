@@ -186,17 +186,6 @@
     <script src="assets/js/sheetsAPI.js"></script>
     <script src="assets/js/utils.js"></script>
     <script>
-        /**
-         * @typedef {{
-         *   range: string,
-         *   majorDimension: string,
-         *   values: [string, string, string, string, string, string, string, string][],
-         * }} RawBreadLedgerData
-         */
-
-        /** @type {RawBreadLedgerData} */
-        let rawBreadLedgerData = {};
-        let domIds = [];
 
         fetchBusinessInfo().then(function (businessInfo) {
             console.log(businessInfo);
@@ -229,6 +218,19 @@
             danielFullName.innerText = businessInfo.danielFullName;
 
         });
+
+        /**
+         * @typedef {{
+         *   range: string,
+         *   majorDimension: string,
+         *   values: [string, string, string, string, string, string, string, string][],
+         * }} RawBreadLedgerData
+         */
+
+        /** @type {RawBreadLedgerData} */
+        
+        let rawBreadLedgerData = {};
+        let domIds = [];
 
         async function init() {
             const loadingRow = document.getElementById('loading-row');

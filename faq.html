@@ -35,7 +35,7 @@
         <header id="header" class="alt">
             <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
             <h1>Joshua's Bread</h1>
-            <p>Welcome! I bake artisan breads and sell from my home in Albany.
+            <p>Welcome! I bake artisan breads and sell from my home in <span id="header-city-state"></span>.
                 <br><u style="color:#efdecb;"><a href="index.html">Order bread here</a></u>
             </p>
         </header>
@@ -45,7 +45,7 @@
                 <div class="table-wrapper">
                     <header class="major">
                         <h2>FAQ</h2>
-                        <p>Have another question? <u><a href="mailto:fakery@joshuasbread.com" target="_blank">Ask
+                        <p>Have another question? <u><a id="faq-contact-email" target="_blank">Ask
                                     Joshua</a></u>!</p>
                     </header>
                     <table>
@@ -162,12 +162,12 @@
                     <h2>About</h2>
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Address</dt>
-                        <dd>Fake<br> Fake, CA</dd>
+                        <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
                         <dt>WhatsApp</dt>
-                        <dd><u><a href="https://chat.whatsapp.com/fake" target="_blank">Join the group</a></u>
+                        <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
                         </dd>
                         <dt>Contact</dt>
-                        <dd><u><a href="mailto:fake@spokesonawheel.com" target="_blank">Email Joshua</a></u></dd>
+                        <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
                     </dl>
                 </div>
             </section>
@@ -176,11 +176,11 @@
                     <h2>Contributors</h2>
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Website</dt>
-                        <dd>Daniel</dd>
+                        <dd id="daniel-full-name"></dd>
                         <dt>Logo</dt>
-                        <dd>Zoe</dd>
+                        <dd id="zoe-full-name"></dd>
                         <dt>Bread</dt>
-                        <dd>Joshua</dd>
+                        <dd id="joshua-full-name"></dd>
                     </dl>
                 </div>
             </section>
@@ -219,6 +219,37 @@
                 }
             });
         }
+
+        fetchBusinessInfo().then(function (businessInfo) {
+            console.log(businessInfo);
+
+            //Get secret business info elements by id
+            const headerCityState = document.getElementById('header-city-state');
+            const footerCityState = document.getElementById('footer-city-state');
+            const footerStreetAddress = document.getElementById('footer-street-address');
+            const whatsappLink = document.getElementById('whatsapp-link');
+            const faqContactEmail = document.getElementById('faq-contact-email');
+            const contactEmail = document.getElementById('contact-email');
+            const joshuaFullName = document.getElementById('joshua-full-name');
+            const zoeFullName = document.getElementById('zoe-full-name');
+            const danielFullName = document.getElementById('daniel-full-name');
+
+            //Set secret business info elements by id
+            headerCityState.innerText = businessInfo.bakeryCityState;
+            footerCityState.innerText = businessInfo.bakeryCityState;
+            footerStreetAddress.innerText = businessInfo.bakeryStreetAddress;
+
+            whatsappLink.href = businessInfo.bakeryWhatsappLink;
+            contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+            faqContactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+
+            joshuaFullName.innerText = businessInfo.joshuaFullName;
+            zoeFullName.innerText = businessInfo.zoeFullName;
+            danielFullName.innerText = businessInfo.danielFullName;
+
+        });
+
+
     </script>
 
 </body>
