@@ -3630,7 +3630,6 @@ body.is-preload #header.alt .logo {
     }
 
 
-
 }
 
 @media screen and (max-width: 480px) {
@@ -3640,7 +3639,7 @@ body.is-preload #header.alt .logo {
         display: block;
     }
 
-        #footer > * {
+    #footer > * {
         width: 100%;
         margin-bottom: 1em;
     }
@@ -3715,7 +3714,7 @@ body.is-preload #header.alt .logo {
     border-top: #efdecb dashed 1px;
     border-radius: 32px 32px 7px 7px;
     margin-top: 12px;
-    animation: lds-loaf-rise 4s linear infinite;
+    animation: lds-loaf-rise 6s linear infinite;
 }
 
 @keyframes lds-loaf-rise {
@@ -3741,7 +3740,6 @@ body.is-preload #header.alt .logo {
         background: #813D18;
     }
     90% {
-        transform: matrix(1.6, 0, 0, 1.7, 0, -5);
         background: #813D18;
         border-top: #d17f35 dashed 1px;
         transform: rotateY(90deg);
