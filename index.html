@@ -4,253 +4,221 @@
 <head>
     <title>Joshua's Bread</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
     <noscript>
-        <link rel="stylesheet" href="assets/css/noscript.css" />
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
 </head>
 
 <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Header -->
-        <header id="header" class="alt">
-            <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
-            <h1>Joshua's Bread</h1>
-            <p><b style="color:green">This site is not live! Orders made at this time will not be processed.</b>
-                <br>Welcome! I bake artisan breads and sell from my home in <span id="header-city-state"></span>.
-                <br><u><a href="faq.html">Read the FAQ to learn more</a></u>
-            </p>
-        </header>
-        <!-- Main -->
-        <div id="main" style="max-width:1200px;">
-            <section id="first" class='main'>
-                <div class="table-wrapper">
-                    <header class="major">
-                        <h2 id="instructions">How it works</h2>
-                        <ol style="line-height: 150%;">
-                            <li><b>Order</b> here and check confirmation email</li>
-                            <li><b>Pay</b> in advance using your selected method</li>
-                            <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at
-                                <u><a href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">
-                                        <span id="instructions-street-address"></span>, <span id="instructions-city-state"></span>
-                                    </a></u>
-                            </li>
-                            <li><b>Enjoy</b> and share with your friends!</li>
-                        </ol>
-                        Please review pickup dates carefully. You won't receive reminders.<br><br>
-                    </header>
-                    <h2>Place your order</h2>
-                    <table>
-                        <tr id="loading-row">
-                            <td colspan="1"></td>
-                            <td colspan="2" class="align-center">
-                                <div class="lds-loaf-rise"></div>
-                                <p>Loaves are baking...</p>
-                            </td>
-                            <td colspan="1"></td>
-                        </tr>
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%"/></span>
+        <h1>Joshua's Bread</h1>
+        <p><b style="color:green">This site is not live! Orders made at this time will not be processed.</b>
+            <br>Welcome! I bake artisan breads and sell from my home in <span id="header-city-state"></span>.
+            <br><u><a href="faq.html">Read the FAQ to learn more</a></u>
+        </p>
+    </header>
+    <!-- Main -->
+    <div id="main" style="max-width:1200px;">
+        <section id="first" class='main'>
+            <div class="table-wrapper">
+                <header class="major">
+                    <h2 id="instructions">How it works</h2>
+                    <ol style="line-height: 150%;">
+                        <li><b>Order</b> here and check confirmation email</li>
+                        <li><b>Pay</b> in advance using your selected method</li>
+                        <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at
+                            <u><a href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">
+                                <span id="instructions-street-address"></span>, <span
+                                    id="instructions-city-state"></span>
+                            </a></u>
+                        </li>
+                        <li><b>Enjoy</b> and share with your friends!</li>
+                    </ol>
+                    Please review pickup dates carefully. You won't receive reminders.<br><br>
+                </header>
+                <h2>Place your order</h2>
+                <table>
+                    <tr id="loading-row">
+                        <td colspan="1"></td>
+                        <td colspan="2" class="align-center">
+                            <div class="lds-loaf-rise"></div>
+                            <p>Loaves are baking...</p>
+                        </td>
+                        <td colspan="1"></td>
+                    </tr>
 
-                        <tbody id="items-table-body">
-                        </tbody>
+                    <tbody id="items-table-body">
+                    </tbody>
 
-                        <tfoot id="items-table-foot">
-                            <tr>
-                                <td style="text-align: right; padding-left:0; padding-bottom:0;">
-                                    <h2 style="text-align: left; padding-bottom:0;">Cart</h2>
-                                </td>
-                            </tr>
-                            <tr style="line-height:150%;">
-                                <td style="text-align: left; font-weight: bold; padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-pickup"></span>
-                                </td>
-                                <td style="text-align: right; padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-count"></span>
-                                </td>
-                                <td style="padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-name"></span>
-                                </td>
-                                <td style="padding: 0.4em 0.1em;">
-                                    <span class="shrinkspan" id="selected-items-price"></span>
-                                </td>
-                            </tr>
-                            <tr style="font-weight: bold;">
-                                <td colspan="2"></td>
-                                <td style="text-align: right;">Total</td>
-                                <td id="selected-items-total-price" style="padding-left: 0.1em;">
-                                    $0.00
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <tfoot id="items-table-foot">
+                    <tr>
+                        <td style="text-align: right; padding-left:0; padding-bottom:0;">
+                            <h2 style="text-align: left; padding-bottom:0;">Cart</h2>
+                        </td>
+                    </tr>
+                    <tr style="line-height:150%;">
+                        <td style="text-align: left; font-weight: bold; padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-pickup"></span>
+                        </td>
+                        <td style="text-align: right; padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-count"></span>
+                        </td>
+                        <td style="padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-name"></span>
+                        </td>
+                        <td style="padding: 0.4em 0.1em;">
+                            <span class="shrinkspan" id="selected-items-price"></span>
+                        </td>
+                    </tr>
+                    <tr style="font-weight: bold;">
+                        <td colspan="2"></td>
+                        <td style="text-align: right;">Total</td>
+                        <td id="selected-items-total-price" style="padding-left: 0.1em;">
+                            $0.00
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
 
-                    <section>
-                        <hr>
-                        <h2>Checkout</h2>
-                        <form method="post" onsubmit="parseFormSubmit();return false;">
-                            <div class="row gtr-uniform">
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="customer-name" id="customer-name" value=""
-                                        placeholder="Full Name" required />
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="email" name="customer-email" id="customer-email" value=""
-                                        placeholder="Email" required />
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <select name="payment-method" id="payment-method" required>
-                                        <option value="" disabled selected hidden>Payment Method</option>
-                                        <option value="Venmo">Venmo @joshuasbread</option>
-                                        <option value="Zelle">Zelle</option>
-                                        <option value="Account Balance">Account Balance</option>
-                                        <option value="Cash">Cash</option>
-                                    </select>
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <select name="temp-dd" id="temp-dd" required>
-                                        <option value="" disabled selected hidden>Temp Dropdown</option>
-                                        <option value="a">a</option>
-                                        <option value="b">b</option>
-                                        <option value="c">c</option>
-                                        <option value="d">d</option>
-                                    </select>
-                                </div>
-                                <div class="col-12" style="text-align: center;">
-                                    <input type="checkbox" id="read-instructions" name="read-instructions"
-                                        style="position:relative;" onclick="updateCheckboxMessage();" required />
-                                    <label for="read-instructions" id="read-instructions-label">I've read the
-                                        instructions</label>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="actions" style="justify-content: center">
-                                        <li><input type="submit" value="Submit" onclick="validateCheckbox()" /></li>
-                                    </ul>
-                                </div>
+                <section>
+                    <hr>
+                    <h2>Checkout</h2>
+                    <form method="post" onsubmit="parseFormSubmit();return false;">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="customer-name" id="customer-name" value=""
+                                       placeholder="Full Name" required/>
                             </div>
-                            <br>
-                            <p id="form-submit-message" style="text-align: center;"></p>
-                        </form>
-                    </section>
-                </div>
-            </section>
-        </div>
-        <!-- Footer -->
-        <footer id="footer">
-            <section>
-                <div style="text-align:center;">
-                    <h2>About</h2>
-                    <dl class="alt" style="display:inline-block; text-align:left;">
-                        <dt>Address</dt>
-                        <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
-                        <dt>WhatsApp</dt>
-                        <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
-                        </dd>
-                        <dt>Contact</dt>
-                        <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
-                    </dl>
-                </div>
-            </section>
-            <section>
-                <div style="text-align: center;">
-                    <h2>Contributors</h2>
-                    <dl class="alt" style="display:inline-block; text-align:left;">
-                        <dt>Website</dt>
-                        <dd id="daniel-full-name"></dd>
-                        <dt>Logo</dt>
-                        <dd id="zoe-full-name"></dd>
-                        <dt>Bread</dt>
-                        <dd id="joshua-full-name"></dd>
-                    </dl>
-                </div>
-            </section>
-            <section style="width:100%;">
-                <div style="display: inline-block; width:100%; text-align:center;">
-                    <iframe
+                            <div class="col-6 col-12-xsmall">
+                                <input type="email" name="customer-email" id="customer-email" value=""
+                                       placeholder="Email" required/>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select name="payment-method" id="payment-method" required>
+                                    <option value="" disabled selected hidden>Payment Method</option>
+                                    <option value="Venmo">Venmo @joshuasbread</option>
+                                    <option value="Zelle">Zelle</option>
+                                    <option value="Account Balance">Account Balance</option>
+                                    <option value="Cash">Cash</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <select name="temp-dd" id="temp-dd" required>
+                                    <option value="" disabled selected hidden>Temp Dropdown</option>
+                                    <option value="a">a</option>
+                                    <option value="b">b</option>
+                                    <option value="c">c</option>
+                                    <option value="d">d</option>
+                                </select>
+                            </div>
+                            <div class="col-12" style="text-align: center;">
+                                <input type="checkbox" id="read-instructions" name="read-instructions"
+                                       style="position:relative;" onclick="updateCheckboxMessage();" required/>
+                                <label for="read-instructions" id="read-instructions-label">I've read the
+                                    instructions</label>
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions" style="justify-content: center">
+                                    <li><input type="submit" value="Submit" onclick="validateCheckbox()"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                        <p id="form-submit-message" style="text-align: center;"></p>
+                    </form>
+                </section>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <div style="text-align:center;">
+                <h2>About</h2>
+                <dl class="alt" style="display:inline-block; text-align:left;">
+                    <dt>Address</dt>
+                    <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
+                    <dt>WhatsApp</dt>
+                    <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
+                    </dd>
+                    <dt>Contact</dt>
+                    <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
+                </dl>
+            </div>
+        </section>
+        <section>
+            <div style="text-align: center;">
+                <h2>Contributors</h2>
+                <dl class="alt" style="display:inline-block; text-align:left;">
+                    <dt>Website</dt>
+                    <dd id="daniel-full-name"></dd>
+                    <dt>Logo</dt>
+                    <dd id="zoe-full-name"></dd>
+                    <dt>Bread</dt>
+                    <dd id="joshua-full-name"></dd>
+                </dl>
+            </div>
+        </section>
+        <section style="width:100%;">
+            <div style="display: inline-block; width:100%; text-align:center;">
+                <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.4777438216684!2d-122.2931283241299!3d37.89589457195507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857937a9b40395%3A0xffc41553151a4209!2sMemorial%20Park!5e0!3m2!1sen!2sus!4v1687385581782!5m2!1sen!2sus"
                         width="70%" height="200" style="border:3px solid #efdecb; border-radius:10px;"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </section>
-        </footer>
-    </div>
-    <!-- Scripts -->
-    <script src="assets/js/default/js/jquery.min.js"></script>
-    <script src="assets/js/default/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/default/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/default/js/browser.min.js"></script>
-    <script src="assets/js/default/js/breakpoints.min.js"></script>
-    <script src="assets/js/default/js/util.js"></script>
-    <script src="assets/js/default/js/main.js"></script>
-    <script src="assets/js/sheetsAPI.js"></script>
-    <script src="assets/js/utils.js"></script>
-    <script>
+            </div>
+        </section>
+    </footer>
+</div>
+<!-- Scripts -->
+<script src="assets/js/default/js/jquery.min.js"></script>
+<script src="assets/js/default/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/default/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/default/js/browser.min.js"></script>
+<script src="assets/js/default/js/breakpoints.min.js"></script>
+<script src="assets/js/default/js/util.js"></script>
+<script src="assets/js/default/js/main.js"></script>
+<script src="assets/js/sheetsAPI.js"></script>
+<script src="assets/js/utils.js"></script>
+<script>
+    /**
+     * @typedef {{
+     *   range: string,
+     *   majorDimension: string,
+     *   values: [string, string, string, string, string, string, string, string][],
+     * }} RawBreadLedgerData
+     */
 
-        fetchBusinessInfo().then(function (businessInfo) {
-            console.log(businessInfo);
+    /** @type {RawBreadLedgerData} */
 
-            //Get secret business info elements by id
-            const instructionsStreetAddress = document.getElementById('instructions-street-address');
-            const footerStreetAddress = document.getElementById('footer-street-address');
-            const headerCityState = document.getElementById('header-city-state');
-            const instructionsCityState = document.getElementById('instructions-city-state');
-            const footerCityState = document.getElementById('footer-city-state');
-            const whatsappLink = document.getElementById('whatsapp-link');
-            const contactEmail = document.getElementById('contact-email');
-            const joshuaFullName = document.getElementById('joshua-full-name');
-            const zoeFullName = document.getElementById('zoe-full-name');
-            const danielFullName = document.getElementById('daniel-full-name');
+    let rawBreadLedgerData = {};
+    let domIds = [];
 
-            //Set secret business info elements by id
-            headerCityState.innerText = businessInfo.bakeryCityState;
-            instructionsCityState.innerText = businessInfo.bakeryCityState;
-            footerCityState.innerText = businessInfo.bakeryCityState;
+    async function init() {
+        const loadingRow = document.getElementById('loading-row');
+        const itemsTableBody = document.getElementById('items-table-body');
 
-            instructionsStreetAddress.innerText = businessInfo.bakeryStreetAddress;
-            footerStreetAddress.innerText = businessInfo.bakeryStreetAddress;
+        loadingRow.style.display = 'revert';
+        itemsTableBody.innerHTML = '';
 
-            whatsappLink.href = businessInfo.bakeryWhatsappLink;
-            contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+        rawBreadLedgerData = await fetchRawBreadLedgerData();
 
-            joshuaFullName.innerText = businessInfo.joshuaFullName;
-            zoeFullName.innerText = businessInfo.zoeFullName;
-            danielFullName.innerText = businessInfo.danielFullName;
+        const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
 
-        });
+        // Map item names to DOM ids
+        const itemNames = breadLedgerData.map(data => data.name);
+        domIds = itemNamesToDOMIds(itemNames);
 
-        /**
-         * @typedef {{
-         *   range: string,
-         *   majorDimension: string,
-         *   values: [string, string, string, string, string, string, string, string][],
-         * }} RawBreadLedgerData
-         */
-
-        /** @type {RawBreadLedgerData} */
-        
-        let rawBreadLedgerData = {};
-        let domIds = [];
-
-        async function init() {
-            const loadingRow = document.getElementById('loading-row');
-            const itemsTableBody = document.getElementById('items-table-body');
-
-            loadingRow.style.display = 'revert';
-            itemsTableBody.innerHTML = '';
-
-            rawBreadLedgerData = await fetchRawBreadLedgerData();
-
-            const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
-
-            // Map item names to DOM ids
-            const itemNames = breadLedgerData.map(data => data.name);
-            domIds = itemNamesToDOMIds(itemNames);
-
-            // Insert rows into table
-            if (breadLedgerData.length < 1) {
-                // Row announcing no bread if none available
-                const noBreadRowHtml = `
+        // Insert rows into table
+        if (breadLedgerData.length < 1) {
+            // Row announcing no bread if none available
+            const noBreadRowHtml = `
       <tr>
         <td colspan="2" class="align-center" style="width:120px; padding-top:12px;">
           <div class="lds-loaf-rise"></div>
@@ -264,14 +232,14 @@
       </tr>
     `;
 
-                itemsTableBody.insertAdjacentHTML('beforeend', noBreadRowHtml);
-            } else {
-                // Populate table with spreadsheet rows
-                for (const breadData of breadLedgerData) {
-                    const countOptionsHtml = Array.from({ length: breadData.quantity + 1 }, (_, i) =>
-                        `<option value="${i}">${i}</option>`).join('');
+            itemsTableBody.insertAdjacentHTML('beforeend', noBreadRowHtml);
+        } else {
+            // Populate table with spreadsheet rows
+            for (const breadData of breadLedgerData) {
+                const countOptionsHtml = Array.from({length: breadData.quantity + 1}, (_, i) =>
+                    `<option value="${i}">${i}</option>`).join('');
 
-                    const rowHtml = `
+                const rowHtml = `
                         <tr>
                           <td colspan="2">
                             <span class="image" style="vertical-align:middle;">
@@ -294,193 +262,223 @@
                         </tr>
                       `;
 
-                    itemsTableBody.insertAdjacentHTML('beforeend', rowHtml);
+                itemsTableBody.insertAdjacentHTML('beforeend', rowHtml);
+            }
+        }
+
+        loadingRow.style.display = 'none';
+    }
+
+    function updateCart() {
+        // Initialize variables
+        let itemNames = "";
+        let itemPickups = "";
+        let itemCounts = "";
+        let itemPrices = "";
+        let totalItemPrices = 0;
+
+        // Loop through all selected items
+        for (const domId of domIds) {
+            const {name: nameId, pickup: pickupId, count: countId, price: priceId} = domId;
+            const itemCount = parseInt(document.getElementById(countId).value);
+
+            // Skip items with count 0
+            if (!itemCount) {
+                continue;
+            }
+
+            // Get item name, pickup day and price
+            const itemName = document.getElementById(nameId).innerText;
+            const itemPickup = document.getElementById(pickupId).innerText;
+            const itemPrice = parseFloat(document.getElementById(priceId).innerText.split('$')[1]);
+
+            // Update strings and total item prices
+            itemNames += `${itemName}<br>`;
+            itemPickups += `${itemPickup}<br>`;
+            itemCounts += `x${itemCount}<br>`;
+            itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
+            totalItemPrices += itemPrice * itemCount;
+        }
+
+        // Update HTML elements with selected item information and total price
+        document.getElementById("selected-items-name").innerHTML = itemNames;
+        document.getElementById("selected-items-pickup").innerHTML = itemPickups;
+        document.getElementById("selected-items-count").innerHTML = itemCounts;
+        document.getElementById("selected-items-price").innerHTML = itemPrices;
+        document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
+
+        //Clear form submit message
+        document.getElementById("form-submit-message").innerHTML = "";
+    }
+
+    async function updateBreadLedger() {
+        const customerName = document.getElementById('customer-name').value;
+        const email = document.getElementById('customer-email').value;
+        const paymentMethod = document.getElementById('payment-method').value;
+        const tempddPost = document.getElementById('temp-dd').value;
+
+        const customerData = {
+            customerName,
+            tempddPost,
+            paymentMethod,
+            email
+        };
+
+        const itemNames = document.getElementById("selected-items-name").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0);
+        const itemCounts = document.getElementById("selected-items-count").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0)
+            .map(value => value.substring(1));
+        const itemPickups = document.getElementById("selected-items-pickup").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0);
+        const itemPrices = document.getElementById("selected-items-price").innerHTML
+            .split('<br>')
+            .filter(value => value.length > 0)
+            .map(value => value.substring(1));
+
+        const itemData = {};
+        for (let i = 0; i < itemCounts.length; i++) {
+            const itemName = itemNames[i];
+            const itemCount = itemCounts[i];
+            const itemPickup = itemPickups[i];
+            const itemPrice = itemPrices[i];
+
+            itemData[itemName] = `${itemCount},${itemPickup},${itemPrice}`;
+        }
+
+        const totalPrice = document.getElementById("selected-items-total-price").innerText;
+
+        await writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
+    }
+
+    //Reset "Please confirm the instructions." message
+    function updateCheckboxMessage() {
+        document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
+        document.getElementById("read-instructions-label").style.color = "#efdecb";
+    }
+
+    //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
+    function validateCheckbox() {
+        if (!document.getElementById("read-instructions").checked) {
+            document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
+            document.getElementById("read-instructions-label").style.color = "#ffffff";
+        }
+    }
+
+    //Display appropriate message when form is submitted
+    function parseFormSubmit() {
+        const selectedItemsName = document.getElementById("selected-items-name").innerHTML;
+        const selectedItemsCount = document.getElementById("selected-items-count").innerHTML;
+
+        if (selectedItemsName === "") {
+            document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
+            return;
+        }
+
+        fetchRawBreadLedgerData()
+            .then(async function (updatedRawBreadLedgerData) {
+                rawBreadLedgerData = updatedRawBreadLedgerData;
+                const breadLedgerData = rawDataToTableData(updatedRawBreadLedgerData);
+
+                const itemNames = selectedItemsName.split('<br>').filter(value => value.length > 0);
+                const itemCounts = selectedItemsCount.split('<br>').filter(value => value.length > 0).map(value => value.substring(1));
+
+                const cartAsMap = {};
+                for (let i = 0; i < itemNames.length; i++) {
+                    const name = itemNames[i];
+                    const count = itemCounts[i];
+
+                    cartAsMap[name] = parseInt(count);
                 }
-            }
 
-            loadingRow.style.display = 'none';
-        }
-
-        function updateCart() {
-            // Initialize variables
-            let itemNames = "";
-            let itemPickups = "";
-            let itemCounts = "";
-            let itemPrices = "";
-            let totalItemPrices = 0;
-
-            // Loop through all selected items
-            for (const domId of domIds) {
-                const { name: nameId, pickup: pickupId, count: countId, price: priceId } = domId;
-                const itemCount = parseInt(document.getElementById(countId).value);
-
-                // Skip items with count 0
-                if (!itemCount) {
-                    continue;
+                const availableItems = {};
+                for (const data of breadLedgerData) {
+                    availableItems[data.name] = data.quantity;
                 }
 
-                // Get item name, pickup day and price
-                const itemName = document.getElementById(nameId).innerText;
-                const itemPickup = document.getElementById(pickupId).innerText;
-                const itemPrice = parseFloat(document.getElementById(priceId).innerText.split('$')[1]);
+                let itemsExist = true;
+                for (const [name, quantity] of Object.entries(cartAsMap)) {
+                    const availableQuantity = availableItems[name];
 
-                // Update strings and total item prices
-                itemNames += `${itemName}<br>`;
-                itemPickups += `${itemPickup}<br>`;
-                itemCounts += `x${itemCount}<br>`;
-                itemPrices += `$${(itemPrice * itemCount).toFixed(2)}<br>`;
-                totalItemPrices += itemPrice * itemCount;
-            }
-
-            // Update HTML elements with selected item information and total price
-            document.getElementById("selected-items-name").innerHTML = itemNames;
-            document.getElementById("selected-items-pickup").innerHTML = itemPickups;
-            document.getElementById("selected-items-count").innerHTML = itemCounts;
-            document.getElementById("selected-items-price").innerHTML = itemPrices;
-            document.getElementById("selected-items-total-price").innerText = `$${totalItemPrices.toFixed(2)}`;
-
-            //Clear form submit message
-            document.getElementById("form-submit-message").innerHTML = "";
-        }
-
-        async function updateBreadLedger() {
-            const customerName = document.getElementById('customer-name').value;
-            const email = document.getElementById('customer-email').value;
-            const paymentMethod = document.getElementById('payment-method').value;
-            const tempddPost = document.getElementById('temp-dd').value;
-
-            const customerData = {
-                customerName,
-                tempddPost,
-                paymentMethod,
-                email
-            };
-
-            const itemNames = document.getElementById("selected-items-name").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0);
-            const itemCounts = document.getElementById("selected-items-count").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0)
-                .map(value => value.substring(1));
-            const itemPickups = document.getElementById("selected-items-pickup").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0);
-            const itemPrices = document.getElementById("selected-items-price").innerHTML
-                .split('<br>')
-                .filter(value => value.length > 0)
-                .map(value => value.substring(1));
-
-            const itemData = {};
-            for (let i = 0; i < itemCounts.length; i++) {
-                const itemName = itemNames[i];
-                const itemCount = itemCounts[i];
-                const itemPickup = itemPickups[i];
-                const itemPrice = itemPrices[i];
-
-                itemData[itemName] = `${itemCount},${itemPickup},${itemPrice}`;
-            }
-
-            const totalPrice = document.getElementById("selected-items-total-price").innerText;
-
-            await writeBreadLedgerData(rawBreadLedgerData.values, customerData, itemData, totalPrice);
-        }
-
-        //Reset "Please confirm the instructions." message
-        function updateCheckboxMessage() {
-            document.getElementById("read-instructions-label").innerHTML = "I've read the instructions";
-            document.getElementById("read-instructions-label").style.color = "#efdecb";
-        }
-
-        //Display "Please confirm the instructions." if checkbox unchecked on submit attempt
-        function validateCheckbox() {
-            if (!document.getElementById("read-instructions").checked) {
-                document.getElementById("read-instructions-label").innerHTML = "Please confirm the instructions.";
-                document.getElementById("read-instructions-label").style.color = "#ffffff";
-            }
-        }
-
-        //Display appropriate message when form is submitted
-        function parseFormSubmit() {
-            const selectedItemsName = document.getElementById("selected-items-name").innerHTML;
-            const selectedItemsCount = document.getElementById("selected-items-count").innerHTML;
-
-            if (selectedItemsName === "") {
-                document.getElementById("form-submit-message").innerHTML = "<strong>Please add something to the cart!</strong>";
-                return;
-            }
-
-            fetchRawBreadLedgerData()
-                .then(async function (rawBreadLedgerData) {
-                    const breadLedgerData = rawDataToTableData(rawBreadLedgerData);
-
-                    const itemNames = selectedItemsName.split('<br>').filter(value => value.length > 0);
-                    const itemCounts = selectedItemsCount.split('<br>').filter(value => value.length > 0).map(value => value.substring(1));
-
-                    const cartAsMap = {};
-                    for (let i = 0; i < itemNames.length; i++) {
-                        const name = itemNames[i];
-                        const count = itemCounts[i];
-
-                        cartAsMap[name] = parseInt(count);
+                    if (availableQuantity === undefined || availableQuantity < quantity) {
+                        itemsExist = false;
+                        break;
                     }
+                }
 
-                    const availableItems = {};
-                    for (const data of breadLedgerData) {
-                        availableItems[data.name] = data.quantity;
-                    }
+                if (itemsExist) {
+                    // Log order to History and subtract cart from Ledger
+                    document.getElementById("form-submit-message").innerHTML = "<strong>Order confirmed and email sent.</strong><br>This site is not live.";
 
-                    let itemsExist = true;
-                    for (const [name, quantity] of Object.entries(cartAsMap)) {
-                        const availableQuantity = availableItems[name];
+                    // Reload available items and initialize the page
+                    await updateBreadLedger();
+                    await init();
 
-                        if (availableQuantity === undefined || availableQuantity < quantity) {
-                            itemsExist = false;
-                            break;
-                        }
-                    }
+                    // Clear cart
+                    document.getElementById("selected-items-count").innerHTML = "";
+                    document.getElementById("selected-items-pickup").innerHTML = "";
+                    document.getElementById("selected-items-name").innerHTML = "";
+                    document.getElementById("selected-items-price").innerHTML = "";
+                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
 
-                    if (itemsExist) {
-                        // Log order to History and subtract cart from Ledger
-                        document.getElementById("form-submit-message").innerHTML = "<strong>Order confirmed and email sent.</strong><br>This site is not live.";
+                    // Clear form
+                    document.getElementById("customer-name").value = "";
+                    document.getElementById("customer-email").value = "";
+                    document.getElementById("payment-method").value = "";
+                    document.getElementById("temp-dd").value = "";
+                    document.getElementById("read-instructions").checked = false;
+                } else {
+                    // Reload available items
+                    await init();
 
-                        // Reload available items and initialize the page
-                        await updateBreadLedger();
-                        await init();
+                    // Unavailable message
+                    document.getElementById("form-submit-message").innerHTML = "<strong>Items in your cart are out of stock!</strong><br>Please re-select and place your order again.";
 
-                        // Clear cart
-                        document.getElementById("selected-items-count").innerHTML = "";
-                        document.getElementById("selected-items-pickup").innerHTML = "";
-                        document.getElementById("selected-items-name").innerHTML = "";
-                        document.getElementById("selected-items-price").innerHTML = "";
-                        document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+                    // Clear cart
+                    document.getElementById("selected-items-count").innerHTML = "";
+                    document.getElementById("selected-items-pickup").innerHTML = "";
+                    document.getElementById("selected-items-name").innerHTML = "";
+                    document.getElementById("selected-items-price").innerHTML = "";
+                    document.getElementById("selected-items-total-price").innerHTML = "$0.00";
+                }
+            });
+    }
 
-                        // Clear form
-                        document.getElementById("customer-name").value = "";
-                        document.getElementById("customer-email").value = "";
-                        document.getElementById("payment-method").value = "";
-                        document.getElementById("temp-dd").value = "";
-                        document.getElementById("read-instructions").checked = false;
-                    } else {
-                        // Reload available items
-                        await init();
+    // Initialize the page
+    fetchBusinessInfo().then(function (businessInfo) {
+        //Get secret business info elements by id
+        const instructionsStreetAddress = document.getElementById('instructions-street-address');
+        const footerStreetAddress = document.getElementById('footer-street-address');
+        const headerCityState = document.getElementById('header-city-state');
+        const instructionsCityState = document.getElementById('instructions-city-state');
+        const footerCityState = document.getElementById('footer-city-state');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const contactEmail = document.getElementById('contact-email');
+        const joshuaFullName = document.getElementById('joshua-full-name');
+        const zoeFullName = document.getElementById('zoe-full-name');
+        const danielFullName = document.getElementById('daniel-full-name');
 
-                        // Unavailable message
-                        document.getElementById("form-submit-message").innerHTML = "<strong>Items in your cart are out of stock!</strong><br>Please re-select and place your order again.";
+        //Set secret business info elements by id
+        headerCityState.innerText = businessInfo.bakeryCityState;
+        instructionsCityState.innerText = businessInfo.bakeryCityState;
+        footerCityState.innerText = businessInfo.bakeryCityState;
 
-                        // Clear cart
-                        document.getElementById("selected-items-count").innerHTML = "";
-                        document.getElementById("selected-items-pickup").innerHTML = "";
-                        document.getElementById("selected-items-name").innerHTML = "";
-                        document.getElementById("selected-items-price").innerHTML = "";
-                        document.getElementById("selected-items-total-price").innerHTML = "$0.00";
-                    }
-                });
-        }
+        instructionsStreetAddress.innerText = businessInfo.bakeryStreetAddress;
+        footerStreetAddress.innerText = businessInfo.bakeryStreetAddress;
 
-        // Initialize the page
-        init();
-    </script>
+        whatsappLink.href = businessInfo.bakeryWhatsappLink;
+        contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+
+        joshuaFullName.innerText = businessInfo.joshuaFullName;
+        zoeFullName.innerText = businessInfo.zoeFullName;
+        danielFullName.innerText = businessInfo.danielFullName;
+    });
+
+    init();
+</script>
 
 </body>
 
