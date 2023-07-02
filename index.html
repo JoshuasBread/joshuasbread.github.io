@@ -34,7 +34,7 @@
                         <li><b>Order</b> here and check confirmation email</li>
                         <li><b>Pay</b> in advance using your selected method</li>
                         <li><b>Pick up</b> items <em>after 12pm on their listed days</em> at
-                            <u><a href="https://goo.gl/maps/eUTGN8iwHXFam2RD9" target="_blank">
+                            <u><a id="instructions-address-link" target="_blank">
                                 <span id="instructions-street-address"></span>, <span
                                     id="instructions-city-state"></span>
                             </a></u>
@@ -144,9 +144,11 @@
                 <h2>About</h2>
                 <dl class="alt" style="display:inline-block; text-align:left;">
                     <dt>Address</dt>
-                    <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
+                    <dd><u><a id="footer-address-link" target="_blank">
+                        <span id="footer-street-address"></span><br>
+                        <span id="footer-city-state"></span></a></u></dd>
                     <dt>WhatsApp</dt>
-                    <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
+                    <dd><u><a id="whatsapp-link" target="_blank">Get updates</a></u>
                     </dd>
                     <dt>Contact</dt>
                     <dd><u><a id="contact-email" target="_blank">Email Joshua</a></u></dd>
@@ -455,6 +457,8 @@
         const headerCityState = document.getElementById('header-city-state');
         const instructionsCityState = document.getElementById('instructions-city-state');
         const footerCityState = document.getElementById('footer-city-state');
+        const footerAddressLink = document.getElementById('footer-address-link');
+        const instructionsAddressLink = document.getElementById('instructions-address-link');
         const whatsappLink = document.getElementById('whatsapp-link');
         const contactEmail = document.getElementById('contact-email');
         const joshuaFullName = document.getElementById('joshua-full-name');
@@ -471,6 +475,8 @@
 
         whatsappLink.href = businessInfo.bakeryWhatsappLink;
         contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+        footerAddressLink.href = businessInfo.bakeryMapLink;
+        instructionsAddressLink.href = businessInfo.bakeryMapLink;
 
         joshuaFullName.innerText = businessInfo.joshuaFullName;
         zoeFullName.innerText = businessInfo.zoeFullName;

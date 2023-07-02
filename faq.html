@@ -11,10 +11,6 @@
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
     <style>
-        u,
-        strong {
-            color: #ffffff;
-        }
 
         .collapsible {
             color: #ffffff;
@@ -36,7 +32,7 @@
             <span class="logo"><img src="images/logo.svg" alt="Logo" style="max-width:250px;width:100%" /></span>
             <h1>Joshua's Bread</h1>
             <p>Welcome! I bake artisan breads and sell from my home in <span id="header-city-state"></span>.
-                <br><u style="color:#efdecb;"><a href="index.html">Order bread here</a></u>
+                <br><u><a href="index.html">Order bread here</a></u>
             </p>
         </header>
         <!-- Main -->
@@ -55,7 +51,8 @@
                                 <div class="response">
                                     <p><br>
                                         <u>The Cut:</u> Split the loaf in half, lean forward, and breathe in deeply. Cut
-                                        slices from the middle outwards. The middle slices are conveniently large, and you
+                                        slices from the middle outwards. The middle slices are conveniently large, and
+                                        you
                                         enjoy the fluffy center of the bread when it's freshest.<br><br>
                                         <u>Day 1:</u> Place the two loaf halves cut-side-down on the
                                         cutting board. Eat a slice whenever you walk by.<br><br>
@@ -77,8 +74,10 @@
                                         <u>Room Temperature:</u> Rub a touch of water on each side of your slice and
                                         toast it.<br><br>
                                         <u>Frozen sliced:</u> Toast the slice frozen.<br><br>
-                                        <u>Frozen whole:</u> Thaw in the bag at room temp for 4+ hours/overnight. Preheat
-                                        oven to 400º, wet loaf evenly under a running tap for ~5 seconds, then bake for 10 minutes.
+                                        <u>Frozen whole:</u> Thaw in the bag at room temp for 4+ hours/overnight.
+                                        Preheat
+                                        oven to 400º, wet loaf evenly under a running tap for ~5 seconds, then bake for
+                                        10 minutes.
                                     </p>
                                 </div>
                             </td>
@@ -91,7 +90,8 @@
                                         Naturally leavened (sourdough) bread can keep at room temperature for at least a
                                         week. Frozen bread keeps for several months.<br><br>
                                         The bacteria present in a sourdough starter produce acids during a thorough
-                                        fermentation process. These acids act as natural preservatives. They also contribute the “sour”
+                                        fermentation process. These acids act as natural preservatives. They also
+                                        contribute the “sour”
                                         flavor to sourdough.<br><br>
                                         In commercially yeasted breads, these bacterial cultures are not present, so
                                         alternative preservatives must be added.
@@ -119,7 +119,8 @@
                                         feel lethargic or bloated after eating other breads report that this bread does
                                         not bother their system.<br><br>
                                         Commercial and grocery-store breads usually contain added preservatives and
-                                        sweeteners, rise by commercial yeast instead of natural fermentation, have a lower water content,
+                                        sweeteners, rise by commercial yeast instead of natural fermentation, have a
+                                        lower water content,
                                         and are not fully cooked. When you eat them, the flour has not been sufficiently
                                         broken down, and your stomach pays the price.
                                     </p>
@@ -150,6 +151,15 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <a class="button collapsible">How can I make requests or special orders?</a>
+                                <div class="response">
+                                    <p><br>Please <u><a id="faq-request-email" target="_blank">send an email</a></u> with your inquiry!
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </section>
@@ -162,7 +172,9 @@
                     <h2>About</h2>
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Address</dt>
-                        <dd><span id="footer-street-address"></span><br><span id="footer-city-state"></span></dd>
+                        <dd><u><a id="footer-address-link" target="_blank">
+                            <span id="footer-street-address"></span><br>
+                            <span id="footer-city-state"></span></a></u></dd>                        
                         <dt>WhatsApp</dt>
                         <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
                         </dd>
@@ -227,8 +239,10 @@
             const headerCityState = document.getElementById('header-city-state');
             const footerCityState = document.getElementById('footer-city-state');
             const footerStreetAddress = document.getElementById('footer-street-address');
+            const footerAddressLink = document.getElementById('footer-address-link');
             const whatsappLink = document.getElementById('whatsapp-link');
             const faqContactEmail = document.getElementById('faq-contact-email');
+            const faqRequestEmail = document.getElementById('faq-request-email');
             const contactEmail = document.getElementById('contact-email');
             const joshuaFullName = document.getElementById('joshua-full-name');
             const zoeFullName = document.getElementById('zoe-full-name');
@@ -241,6 +255,8 @@
 
             whatsappLink.href = businessInfo.bakeryWhatsappLink;
             contactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
+            footerAddressLink.href = businessInfo.bakeryMapLink;
+            faqRequestEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
             faqContactEmail.href = "mailto:" + businessInfo.bakeryEmailAddress;
 
             joshuaFullName.innerText = businessInfo.joshuaFullName;
