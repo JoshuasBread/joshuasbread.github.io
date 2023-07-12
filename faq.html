@@ -5,21 +5,38 @@
     <title>Joshua's Bread</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
     <style>
 
-        .collapsible {
+        .collapsible_parent {
             color: #ffffff;
+            padding: 0 8px;
+        }
+
+        .collapsible_child {
+            color: #ffffff;
+            padding: 0 8px;
+        }
+
+
+        .response_container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
         }
 
         .response {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
+        }
+
+        .td{
+            white-space: wrap;
         }
     </style>
 </head>
@@ -47,116 +64,146 @@
                     <table>
                         <tr>
                             <td>
-                                <a class="button collapsible">How should I cut and store the bread?</a>
-                                <div class="response">
-                                    <p><br>
-                                        <u>The Cut:</u> Split the loaf in half, lean forward, and breathe in deeply. Cut
-                                        slices from the middle outwards. The middle slices are conveniently large, and
-                                        you
-                                        enjoy the fluffy center of the bread when it's freshest.<br><br>
-                                        <u>Day 1:</u> Place the two loaf halves cut-side-down on the
-                                        cutting board. Eat a slice whenever you walk by.<br><br>
-                                        <u>Day 2:</u> Bread should still be fresh. Toasting is optional.<br><br>
-                                        <u>Days 3-7:</u> If there's any left, store it in a paper or
-                                        plastic bag. Rub a touch of water on your slice and toast it.<br><br>
-                                        Breads can be frozen in an airtight bag for several months. Slice the loaf
-                                        first, or freeze it whole.<br><br>
-                                        Refrigeration dries out bread and is not recommended.
-                                    </p>
+                                <a class="button collapsible_parent">About the Bread</a>
+                                <div class="response_container" id="about_bread_container">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">How should I cut and store the
+                                                    bread?</a>
+                                                <div class="response">
+                                                    <p><br>
+                                                        <u>The Cut:</u> Split the loaf in half, lean forward, and
+                                                        breathe in deeply. Cut
+                                                        slices from the middle outwards. The middle slices are
+                                                        conveniently large, and
+                                                        you enjoy the fluffy center of the bread when it's
+                                                        freshest.<br><br>
+                                                        <u>Day 1:</u> Place the two loaf halves cut-side-down on the
+                                                        cutting board. Eat a slice whenever you walk by.<br><br>
+                                                        <u>Day 2:</u> Bread should still be fresh. Toasting is
+                                                        optional.<br><br>
+                                                        <u>Days 3-7:</u> If there's any left, store it in a paper or
+                                                        plastic bag. Rub a touch of water on your slice and toast
+                                                        it.<br><br>
+                                                        Breads can be frozen in an airtight bag for several months.
+                                                        Slice the loaf first, or freeze it whole<br><br>
+                                                        Refrigeration dries out bread and is not recommended.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">How should I refresh the bread?</a>
+                                                <div class="response">
+                                                    <p><br>
+                                                        <u>Room Temperature:</u> Rub a touch of water on each side of
+                                                        your slice and
+                                                        toast it.<br><br>
+                                                        <u>Frozen sliced:</u> Toast the slice frozen.<br><br>
+                                                        <u>Frozen whole:</u> Thaw in the bag at room temp for 4+
+                                                        hours/overnight. Preheat oven to 400º, wet loaf evenly under a
+                                                        running tap for ~5
+                                                        seconds, then bake for 10 minutes.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">How long does the bread keep?</a>
+                                                <div class="response">
+                                                    <p><br>
+                                                        Naturally leavened (sourdough) bread can keep at room
+                                                        temperature for at least a
+                                                        week. Frozen bread keeps for several months.<br><br>
+                                                        The bacteria present in a sourdough starter produce acids during
+                                                        a thorough fermentation process. These acids act as natural
+                                                        preservatives. They also contribute the “sour” flavor to
+                                                        sourdough.<br><br>
+                                                        In commercially yeasted breads, these bacterial cultures are not
+                                                        present, so alternative preservatives must be added.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">Why is this bread great to eat?</a>
+                                                <div class="response">
+                                                    <br>
+                                                    <ol>
+                                                        <li>It's delicious.</li>
+                                                        <li>It is made simply and with high-quality ingredients.</li>
+                                                        <li>Thorough fermentation breaks down flour starches and
+                                                            untangles knotted proteins.</li>
+                                                        <li>High hydration (water content) softens the dough and
+                                                            activates enzymes that break down starch and protein even
+                                                            further.</li>
+                                                        <li>A long, hot bake ensures that starches are gelatinized and
+                                                            gluten proteins fully cooked.</li>
+                                                    </ol>
+                                                    <p>
+                                                        These last 3 reasons result in a loaf that is easy to digest.
+                                                        Many people who
+                                                        feel lethargic or bloated after eating other breads report that
+                                                        this bread does
+                                                        not bother their system.<br><br>
+                                                        Commercial and grocery-store breads usually contain added
+                                                        preservatives and
+                                                        sweeteners, rise by commercial yeast instead of natural
+                                                        fermentation, have a lower water content, and are not fully
+                                                        cooked. When you eat them, the flour has not been sufficiently
+                                                        broken down, and your stomach pays the price.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">What is sourdough?</a>
+                                                <div class="response">
+                                                    <p><br>Sourdough is bread that rises using a fermented
+                                                        water-and-flour mixture called a natural leaven, or starter,
+                                                        instead of commercial yeast. It is not necessarily sour (most
+                                                        sold at this bakery aren't).<br><br>
+                                                        The leaven culture contributes a living host of yeasts and
+                                                        bacteria that work chemical wonders in the dough. Bacterial
+                                                        fermentation breaks down flour, unlocks nutrients, and lends a
+                                                        unique flavor to the dough. The yeasts live symbiotically with
+                                                        the bacteria and generate gasses that raise or “leaven” the
+                                                        dough.<br><br>
+                                                        During the fermentation process, bacteria in the starter produce
+                                                        lactic acid (floral and mild) and acetic acid (vinegary and
+                                                        tangy). The fermentation technique used here favors the milder
+                                                        lactic acid.
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <a class="button collapsible">How should I refresh the bread?</a>
-                                <div class="response">
-                                    <p><br>
-                                        <u>Room Temperature:</u> Rub a touch of water on each side of your slice and
-                                        toast it.<br><br>
-                                        <u>Frozen sliced:</u> Toast the slice frozen.<br><br>
-                                        <u>Frozen whole:</u> Thaw in the bag at room temp for 4+ hours/overnight.
-                                        Preheat
-                                        oven to 400º, wet loaf evenly under a running tap for ~5 seconds, then bake for
-                                        10 minutes.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="button collapsible">How long does the bread keep?</a>
-                                <div class="response">
-                                    <p><br>
-                                        Naturally leavened (sourdough) bread can keep at room temperature for at least a
-                                        week. Frozen bread keeps for several months.<br><br>
-                                        The bacteria present in a sourdough starter produce acids during a thorough
-                                        fermentation process. These acids act as natural preservatives. They also
-                                        contribute the “sour”
-                                        flavor to sourdough.<br><br>
-                                        In commercially yeasted breads, these bacterial cultures are not present, so
-                                        alternative preservatives must be added.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="button collapsible">Why do I feel so good eating this bread?</a>
-                                <div class="response">
-                                    <br>
-                                    <ol>
-                                        <li>It's delicious.</li>
-                                        <li>It is made simply and with high-quality ingredients.</li>
-                                        <li>Thorough fermentation breaks down flour starches and
-                                            untangles knotted proteins.</li>
-                                        <li>High hydration (water content) softens the dough and activates enzymes that
-                                            break down starch and protein even further.</li>
-                                        <li>A long, hot bake ensures that starches are gelatinized and gluten
-                                            proteins fully cooked.</li>
-                                    </ol>
-                                    <p>
-                                        These last 3 reasons result in a loaf that is easy to digest. Many people who
-                                        feel lethargic or bloated after eating other breads report that this bread does
-                                        not bother their system.<br><br>
-                                        Commercial and grocery-store breads usually contain added preservatives and
-                                        sweeteners, rise by commercial yeast instead of natural fermentation, have a
-                                        lower water content,
-                                        and are not fully cooked. When you eat them, the flour has not been sufficiently
-                                        broken down, and your stomach pays the price.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="button collapsible">What is sourdough and why is it healthier?</a>
-                                <div class="response">
-                                    <p><br>Sourdough is bread that rises using a fermented water-and-flour
-                                        mixture called a natural leaven, or starter, instead of commercial yeast. It is
-                                        not necessarily sour (most sold at this bakery aren't).<br><br>
-                                        The leaven culture contributes a living host of yeasts and bacteria that work
-                                        chemical
-                                        wonders in the dough. Bacterial fermentation breaks down flour, unlocks
-                                        nutrients, and
-                                        lends a unique flavor to the dough. The yeasts live symbiotically with the
-                                        bacteria and
-                                        generate gasses that raise or “leaven” the dough.<br><br>
-                                        During the fermentation
-                                        process, bacteria in the starter produce lactic acid (floral and mild) and
-                                        acetic acid
-                                        (vinegary and tangy). The fermentation technique used here favors the milder
-                                        lactic
-                                        acid.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="button collapsible">How can I make requests or special orders?</a>
-                                <div class="response">
-                                    <p><br>Please <u><a id="faq-request-email" target="_blank">send an email</a></u> with your inquiry!
-                                    </p>
+                                <a class="button collapsible_parent">About the Business</a>
+                                <div class="response_container" id="about_business_container">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <a class="button collapsible_child">How can I make requests or special
+                                                    orders?</a>
+                                                <div class="response">
+                                                    <p><br>Please <u><a id="faq-request-email" target="_blank">send an
+                                                                email</a></u> with your inquiry!
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </td>
                         </tr>
@@ -173,8 +220,8 @@
                     <dl class="alt" style="display:inline-block; text-align:left;">
                         <dt>Address</dt>
                         <dd><u><a id="footer-address-link" target="_blank">
-                            <span id="footer-street-address"></span><br>
-                            <span id="footer-city-state"></span></a></u></dd>                        
+                                    <span id="footer-street-address"></span><br>
+                                    <span id="footer-city-state"></span></a></u></dd>
                         <dt>WhatsApp</dt>
                         <dd><u><a id="whatsapp-link" target="_blank">Join the group</a></u>
                         </dd>
@@ -198,10 +245,9 @@
             </section>
             <section style="width:100%;">
                 <div style="display: inline-block; width:100%; text-align:center;">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.4777438216684!2d-122.2931283241299!3d37.89589457195507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857937a9b40395%3A0xffc41553151a4209!2sMemorial%20Park!5e0!3m2!1sen!2sus!4v1687385581782!5m2!1sen!2sus"
-                        width="70%" height="200" style="border:3px solid #efdecb; border-radius:10px;"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe width="70%" height="200" loading="lazy"
+                        style="border:3px solid #efdecb; border-radius:10px;" allowfullscreen
+                        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJP3j68Mt5hYARuJ3pQuVuhJ0&key=AIzaSyBcc_XV84WGt85wYWg9C64dzRozXyJLZLM&zoom=17"></iframe>
                 </div>
             </section>
         </footer>
@@ -218,22 +264,83 @@
     <script src="assets/js/utils.js"></script>
 
     <script>
-        var coll = document.getElementsByClassName("collapsible");
+        //Handle parent collapsibles
+        var coll_parents = document.getElementsByClassName("collapsible_parent");
+        var coll_children = document.getElementsByClassName("collapsible_child");
         var i;
+        var k;
+        var h;
+        //Loop through parent collapsibles
+        for (i = 0; i < coll_parents.length; i++) {
+            //When parent collapsible is clicked
+            coll_parents[i].addEventListener("click", function () {
+                var this_parent_response = this.nextElementSibling;
+                //Close parent if open
+                if (this_parent_response.style.maxHeight) {
+                    this_parent_response.style.maxHeight = null;
+                }
+                //Open parent if closed
+                else {
+                    this_parent_response.style.maxHeight = this_parent_response.scrollHeight + "px";
+                }
+                //Close other parents if open
+                for (k = 0; k < coll_parents.length; k++) {
+                    var any_parent_response = coll_parents[k].nextElementSibling;
+                    if (any_parent_response != this_parent_response) {
+                        any_parent_response.style.maxHeight = null;
+                    }
+                }
+                //Close all children
+                for (h = 0; h < coll_children.length; h++) {
+                    coll_children[h].nextElementSibling.style.maxHeight = null;
+                }
+            });
+        }
+    </script>
 
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
-                var response = this.nextElementSibling;
-                if (response.style.maxHeight) {
-                    response.style.maxHeight = null;
-                } else {
-                    response.style.maxHeight = response.scrollHeight + "px";
+    <script>
+        //Handle children collapsibles
+        var coll_children = document.getElementsByClassName("collapsible_child");
+        var coll_parents = document.getElementsByClassName("collapsible_parent");
+        var i;
+        var k;
+        var h;
+        //Loop through children
+        for (i = 0; i < coll_children.length; i++) {
+            coll_children[i].addEventListener("click", function () {
+                var this_child_response = this.nextElementSibling;
+                //Close child if open
+                if (this_child_response.style.maxHeight) {
+                    this_child_response.style.maxHeight = null;
+                }
+                //Open child if closed, and expand parent
+                else {
+                    //Expand child
+                    this_child_response.style.maxHeight = this_child_response.scrollHeight + "px";
+                    //Loop through parents
+                    for (h = 0; h < coll_parents.length; h++) {
+                        var any_parent_response = coll_parents[h].nextElementSibling;
+                        //Expand parent of opening child
+                        if (any_parent_response.style.maxHeight) {
+                            var new_parent_height = parseInt(any_parent_response.style.maxHeight, 10) + parseInt(this_child_response.style.maxHeight, 10);
+                            any_parent_response.style.maxHeight = new_parent_height + "px";
+                        }
+                    }
+                }
+                //Close all other children
+                for (k = 0; k < coll_children.length; k++) {
+                    var any_child_response = coll_children[k].nextElementSibling;
+                    if (any_child_response != this_child_response) {
+                        any_child_response.style.maxHeight = null;
+                    }
                 }
             });
         }
 
+    </script>
+
+    <script>
         fetchBusinessInfo().then(function (businessInfo) {
-            console.log(businessInfo);
 
             //Get secret business info elements by id
             const headerCityState = document.getElementById('header-city-state');

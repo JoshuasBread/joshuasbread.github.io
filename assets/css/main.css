@@ -157,7 +157,7 @@ body, input, select, textarea {
     }
 
     .shrinkspan {
-        font-size: 2.5vw;
+        font-size: 2.9vw;
     }
 
 }
@@ -165,7 +165,7 @@ body, input, select, textarea {
 @media screen and (max-width: 480px) {
 
     .shrinkspan {
-        font-size: 2.9vw;
+        font-size: 3.3vw;
     }
 
 }
