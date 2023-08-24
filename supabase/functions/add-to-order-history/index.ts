@@ -20,7 +20,7 @@ serve(async (req) => {
 
     // Google sheet has the layout
     // [Time, Name, Email, Payment, Order, Total, tempdd]
-    await api.post(`https://sheets.googleapis.com/v4/spreadsheets/${orderHistorySheetId}/values/Orders:append?valueInputOption=USER_ENTERED`, {
+    await api.post(`https://sheets.googleapis.com/v4/spreadsheets/${orderHistorySheetId}/values/Orders:append?valueInputOption=USER_ENTERED?insertDataOption=INSERT_ROWS`, {
         "range": "Orders",
         "values": [[time, name, email, payment, order, total, tempdd]],
     });
