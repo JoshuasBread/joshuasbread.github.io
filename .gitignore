@@ -1,3 +1,4 @@
 .idea
 joshuas-bread-*.json
 *.env*
+.DS_Store

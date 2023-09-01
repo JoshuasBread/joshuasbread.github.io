@@ -1,6 +1,15 @@
 import {serve} from "https://deno.land/std@0.168.0/http/server.ts"
 
-import {bakeryEmailAddress, bakeryStreetAdress, bakeryCityState, bakeryMapLink, bakeryWhatsappLink, joshuaFullName, danielFullName, zoeFullName} from "../_shared/constants.ts";
+import {
+    bakeryCityState,
+    bakeryEmailAddress,
+    bakeryMapLink,
+    bakeryStreetAddress,
+    bakeryWhatsappLink,
+    danielFullName,
+    joshuaFullName,
+    zoeFullName
+} from "../_shared/constants.ts";
 import {corsHeaders} from "../_shared/cors.ts";
 
 serve(async (req) => {
@@ -10,14 +19,14 @@ serve(async (req) => {
 
     return new Response(
         JSON.stringify({
-          "bakeryEmailAddress": bakeryEmailAddress,
-          "bakeryStreetAddress":bakeryStreetAdress,
-          "bakeryCityState":bakeryCityState,
-          "bakeryMapLink":bakeryMapLink,
-          "bakeryWhatsappLink":bakeryWhatsappLink,
-          "joshuaFullName": joshuaFullName,
-          "zoeFullName": zoeFullName,
-          "danielFullName": danielFullName,
+            "bakeryEmailAddress": bakeryEmailAddress,
+            "bakeryStreetAddress": bakeryStreetAddress,
+            "bakeryCityState": bakeryCityState,
+            "bakeryMapLink": bakeryMapLink,
+            "bakeryWhatsappLink": bakeryWhatsappLink,
+            "joshuaFullName": joshuaFullName,
+            "zoeFullName": zoeFullName,
+            "danielFullName": danielFullName,
         }),
         {headers: {"Content-Type": "application/json", ...corsHeaders}},
     )
