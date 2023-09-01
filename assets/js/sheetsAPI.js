@@ -31,7 +31,7 @@ async function writeBreadLedgerData(rawBreadLedgerDataValues, customerData, item
     const productOrderString = productOrder.join(',');
 
     // Add order to history
-    const { customerName, email, paymentMethod, tempddPost } = customerData;
+    const {customerName, email, paymentMethod, tempddPost} = customerData;
     const addToOrderHistoryPromise = _addToOrderHistory({
         time: nowPST,
         name: customerName,
@@ -177,3 +177,15 @@ async function fetchBusinessInfo() {
 
     return res.json();
 }
+
+/** Used to prevent Supabase from pausing **/
+async function keepAlive() {
+    await fetch("https://hadrffbborwwrcvvacex.supabase.co/rest/v1/keep_alive?select=id", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${anonKey}`
+        },
+    });
+}
+
